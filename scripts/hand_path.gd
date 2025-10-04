@@ -18,7 +18,7 @@ func update_line():
 func mouse_input(delta: float) -> void:
 	var count = path_2d.curve.point_count
 	var mouse_pos = get_viewport().get_mouse_position()
-	mouse_pos = mouse_pos + MainCamera2D.position - thief.position
+	mouse_pos = (mouse_pos + MainCamera2D.position - thief.position) / thief.scale
 	
 	var last_point = path_2d.curve.get_point_position(count - 1)
 	var direction = mouse_pos - last_point
