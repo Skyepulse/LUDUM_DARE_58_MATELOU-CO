@@ -34,7 +34,7 @@ repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="colonne"]
 z_index = 1
-position = Vector2(895.7034, 230.0151)
+position = Vector2(-2.4651903e-32, 231.30235)
 scale = Vector2(0.20172964, 0.22462411)
 texture = ExtResource("1_bkp1e")
 
