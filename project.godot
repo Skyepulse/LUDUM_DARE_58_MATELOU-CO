@@ -20,6 +20,10 @@ config/icon="res://img/icon.svg"
 GameManager="*res://scenes/game_manager.tscn"
 MainCamera2D="*res://scenes/main_camera_2d.tscn"
 
+[global_group]
+
+Player=""
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

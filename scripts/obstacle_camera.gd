@@ -32,3 +32,11 @@ func changeRay(length: float, width: float):
 
 func rotateCamera(degrees_val: float):
     rotation_degrees = wrapf(degrees_val, 0.0, 360.0)
+
+func _on_ray_box_area_entered(area: Area2D) -> void:
+    print("Body entered: %s" % area.name)
+
+    if 
+
+func _on_ray_box_area_exited(area: Area2D) -> void:
+    print("Body exited: %s" % area.name)

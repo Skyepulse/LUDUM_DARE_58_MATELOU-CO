@@ -23,6 +23,7 @@ shape = SubResource("RectangleShape2D_8270b")
 
 [node name="RayBox" type="Area2D" parent="."]
 position = Vector2(64, 0)
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RayBox"]
 shape = SubResource("ConvexPolygonShape2D_8270b")
@@ -31,3 +32,6 @@ debug_color = Color(0.8743257, 0.1234112, 0.15432164, 0.41960785)
 [node name="Visual" type="Polygon2D" parent="RayBox"]
 color = Color(0.8235294, 0.1254902, 0.18431373, 1)
 vertex_colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0.99215686, 0, 0, 1)
+
+[connection signal="area_entered" from="RayBox" to="." method="_on_ray_box_area_entered"]
+[connection signal="area_exited" from="RayBox" to="." method="_on_ray_box_area_exited"]
