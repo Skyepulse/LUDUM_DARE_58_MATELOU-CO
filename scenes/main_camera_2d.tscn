@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://7ftc61n3y4jw"]
+
+[ext_resource type="Script" uid="uid://dddcv4y73sut5" path="res://scripts/Singletons/MainCamera2D.gd" id="1_lmn3r"]
+
+[node name="MainCamera2D" type="Camera2D"]
+script = ExtResource("1_lmn3r")
