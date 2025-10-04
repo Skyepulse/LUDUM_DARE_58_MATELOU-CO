@@ -1,14 +1,13 @@
 extends Node
 
 # Const layer mask
-var sprite: Sprite2D = null
+@onready var sprite: Sprite2D = $Sprite
+@onready var hitbox: Area2D = $ObjectHitbox
+
 var grabPoints: Array[Node2D] = []
 var numGrabPoints: int = 0
-var hitbox: Area2D = null
 
 func _ready():
-	sprite = $Sprite
-	hitbox = $ObjectHitbox
 
 	var grabPointsRoot = $GrabPoints
 	for child in grabPointsRoot.get_children():

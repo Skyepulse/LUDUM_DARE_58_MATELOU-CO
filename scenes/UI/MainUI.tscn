@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmyh2mgg3l5oi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vegyt"]
+bg_color = Color(0.3403393, 0.34033936, 0.34033918, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sb5dd"]
+bg_color = Color(0.25532895, 0.45109338, 0.18999308, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="MainUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Supsicion" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 5.52
+offset_bottom = 55.52
+grow_horizontal = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Supsicion"]
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_vegyt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sb5dd")
+value = 95.81
