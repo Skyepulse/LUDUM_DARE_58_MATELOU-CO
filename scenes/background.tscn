@@ -1,24 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://ytnv83oppny8"]
+[gd_scene load_steps=7 format=3 uid="uid://ytnv83oppny8"]
 
-[ext_resource type="Texture2D" uid="uid://01a6s27mn85u" path="res://img/icon.svg" id="1_bkp1e"]
+[ext_resource type="Texture2D" uid="uid://dgbjoa5rmtj8l" path="res://img/column.png" id="1_bkp1e"]
+[ext_resource type="Script" uid="uid://cyb447hnr15e1" path="res://scripts/background.gd" id="1_y0upk"]
+
+[sub_resource type="Gradient" id="Gradient_bkp1e"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.7487182, 0.24516487, 0.34379515, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y0upk"]
+gradient = SubResource("Gradient_bkp1e")
+
+[sub_resource type="Gradient" id="Gradient_y0upk"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.7162962, 0.7162962, 0.7162962, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jougr"]
+gradient = SubResource("Gradient_y0upk")
 
 [node name="Background" type="Node2D"]
+script = ExtResource("1_y0upk")
 
-[node name="fond" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.5, 0.5)
-repeat_size = Vector2(1152, 0)
+[node name="mur" type="Parallax2D" parent="."]
 repeat_times = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="fond"]
-position = Vector2(576.00006, 324.00003)
-scale = Vector2(9, 5.0625)
-texture = ExtResource("1_bkp1e")
+[node name="Sprite2D" type="Sprite2D" parent="mur"]
+position = Vector2(575.5, 225.375)
+scale = Vector2(18.015625, 6.9570313)
+texture = SubResource("GradientTexture2D_y0upk")
 
-[node name="item1" type="Parallax2D" parent="."]
-scroll_scale = Vector2(0.8, 0.8)
-repeat_size = Vector2(1152, 0)
+[node name="colonne" type="Parallax2D" parent="."]
+scale = Vector2(0.998357, 1.0030161)
 repeat_times = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="item1"]
-position = Vector2(888, 384)
+[node name="Sprite2D" type="Sprite2D" parent="colonne"]
+z_index = 1
+position = Vector2(895.7034, 230.0151)
+scale = Vector2(0.20172964, 0.22462411)
 texture = ExtResource("1_bkp1e")
+
+[node name="sol" type="Parallax2D" parent="."]
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="sol"]
+position = Vector2(576, 548)
+scale = Vector2(18, 3.1250005)
+texture = SubResource("GradientTexture2D_jougr")
