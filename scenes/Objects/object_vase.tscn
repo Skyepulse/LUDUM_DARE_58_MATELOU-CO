@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw0fhvhlua8vd"]
+
+[ext_resource type="PackedScene" uid="uid://ds6qifjw0rlpu" path="res://scenes/grabbable_object.tscn" id="1_4ivw0"]
+[ext_resource type="Texture2D" uid="uid://bdffu62h2ssen" path="res://img/loss.png" id="2_hr1ts"]
+
+[node name="ObjectRoot" instance=ExtResource("1_4ivw0")]
+objectName = "Vase"
+objectDescription = "NO DESCRIPTION YES"
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -431.5)
+texture = ExtResource("2_hr1ts")
+
+[node name="GrabPoint_1" parent="GrabPoints" index="0"]
+position = Vector2(0, -500)
+
+[node name="CollisionShape2D" parent="GrabPoints/GrabPoint_1/Area2D" index="0"]
+scale = Vector2(7, 7)
+
+[node name="GrabPoint_2" parent="GrabPoints" index="1"]
+position = Vector2(0, 509.39)
+
+[node name="CollisionShape2D" parent="GrabPoints/GrabPoint_2/Area2D" index="0"]
+scale = Vector2(7, 7)
+
+[node name="GrabPoint_3" parent="GrabPoints" index="2"]
+position = Vector2(269.505, -350)
+
+[node name="CollisionShape2D" parent="GrabPoints/GrabPoint_3/Area2D" index="0"]
+scale = Vector2(7, 7)
+
+[node name="GrabPoint_4" parent="GrabPoints" index="3"]
+position = Vector2(-269.505, -350)
+
+[node name="CollisionShape2D" parent="GrabPoints/GrabPoint_4/Area2D" index="0"]
+scale = Vector2(7, 7)
+
+[node name="CollisionShape2D" parent="ObjectHitbox" index="0"]
+scale = Vector2(4.5, 8.7)
