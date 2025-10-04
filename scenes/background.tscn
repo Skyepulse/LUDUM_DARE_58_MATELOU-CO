@@ -1,10 +1,24 @@
 [gd_scene load_steps=2 format=3 uid="uid://ytnv83oppny8"]
 
-[ext_resource type="Script" uid="uid://bvqhcppr2ikmu" path="res://scripts/camera_2d.gd" id="1_bkp1e"]
+[ext_resource type="Texture2D" uid="uid://01a6s27mn85u" path="res://img/icon.svg" id="1_bkp1e"]
 
-[node name="background" type="Node2D"]
+[node name="Background" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("1_bkp1e")
+[node name="fond" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(1152, 0)
+repeat_times = 3
 
-[node name="Parallax2D" type="Parallax2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="fond"]
+position = Vector2(576.00006, 324.00003)
+scale = Vector2(9, 5.0625)
+texture = ExtResource("1_bkp1e")
+
+[node name="item1" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.8, 0.8)
+repeat_size = Vector2(1152, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="item1"]
+position = Vector2(888, 384)
+texture = ExtResource("1_bkp1e")

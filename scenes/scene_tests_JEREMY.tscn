@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://x5q2tcjc7qht"]
+
+[ext_resource type="PackedScene" uid="uid://ytnv83oppny8" path="res://scenes/background.tscn" id="1_q545c"]
+[ext_resource type="PackedScene" uid="uid://kg7csa53v2ce" path="res://scenes/guide.tscn" id="2_13lya"]
+
+[node name="scene_tests_JEREMY" type="Node2D"]
+
+[node name="Background" parent="." instance=ExtResource("1_q545c")]
+
+[node name="Guide" parent="." instance=ExtResource("2_13lya")]
+position = Vector2(777, 345)

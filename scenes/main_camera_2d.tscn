@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://dddcv4y73sut5" path="res://scripts/Singletons/MainCamera2D.gd" id="1_lmn3r"]
 
 [node name="MainCamera2D" type="Camera2D"]
+offset = Vector2(576, 324)
 script = ExtResource("1_lmn3r")
