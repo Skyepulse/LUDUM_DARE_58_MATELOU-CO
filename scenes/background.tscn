@@ -8,3 +8,5 @@
 script = ExtResource("1_bkp1e")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
