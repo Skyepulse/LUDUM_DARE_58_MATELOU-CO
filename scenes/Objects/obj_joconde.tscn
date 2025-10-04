@@ -8,6 +8,7 @@ objectName = "Joconde Nya"
 objectDescription = "NO DESCRIPTION YET"
 
 [node name="Sprite2D" parent="." index="0"]
+z_as_relative = false
 texture = ExtResource("2_u1eog")
 
 [node name="GrabPoint_1" parent="GrabPoints" index="0"]
@@ -36,3 +37,6 @@ scale = Vector2(7, 7)
 
 [node name="CollisionShape2D" parent="ObjectHitbox" index="0"]
 scale = Vector2(7.53, 9.38)
+
+[connection signal="area_entered" from="ObjectHitbox" to="." method="_on_object_hitbox_area_entered"]
+[connection signal="area_exited" from="ObjectHitbox" to="." method="_on_object_hitbox_area_exited"]

@@ -8,6 +8,7 @@ objectName = "Vase"
 objectDescription = "NO DESCRIPTION YES"
 
 [node name="Sprite2D" parent="." index="0"]
+z_as_relative = false
 position = Vector2(0, -431.5)
 texture = ExtResource("2_hr1ts")
 
