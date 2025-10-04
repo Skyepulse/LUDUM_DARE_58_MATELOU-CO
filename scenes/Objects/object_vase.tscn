@@ -37,3 +37,6 @@ scale = Vector2(7, 7)
 
 [node name="CollisionShape2D" parent="ObjectHitbox" index="0"]
 scale = Vector2(4.5, 8.7)
+
+[connection signal="area_entered" from="ObjectHitbox" to="." method="_on_object_hitbox_area_entered"]
+[connection signal="area_exited" from="ObjectHitbox" to="." method="_on_object_hitbox_area_exited"]

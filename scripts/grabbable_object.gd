@@ -12,6 +12,16 @@ class_name GrabbableObject
 var grabPoints: Array[Node2D] = []
 var numGrabPoints: int = 0
 
+var handOnObject: bool = false
+
+func getDistanceToHand(handPos: Vector2) -> float:
+	var minDist = INF
+	for grabPoint in grabPoints:
+		var dist = grabPoint.global_position.distance_to(handPos)
+		if dist < minDist:
+			minDist = dist
+	return minDist
+
 func getName() -> String:
 	return objectName
 
@@ -27,3 +37,12 @@ func _ready():
 			numGrabPoints += 1
 		else:
 			push_error("Child of GrabPoints is not a Node2D: %s" % child.name)
+
+func _on_object_hitbox_area_entered(area: Area2D) -> void:
+
+	if area.is_in_group("Player"):
+		handOnObject = true
+
+func _on_object_hitbox_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Player"):
+		handOnObject = false
