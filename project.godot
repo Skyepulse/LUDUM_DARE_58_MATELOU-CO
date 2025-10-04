@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="LD_58_Matelou&Co"
+run/main_scene="uid://bk3slmpm5pir5"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://img/icon.svg"
+
+[autoload]
+
+GameManager="*res://scenes/game_manager.tscn"
 
 [rendering]
 
