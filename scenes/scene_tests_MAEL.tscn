@@ -1,3 +1,11 @@
-[gd_scene format=3 uid="uid://bk3slmpm5pir5"]
+[gd_scene load_steps=2 format=3 uid="uid://bk3slmpm5pir5"]
+
+[ext_resource type="PackedScene" uid="uid://cwweperphcvw1" path="res://scenes/Obstacles/obs_camera.tscn" id="1_swdrb"]
 
 [node name="SceneTestsMael" type="Node2D"]
+
+[node name="CameraObstacle" parent="." instance=ExtResource("1_swdrb")]
+position = Vector2(364, 259)
+rayLength = 150.0
+rayWidth = 200.0
+initRotation = 160.0
