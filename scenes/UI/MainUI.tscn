@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmyh2mgg3l5oi"]
+[gd_scene load_steps=4 format=3 uid="uid://cmyh2mgg3l5oi"]
+
+[ext_resource type="Script" uid="uid://eyulj1d0thce" path="res://scripts/mainUI.gd" id="1_sb5dd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vegyt"]
 bg_color = Color(0.3403393, 0.34033936, 0.34033918, 1)
@@ -31,6 +33,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sb5dd")
 
 [node name="Supsicion" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -45,4 +48,15 @@ custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_vegyt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sb5dd")
-value = 95.81
+show_percentage = false
+
+[node name="Label" type="Label" parent="Supsicion/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GUIDE SUSPICION"
+horizontal_alignment = 1
+vertical_alignment = 1
