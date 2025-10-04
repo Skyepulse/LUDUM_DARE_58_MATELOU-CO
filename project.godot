@@ -18,6 +18,7 @@ config/icon="res://img/icon.svg"
 [autoload]
 
 GameManager="*res://scenes/game_manager.tscn"
+MainCamera2D="*res://scenes/main_camera_2d.tscn"
 
 [rendering]
 
