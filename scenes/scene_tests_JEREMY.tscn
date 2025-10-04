@@ -8,4 +8,5 @@
 [node name="Background" parent="." instance=ExtResource("1_q545c")]
 
 [node name="Guide" parent="." instance=ExtResource("2_13lya")]
-position = Vector2(985, 504)
+z_index = 10
+position = Vector2(979, 438)

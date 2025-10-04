@@ -4,12 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://cmyh2mgg3l5oi" path="res://scenes/UI/MainUI.tscn" id="2_ir62t"]
 
 [node name="MainCamera2D" type="Camera2D"]
-offset = Vector2(576, 324)
 script = ExtResource("1_lmn3r")
 
-[node name="MainUi" parent="." instance=ExtResource("2_ir62t")]
+[node name="MainUI" parent="." instance=ExtResource("2_ir62t")]
 z_index = 10
-offset_left = 208.0
-offset_top = 11.0
-offset_right = 208.0
-offset_bottom = 11.0
+offset_right = 1152.0
+offset_bottom = 648.0
