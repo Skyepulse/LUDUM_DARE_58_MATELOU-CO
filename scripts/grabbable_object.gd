@@ -1,11 +1,22 @@
 extends Node
 
+class_name GrabbableObject
+
 # Const layer mask
 @onready var sprite: Sprite2D = $Sprite
 @onready var hitbox: Area2D = $ObjectHitbox
 
+@export var objectName: String = "No Name"
+@export var objectDescription: String = "No Description"
+
 var grabPoints: Array[Node2D] = []
 var numGrabPoints: int = 0
+
+func getName() -> String:
+	return objectName
+
+func getDescription() -> String:
+	return objectDescription
 
 func _ready():
 
