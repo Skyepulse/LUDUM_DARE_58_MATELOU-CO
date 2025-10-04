@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ds6qifjw0rlpu" path="res://scenes/grabbable_object.tscn" id="1_74y6y"]
 [ext_resource type="Texture2D" uid="uid://biii4t06csc3i" path="res://img/joycon_de_nya.png" id="2_u1eog"]
 
-[node name="ObjectRoot" instance=ExtResource("1_74y6y")]
+[node name="ObjectRoot2" instance=ExtResource("1_74y6y")]
 objectName = "Joconde Nya"
 objectDescription = "NO DESCRIPTION YET"
 
@@ -37,6 +37,3 @@ scale = Vector2(7, 7)
 
 [node name="CollisionShape2D" parent="ObjectHitbox" index="0"]
 scale = Vector2(7.53, 9.38)
-
-[connection signal="area_entered" from="ObjectHitbox" to="." method="_on_object_hitbox_area_entered"]
-[connection signal="area_exited" from="ObjectHitbox" to="." method="_on_object_hitbox_area_exited"]
