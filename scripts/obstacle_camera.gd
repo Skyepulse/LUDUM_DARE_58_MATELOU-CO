@@ -8,6 +8,7 @@ extends Node2D
 @export var initRotation: float = 0.0
 @export var suspicionIncreaseRate: float = 5.0 # Per Second
 
+var enteredTimes: int = 0
 var flag: bool = false
 
 func _ready():
@@ -41,13 +42,13 @@ func rotateCamera(degrees_val: float):
     rotation_degrees = wrapf(degrees_val, 0.0, 360.0)
 
 func _on_ray_box_area_entered(area: Area2D) -> void:
-    if flag:
+    if GameManager.isHandRetracting():
         return
 
-    print("Body entered: %s" % area.name)
-
     if area.is_in_group("Player"):
-        print("Player detected!")
+
+        enteredTimes += 1
+        print("Player detected! Entered times: %d" % enteredTimes)
 
         flag = true
 
@@ -55,10 +56,17 @@ func _on_ray_box_area_exited(area: Area2D) -> void:
     if not flag:
         return
 
-    print("Body exited: %s" % area.name)
-
     if area.is_in_group("Player"):
-        print("Player lost!")
+        if GameManager.isHandRetracting():
+            enteredTimes -= 1
 
-        # if PLAYER.isRetracting():
-        flag = false
+            print("Player exited! Entered times: %d" % enteredTimes)
+            if enteredTimes <= 0:
+                enteredTimes = 0
+            else:
+                return
+
+            flag = false
+            print("Player lost!")
+
+        
