@@ -13,6 +13,8 @@ points = PackedVector2Array(0, -10, 100, -30, 100, 30, 0, 10)
 script = ExtResource("1_khuef")
 
 [node name="Visual" type="Sprite2D" parent="."]
+z_index = 10
+z_as_relative = false
 scale = Vector2(1, 0.41)
 texture = ExtResource("1_8270b")
 
@@ -30,6 +32,8 @@ shape = SubResource("ConvexPolygonShape2D_8270b")
 debug_color = Color(0.8743257, 0.1234112, 0.15432164, 0.41960785)
 
 [node name="Visual" type="Polygon2D" parent="RayBox"]
+z_index = 10
+z_as_relative = false
 color = Color(0.8235294, 0.1254902, 0.18431373, 1)
 vertex_colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0.99215686, 0, 0, 1)
 
