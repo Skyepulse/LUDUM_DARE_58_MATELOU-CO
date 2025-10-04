@@ -6,7 +6,8 @@ extends Path2D
 @onready var hand: Sprite2D = $"../Hand"
 
 var cur_length = 0
-var max_length = 50
+var max_length = 20
+var min_length = 2
 
 func update_line():
 	var points = []
@@ -23,7 +24,7 @@ func mouse_input(delta: float) -> void:
 	
 	var last_point = path_2d.curve.get_point_position(count - 1)
 	var direction = mouse_pos - last_point
-	last_point += direction * delta
+	last_point += direction * delta * 2.0
 	
 	path_2d.curve.set_point_position(count - 1, last_point)
 	
@@ -33,9 +34,16 @@ func mouse_input(delta: float) -> void:
 		path_2d.curve.add_point(last_point)
 		
 	hand.position = last_point
+	
+	#var hand_dir = last_point - path_2d.curve.get_point_position(count - 2)
+	
+	hand.look_at(mouse_pos)	
+
 
 func _process(delta: float) -> void:
-	mouse_input(delta)
+	if Input.is_mouse_button_pressed(1):
+		mouse_input(delta)
+	
 	update_line()
 	
 	
