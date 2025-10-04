@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://bk3slmpm5pir5"]
+[gd_scene load_steps=3 format=3 uid="uid://bk3slmpm5pir5"]
+
+[ext_resource type="PackedScene" uid="uid://cwweperphcvw1" path="res://scenes/Obstacles/obs_camera.tscn" id="1_swdrb"]
+[ext_resource type="PackedScene" path="res://scenes/thief.tscn" id="2_2pelo"]
 
 [node name="SceneTestsMael" type="Node2D"]
+
+[node name="CameraObstacle" parent="." instance=ExtResource("1_swdrb")]
+position = Vector2(669, 151)
+rayLength = 150.0
+rayWidth = 200.0
+initRotation = 160.0
+
+[node name="Thief" parent="." instance=ExtResource("2_2pelo")]
+position = Vector2(287, 269)

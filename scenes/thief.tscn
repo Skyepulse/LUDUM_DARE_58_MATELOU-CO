@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://de8xq0cmgi1er"]
+
+[ext_resource type="Texture2D" uid="uid://y65edu6ee4n" path="res://img/thief.png" id="1_gsfqg"]
+[ext_resource type="Script" uid="uid://n0h3k7mq6ar2" path="res://scripts/hand_path.gd" id="2_t1b76"]
+[ext_resource type="Texture2D" uid="uid://c57mtl1o4ymnc" path="res://img/thief_arm.png" id="3_n6qpt"]
+[ext_resource type="Texture2D" uid="uid://dbctwyoo6pe0j" path="res://img/thief_hand.png" id="4_x5wgd"]
+
+[sub_resource type="Curve2D" id="Curve2D_1gd3j"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 29, 41)
+}
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_kdemd"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gsfqg"]
+radius = 83.333336
+
+[node name="Thief" type="Node2D"]
+
+[node name="Thief" type="Sprite2D" parent="." groups=["Player"]]
+position = Vector2(-92, 75)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_gsfqg")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_1gd3j")
+script = ExtResource("2_t1b76")
+
+[node name="Line2D" type="Line2D" parent="." groups=["Player"]]
+points = PackedVector2Array(0, 0, 29, 41, 141, 73, 234, 93, 162, 155, 228, 175, 345, 146, 379, 145)
+width = 20.0
+width_curve = SubResource("Curve_kdemd")
+texture = ExtResource("3_n6qpt")
+texture_mode = 1
+joint_mode = 2
+
+[node name="Hand" type="Sprite2D" parent="."]
+position = Vector2(379, 144)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_x5wgd")
+
+[node name="Area2D" type="Area2D" parent="Hand" groups=["Player"]]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand/Area2D"]
+position = Vector2(99.99999, 3.3333333)
+shape = SubResource("CircleShape2D_gsfqg")

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwweperphcvw1"]
+
+[ext_resource type="Texture2D" uid="uid://01a6s27mn85u" path="res://img/icon.svg" id="1_8270b"]
+[ext_resource type="Script" uid="uid://d28gbi2iub73n" path="res://scripts/obstacle_camera.gd" id="1_khuef"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8270b"]
+size = Vector2(120, 50)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_8270b"]
+points = PackedVector2Array(0, -10, 100, -30, 100, 30, 0, 10)
+
+[node name="CameraObstacle" type="Node2D"]
+script = ExtResource("1_khuef")
+
+[node name="Visual" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.41)
+texture = ExtResource("1_8270b")
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_8270b")
+
+[node name="RayBox" type="Area2D" parent="."]
+position = Vector2(64, 0)
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RayBox"]
+shape = SubResource("ConvexPolygonShape2D_8270b")
+debug_color = Color(0.8743257, 0.1234112, 0.15432164, 0.41960785)
+
+[node name="Visual" type="Polygon2D" parent="RayBox"]
+color = Color(0.8235294, 0.1254902, 0.18431373, 1)
+vertex_colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0.99215686, 0, 0, 1)
+
+[connection signal="area_entered" from="RayBox" to="." method="_on_ray_box_area_entered"]
+[connection signal="area_exited" from="RayBox" to="." method="_on_ray_box_area_exited"]
