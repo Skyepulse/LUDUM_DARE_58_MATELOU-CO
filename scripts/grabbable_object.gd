@@ -3,7 +3,7 @@ extends Node
 class_name GrabbableObject
 
 # Const layer mask
-@onready var sprite: Sprite2D = $Sprite
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var hitbox: Area2D = $ObjectHitbox
 
 @export var objectName: String = "No Name"
@@ -41,8 +41,10 @@ func _ready():
 func _on_object_hitbox_area_entered(area: Area2D) -> void:
 
 	if area.is_in_group("Player"):
+		print("Hand on object: %s" % objectName)
 		handOnObject = true
 
 func _on_object_hitbox_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player"):
+		print("Hand off object: %s" % objectName)
 		handOnObject = false

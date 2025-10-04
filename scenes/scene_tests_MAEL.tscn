@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk3slmpm5pir5"]
+[gd_scene load_steps=4 format=3 uid="uid://bk3slmpm5pir5"]
 
 [ext_resource type="PackedScene" uid="uid://cwweperphcvw1" path="res://scenes/Obstacles/obs_camera.tscn" id="1_swdrb"]
-[ext_resource type="PackedScene" path="res://scenes/thief.tscn" id="2_2pelo"]
+[ext_resource type="PackedScene" uid="uid://de8xq0cmgi1er" path="res://scenes/thief.tscn" id="2_2pelo"]
+[ext_resource type="PackedScene" uid="uid://cpt378r0tx734" path="res://scenes/Objects/obj_joconde.tscn" id="3_vs8ss"]
 
 [node name="SceneTestsMael" type="Node2D"]
 
@@ -13,3 +14,7 @@ initRotation = 160.0
 
 [node name="Thief" parent="." instance=ExtResource("2_2pelo")]
 position = Vector2(287, 269)
+
+[node name="ObjectRoot" parent="." instance=ExtResource("3_vs8ss")]
+position = Vector2(977, 353)
+scale = Vector2(0.205, 0.205)
