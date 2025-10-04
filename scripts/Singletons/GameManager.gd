@@ -26,7 +26,7 @@ func isHandRetracting() -> bool:
     if Player:
         return Player.retracting
     else:
-        print_err("GameManager: Player reference is null!")
+        print("[ERROR] GameManager: Player reference is null!")
     return false
 
 func _process(delta: float):
