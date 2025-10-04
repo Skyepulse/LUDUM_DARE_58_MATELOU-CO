@@ -2,8 +2,8 @@ extends Path2D
 
 @onready var path_2d: Path2D = $"."
 @onready var line_2d: Line2D = $"../Line2D"
-@onready var camera_2d: Camera2D = $"../Camera2D"
 @onready var hand: Sprite2D = $"../Hand"
+@onready var thief: Node2D = $".."
 
 var cur_length = 0
 var max_length = 20
@@ -18,9 +18,7 @@ func update_line():
 func mouse_input(delta: float) -> void:
 	var count = path_2d.curve.point_count
 	var mouse_pos = get_viewport().get_mouse_position()
-	var offset = camera_2d.position + get_viewport().get_visible_rect().size/2
-	mouse_pos -= offset
-	# path_2d.curve.set_point_position(count-2, mouse_pos - offset)
+	mouse_pos = mouse_pos + MainCamera2D.position - thief.position
 	
 	var last_point = path_2d.curve.get_point_position(count - 1)
 	var direction = mouse_pos - last_point
@@ -37,11 +35,11 @@ func mouse_input(delta: float) -> void:
 	
 	#var hand_dir = last_point - path_2d.curve.get_point_position(count - 2)
 	
-	hand.look_at(mouse_pos)	
+	hand.look_at(get_viewport().get_mouse_position())	
 
 
 func _process(delta: float) -> void:
-	if Input.is_mouse_button_pressed(1):
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		mouse_input(delta)
 	
 	update_line()
