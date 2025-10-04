@@ -70,6 +70,9 @@ func retract(delta: float) -> void:
 	
 	
 func _ready() -> void:
+
+	GameManager.Player = self
+	
 	var count = arm_curve.point_count
 	var point_0 = arm_curve.get_point_position(0)
 	var point_1 = arm_curve.get_point_position(1)

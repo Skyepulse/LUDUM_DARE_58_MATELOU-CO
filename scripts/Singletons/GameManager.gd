@@ -22,6 +22,13 @@ func _ready():
     if maxSuspicion <= 0:
         maxSuspicion = 100.0
 
+func isHandRetracting() -> bool:
+    if Player:
+        return Player.retracting
+    else:
+        print_err("GameManager: Player reference is null!")
+    return false
+
 func _process(delta: float):
     if canDecrease:
         decreaseSuspicion(suspicionDecayRate * delta)
