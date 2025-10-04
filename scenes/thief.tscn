@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://de8xq0cmgi1er"]
+[gd_scene load_steps=8 format=3 uid="uid://de8xq0cmgi1er"]
 
 [ext_resource type="Texture2D" uid="uid://y65edu6ee4n" path="res://img/thief.png" id="1_gsfqg"]
 [ext_resource type="Script" uid="uid://n0h3k7mq6ar2" path="res://scripts/hand_path.gd" id="2_t1b76"]
@@ -16,6 +16,9 @@ point_count = 2
 _limits = [0.0, 4.0, 0.0, 1.0]
 _data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gsfqg"]
+radius = 83.333336
 
 [node name="Thief" type="Node2D"]
 
@@ -40,3 +43,9 @@ joint_mode = 2
 position = Vector2(379, 144)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_x5wgd")
+
+[node name="Area2D" type="Area2D" parent="Hand"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand/Area2D"]
+position = Vector2(99.99999, 3.3333333)
+shape = SubResource("CircleShape2D_gsfqg")
