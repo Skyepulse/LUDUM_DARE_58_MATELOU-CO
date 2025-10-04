@@ -1,7 +1,7 @@
 extends Node2D
 
 var speed:float = 100.0
-var isMoving:bool = true
+var isMoving:bool = false
 @onready var guide: Sprite2D = $"../Guide"
 
 var screenSize:Vector2
@@ -20,6 +20,7 @@ func move(delta: float) -> void:
 	if MainCamera2D.position.x >= screenSize.x:
 		isMoving = false
 		MainCamera2D.position.x -= screenSize.x
+		GameManager.Guide.stop_moving()
 		
 func setIsMoving() -> void:
 	isMoving = true

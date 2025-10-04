@@ -8,6 +8,7 @@ extends Node
 @onready var suspicionDecayTimer: Timer = $DecreaseSuspicionTimer
 
 var Player: Path2D = null # Player
+var Guide: Node2D = null # Guide NPC
 
 var currentSuspicion: float = 0.0
 var canDecrease: bool = true
@@ -17,7 +18,7 @@ func _ready():
     suspicionDecayTimer.wait_time = decreaseTimer
     suspicionDecayTimer.stop()
 
-    suspicionDecayTimer.connect("timeout", Callable(self, "_on_decrease_suspicion_timer_timeout"))
+    suspicionDecayTimer.timeout.connect(_on_decrease_suspicion_timer_timeout)
 
     if maxSuspicion <= 0:
         maxSuspicion = 100.0

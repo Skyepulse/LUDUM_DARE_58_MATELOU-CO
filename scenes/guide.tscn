@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://kg7csa53v2ce"]
+[gd_scene load_steps=3 format=3 uid="uid://c8vk05rdo648t"]
 
 [ext_resource type="Texture2D" uid="uid://c61eqnlrwdx0w" path="res://img/guide.png" id="1_0el4p"]
 [ext_resource type="Script" uid="uid://nr4akqbhp2be" path="res://scripts/guide.gd" id="2_rb1b7"]
@@ -7,3 +7,5 @@
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_0el4p")
 script = ExtResource("2_rb1b7")
+
+[node name="Timer" type="Timer" parent="."]
