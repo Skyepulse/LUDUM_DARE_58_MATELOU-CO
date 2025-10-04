@@ -14,6 +14,9 @@ var max_length = 20
 var min_length = 2
 
 var retract_speed = 50
+var retract_speed_fast = 500
+
+var grabbed_object: GrabbableObject = null
 
 func update_line():
 	var points = []
@@ -45,32 +48,58 @@ func mouse_input(delta: float) -> void:
 
 
 func retract(delta: float) -> void:
+	var holding_object: bool = grabbed_object != null
+	
 	var count = arm_curve.point_count
 	
 	if count <= 2:
 		return
 	
-	var last_point = arm_curve.get_point_position(count - 1)
-	var last_last_point = arm_curve.get_point_position(count - 2)
+	var speed = retract_speed
+	if holding_object:
+		speed = retract_speed_fast
 	
-	var dir = last_last_point - last_point
-	var length = dir.length()
+	var cut_length = speed * delta
 	
-	if length < min_length:
-		arm_curve.remove_point(count - 1)
-		return
-	dir /= length
-	last_point += dir * retract_speed * delta
-	
-	arm_curve.set_point_position(count - 1, last_point)
+	var index_last = count - 1
+	var last_point: Vector2
+	var last_dir: Vector2
+	while index_last > 1:
+		var p1 = arm_curve.get_point_position(index_last)
+		var p2 = arm_curve.get_point_position(index_last - 1)
+		
+		last_point = p1
+		
+		var dir = p1 - p2
+		var length = dir.length()
+		
+		last_dir = dir / length
+		
+		if length >= cut_length:
+			arm_curve.set_point_position(index_last, p1 - dir * (cut_length / length))
+			break
+		else:
+			arm_curve.remove_point(index_last)
+			cut_length -= length
+			index_last -= 1
 	
 	hand.position = last_point
-	var hand_look = (last_point - dir * 100) * thief.scale + thief.position
+	var hand_look = (last_point + last_dir * 100) * thief.scale + thief.position
 	hand.look_at(hand_look)
 	
+	if holding_object:
+		grabbed_object.set_position(last_point * thief.scale + thief.position)
+
+func set_grabbed_object(object: GrabbableObject) -> void:
+	grabbed_object = object
+	print(" grabbed player ")
+
+func unset_grabbed_object(object: GrabbableObject) -> void:
+	if object == grabbed_object && !retracting:
+		grabbed_object = null
+		print(" ungrabbed player ")
 	
 func _ready() -> void:
-
 	GameManager.Player = self
 	
 	var count = arm_curve.point_count
@@ -78,6 +107,16 @@ func _ready() -> void:
 	var point_1 = arm_curve.get_point_position(1)
 	hand.position = point_1
 	hand.look_at(point_1 + (point_1 - point_0)*10)
+	
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Grabbable"):
+		print("Hand on object: %s" % area.get_parent().name)
+		set_grabbed_object(area.get_parent())
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Grabbable"):
+		print("Hand off object: %s" % area.get_parent().name)
+		unset_grabbed_object(area.get_parent())
 
 func _process(delta: float) -> void:
 	retracting = !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
@@ -88,5 +127,3 @@ func _process(delta: float) -> void:
 		
 	
 	update_line()
-	
-	

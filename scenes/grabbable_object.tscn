@@ -57,12 +57,9 @@ collision_layer = 8
 shape = SubResource("CircleShape2D_j0ugd")
 debug_color = Color(0.61012006, 0.5373051, 0.12899506, 0.41960785)
 
-[node name="ObjectHitbox" type="Area2D" parent="."]
+[node name="ObjectHitbox" type="Area2D" parent="." groups=["Grabbable"]]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectHitbox"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectHitbox" groups=["Grabbable"]]
 shape = SubResource("RectangleShape2D_j0ugd")
 debug_color = Color(0.6974533, 0.45354557, 0.53223723, 0.41960785)
-
-[connection signal="area_entered" from="ObjectHitbox" to="." method="_on_object_hitbox_area_entered"]
-[connection signal="area_exited" from="ObjectHitbox" to="." method="_on_object_hitbox_area_exited"]

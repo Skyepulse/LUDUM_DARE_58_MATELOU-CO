@@ -9,6 +9,9 @@ class_name GrabbableObject
 @export var objectName: String = "No Name"
 @export var objectDescription: String = "No Description"
 
+@onready var object_root: GrabbableObject = $"."
+
+
 var grabPoints: Array[Node2D] = []
 var numGrabPoints: int = 0
 
@@ -28,8 +31,10 @@ func getName() -> String:
 func getDescription() -> String:
 	return objectDescription
 
-func _ready():
+func set_position(pos: Vector2) -> void:
+	object_root.position = pos
 
+func _ready():
 	var grabPointsRoot = $GrabPoints
 	for child in grabPointsRoot.get_children():
 		if child is Node2D:
@@ -37,14 +42,3 @@ func _ready():
 			numGrabPoints += 1
 		else:
 			push_error("Child of GrabPoints is not a Node2D: %s" % child.name)
-
-func _on_object_hitbox_area_entered(area: Area2D) -> void:
-
-	if area.is_in_group("Player"):
-		print("Hand on object: %s" % objectName)
-		handOnObject = true
-
-func _on_object_hitbox_area_exited(area: Area2D) -> void:
-	if area.is_in_group("Player"):
-		print("Hand off object: %s" % objectName)
-		handOnObject = false

@@ -23,6 +23,7 @@ MainCamera2D="*res://scenes/main_camera_2d.tscn"
 [global_group]
 
 Player=""
+Grabbable=""
 
 [rendering]
 
