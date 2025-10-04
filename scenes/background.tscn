@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://ytnv83oppny8"]
+[gd_scene load_steps=2 format=3 uid="uid://ytnv83oppny8"]
+
+[ext_resource type="Script" uid="uid://bvqhcppr2ikmu" path="res://scripts/camera_2d.gd" id="1_bkp1e"]
 
 [node name="background" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_bkp1e")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
