@@ -22,7 +22,7 @@ radius = 83.333336
 
 [node name="Thief" type="Node2D"]
 
-[node name="Thief" type="Sprite2D" parent="."]
+[node name="Thief" type="Sprite2D" parent="." groups=["Player"]]
 position = Vector2(-92, 75)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_gsfqg")
@@ -31,7 +31,7 @@ texture = ExtResource("1_gsfqg")
 curve = SubResource("Curve2D_1gd3j")
 script = ExtResource("2_t1b76")
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="Line2D" type="Line2D" parent="." groups=["Player"]]
 points = PackedVector2Array(0, 0, 29, 41, 141, 73, 234, 93, 162, 155, 228, 175, 345, 146, 379, 145)
 width = 20.0
 width_curve = SubResource("Curve_kdemd")
@@ -44,7 +44,7 @@ position = Vector2(379, 144)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_x5wgd")
 
-[node name="Area2D" type="Area2D" parent="Hand"]
+[node name="Area2D" type="Area2D" parent="Hand" groups=["Player"]]
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hand/Area2D"]
