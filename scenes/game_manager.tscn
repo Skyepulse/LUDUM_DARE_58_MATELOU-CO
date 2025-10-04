@@ -4,3 +4,5 @@
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_hwd4i")
+
+[node name="DecreaseSuspicionTimer" type="Timer" parent="."]

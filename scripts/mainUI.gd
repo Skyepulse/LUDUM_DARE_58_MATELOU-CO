@@ -1,16 +1,16 @@
 extends Node
 
 @onready var suspicionBar: ProgressBar = $Suspicion/ProgressBar
-@export var maxVal: int = 100
-var minVal: int = 0
-var currentVal: int = 0
+@export var maxVal: float = 100.0
+var minVal: float = 0.0
+var currentVal: float = 0.0
 
 func _ready():
 	suspicionBar.min_value = minVal
 	suspicionBar.max_value = maxVal
 	suspicionBar.value = currentVal
 
-func setSuspicion(value: int):
+func setSuspicion(value: float):
 	currentVal = clamp(value, minVal, maxVal)
 	suspicionBar.value = currentVal
 
