@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://de8xq0cmgi1er"]
+
+[ext_resource type="Script" uid="uid://n0h3k7mq6ar2" path="res://scripts/hand_path.gd" id="1_eyfoh"]
+
+[sub_resource type="Curve2D" id="Curve2D_1gd3j"]
+resource_local_to_scene = true
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 2
+
+[node name="Hand" type="Node2D"]
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_1gd3j")
+script = ExtResource("1_eyfoh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+
+[node name="Hand" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
