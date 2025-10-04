@@ -1,6 +1,6 @@
 extends Node
 
-@onready var suspicionBar: ProgressBar = $SuspicionBar
+@onready var suspicionBar: ProgressBar = $Suspicion/ProgressBar
 @export var maxVal: int = 100
 var minVal: int = 0
 var currentVal: int = 0
