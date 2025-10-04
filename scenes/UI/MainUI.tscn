@@ -35,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sb5dd")
 
-[node name="Supsicion" type="CenterContainer" parent="."]
+[node name="Suspicion" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -43,14 +43,14 @@ offset_top = 5.52
 offset_bottom = 55.52
 grow_horizontal = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="Supsicion"]
+[node name="ProgressBar" type="ProgressBar" parent="Suspicion"]
 custom_minimum_size = Vector2(400, 50)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_vegyt")
 theme_override_styles/fill = SubResource("StyleBoxFlat_sb5dd")
 show_percentage = false
 
-[node name="Label" type="Label" parent="Supsicion/ProgressBar"]
+[node name="Label" type="Label" parent="Suspicion/ProgressBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
