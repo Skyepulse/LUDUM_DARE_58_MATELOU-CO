@@ -16,6 +16,9 @@ var min_length = 2
 var retract_speed = 50
 var retract_speed_fast = 500
 
+var average_speed: float = 0.0
+var last_hand_pos: Vector2 = Vector2.ZERO
+
 var grabbed_object: GrabbableObject = null
 
 func update_line():
@@ -106,6 +109,7 @@ func _ready() -> void:
 	var point_0 = arm_curve.get_point_position(0)
 	var point_1 = arm_curve.get_point_position(1)
 	hand.position = point_1
+	last_hand_pos = hand.global_position
 	hand.look_at(point_1 + (point_1 - point_0)*10)
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
@@ -124,12 +128,22 @@ func is_on_object() -> bool:
 func get_grabbed_object() -> GrabbableObject:
 	return grabbed_object
 
+func update_average_speed(delta: float) -> void:
+	var hand_pos = hand.global_position
+	var speed = (hand_pos - last_hand_pos).length() / delta
+	average_speed = lerp(average_speed, speed, 0.1)
+	last_hand_pos = hand_pos
+	print("Hand average speed: %f" % average_speed)
+	
+func get_average_speed() -> float:
+	return average_speed
+
 func _process(delta: float) -> void:
 	retracting = !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 	if retracting:
 		retract(delta)
 	else:
 		mouse_input(delta)
-		
+	update_average_speed(delta)
 	
 	update_line()

@@ -1,11 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8vk05rdo648t"]
+[gd_scene load_steps=6 format=3 uid="uid://c8vk05rdo648t"]
 
 [ext_resource type="Texture2D" uid="uid://c61eqnlrwdx0w" path="res://img/guide.png" id="1_0el4p"]
 [ext_resource type="Script" uid="uid://nr4akqbhp2be" path="res://scripts/guide.gd" id="2_rb1b7"]
+[ext_resource type="Texture2D" uid="uid://g2f70w23rjmm" path="res://img/walking_guide.png" id="3_wxloj"]
+[ext_resource type="Texture2D" uid="uid://c5icbd58juk6q" path="res://img/walking_guide2.png" id="4_fd7ko"]
+[ext_resource type="Texture2D" uid="uid://8w6r13qculjw" path="res://img/looking_guide.png" id="5_fd7ko"]
 
 [node name="Guide" type="Sprite2D"]
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_0el4p")
+texture = ExtResource("3_wxloj")
 script = ExtResource("2_rb1b7")
+suspicion_increase_on_object_interaction = 15.0
+suspicion_min_increase_on_hand_movement = 7.0
+suspicion_max_increase_on_hand_movement = 60.0
+walking_animation_frame_duration = 0.2
+talking_animation_frame_duration = 0.5
+looking_animation_frame_duration = 1.0
+walking_sprites = Array[Texture]([ExtResource("3_wxloj"), ExtResource("4_fd7ko")])
+talking_sprites = Array[Texture]([ExtResource("1_0el4p")])
+looking_sprites = Array[Texture]([ExtResource("5_fd7ko")])
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationTimer" type="Timer" parent="."]
