@@ -26,10 +26,10 @@ var is_talking: bool = false
 @export var looking_animation_frame_duration: float = 2.0
 
 @export var speech_speed: float = 15.0 # Characters per second
-var guide_original_texts: Array[String] = [
-	"Welcome to the Worldwide Contributions aisle of the British Consortium's Museum!\
-	We are very proud to announce that the citizen from the Dastardly French Alliance, the Greek Front of Unity, and the Independant Ireland are not welcomed in our establishment. If you are from one of these, please turn yourself in at your earliest convenience."
-]
+#var guide_original_texts: Array[String] = [
+#	"Welcome to the Worldwide Contributions aisle of the British Consortium's Museum!\
+#	We are very proud to announce that the citizen from the Dastardly French Alliance, the Greek Front of Unity, and the Independant Ireland are not welcomed in our establishment. If you are from one of these, please turn yourself in at your earliest convenience."
+#]
 
 var current_walking_sprite_index: int = 0
 var current_talking_sprite_index: int = 0
@@ -89,7 +89,7 @@ func stop_moving() -> void:
 	
 	var text = GameManager.infoDictionary[GameManager.object_index].description
 	
-	start_bubble_speak(guide_original_texts[randi() % guide_original_texts.size()])
+	start_bubble_speak(text)
 
 
 func start_talking() -> void:
