@@ -21,14 +21,53 @@ var last_hand_pos: Vector2 = Vector2.ZERO
 
 var grabbed_object: GrabbableObject = null
 
+var input_enabled: bool = true
+
+func set_input_enabled(en: bool) -> void:
+	input_enabled = en
+
+func reset_arm() -> void:
+	while arm_curve.point_count > 2:
+		arm_curve.remove_point(arm_curve.point_count - 1)
+	
+	orient_hand()
+	
+
 func update_line():
 	var points = []
 	for i in range(arm_curve.point_count):
 		points.append(arm_curve.get_point_position(i))
-	line_2d.points = points	
+	line_2d.points = points
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.is_pressed:
+		if event.keycode == KEY_SPACE:
+			reset_arm()
+
+func orient_hand() -> void:
+	var count = arm_curve.point_count
+	if count < 2:
+		return
+		
+	var last_point = arm_curve.get_point_position(count-1)
+	var last_last_point = arm_curve.get_point_position(count-2)
+	
+	var dir = last_point - last_last_point
+	var length = dir.length()
+	
+	if length > 0:
+		dir /= length
+	
+	var hand_look = (last_point + dir * 100) * thief.scale + thief.position
+	
+	hand.position = last_point
+	hand.look_at(hand_look)
 
 func mouse_input(delta: float) -> void:
 	var count = arm_curve.point_count
+	if count <= 2:
+		arm_curve.add_point(arm_curve.get_point_position(count - 1))
+		count += 1
 	var mouse_pos = get_viewport().get_mouse_position()
 	mouse_pos = (mouse_pos + MainCamera2D.position - thief.position) / thief.scale
 	
@@ -38,16 +77,16 @@ func mouse_input(delta: float) -> void:
 	
 	arm_curve.set_point_position(count - 1, last_point)
 	
-	cur_length = (last_point - arm_curve.get_point_position(count - 2)).length()
+	var last_last_point: Vector2 = arm_curve.get_point_position(count - 2)
+	
+	cur_length = (last_point - last_last_point).length()
 	
 	if cur_length > max_length:
 		arm_curve.add_point(last_point)
-		
-	hand.position = last_point
+		last_last_point = last_last_point + (last_point - last_last_point) / cur_length * max_length
+		arm_curve.set_point_position(count - 1, last_last_point)
 	
-	#var hand_dir = last_point - arm_curve.get_point_position(count - 2)
-	
-	hand.look_at(get_viewport().get_mouse_position())	
+	orient_hand()
 
 
 func retract(delta: float) -> void:
@@ -67,7 +106,7 @@ func retract(delta: float) -> void:
 	var index_last = count - 1
 	var last_point: Vector2
 	var last_dir: Vector2
-	while index_last > 1:
+	while index_last > 2:
 		var p1 = arm_curve.get_point_position(index_last)
 		var p2 = arm_curve.get_point_position(index_last - 1)
 		
@@ -86,13 +125,11 @@ func retract(delta: float) -> void:
 			cut_length -= length
 			index_last -= 1
 	
-	hand.position = last_point
-	var hand_look = (last_point + last_dir * 100) * thief.scale + thief.position
-	hand.look_at(hand_look)
+	orient_hand()
 	
 	if holding_object:
 		grabbed_object.set_position(last_point * thief.scale + thief.position)
-		if index_last <= 1:
+		if index_last <= 2:
 			collect_object()
 
 func set_grabbed_object(object: GrabbableObject) -> void:
@@ -112,7 +149,7 @@ func _ready() -> void:
 	var point_1 = arm_curve.get_point_position(1)
 	hand.position = point_1
 	last_hand_pos = hand.global_position
-	hand.look_at(point_1 + (point_1 - point_0)*10)
+	hand.look_at(point_1 + (point_1 - point_0) * 10)
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Grabbable"):
@@ -146,10 +183,12 @@ func get_average_speed() -> float:
 
 func _process(delta: float) -> void:
 	retracting = !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
-	if retracting:
-		retract(delta)
-	else:
-		mouse_input(delta)
-	update_average_speed(delta)
+	
+	if input_enabled:
+		if retracting:
+			retract(delta)
+		else:
+			mouse_input(delta)
+		update_average_speed(delta)
 	
 	update_line()
