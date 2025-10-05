@@ -7,7 +7,7 @@ class_name GrabbableObject
 @onready var hitbox: Area2D = $ObjectHitbox
 
 @export var objectName: String = "No Name"
-@export var objectDescription: String = "No Description"
+@export_multiline var objectDescription: String = "No Description"
 
 @onready var object_root: GrabbableObject = $"."
 

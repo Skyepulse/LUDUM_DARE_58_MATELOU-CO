@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://ds6qifjw0rlpu" path="res://scenes/grabbable_object.tscn" id="1_pqw8k"]
 [ext_resource type="Texture2D" uid="uid://b25rs4ptpunou" path="res://img/girl_with_a_punk_earring.png" id="2_5fr5o"]
 
-[node name="ObjectRoot" instance=ExtResource("1_pqw8k")]
+[node name="ObjectRoot2" instance=ExtResource("1_pqw8k")]
 objectName = "Girl With a Punk Earring"
-objectDescription = "NO DESCRIPTION YET"
+objectDescription = "Girl with a punk earring is a 25th century rendition of an older painting, Girl with a pearl earring. It was painted in 2498 by Kevin Vermeer, the actual descendant of Johannes Vermeer, painter of the Girl with a pearl earring.Due to acidification of the oceans of Mother Earth, the mollusk responsible for the production of pearls, called an oyster, disappeared. The young artist decided to replicate his ancestor's masterpiece to emphasize the importance of nature in art, and our dependance on the environment as humans.The original painting was stolen from the Mauritshuis in the Extended European Union and never found again. An excellent replica can be admired in the British Museum. We swear it is a replica."
 INDEX = 3
 texture = ExtResource("2_5fr5o")
 

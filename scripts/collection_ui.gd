@@ -36,6 +36,8 @@ func hide_collection():
 
 func initialize_collection_ui() -> void:
 
+	textLabel.text = DEFAULT_TEXT
+
 	for hbox in horizontal_boxes:
 		for cell in hbox.get_children():
 			cell.disconnect("mouse_entered", Callable(self, "update_explanation"))
@@ -108,7 +110,6 @@ func make_row() -> HBoxContainer:
 func update_explanation(index: int, cell: Control) -> void:
 	if index == -1:
 		cell.modulate = Color(1, 1, 1, 1)
-		textLabel.text = DEFAULT_TEXT
 		return
 
 	cell.modulate = Color(1, 1, 1, 0.7)
@@ -117,7 +118,7 @@ func update_explanation(index: int, cell: Control) -> void:
 		push_error("GameManager: No object info found for index %d" % index)
 		return
 
-	var string: String = "Name: [b]%s[/b]\n\nDescription: %s\n\nCollected: %d" % [info.name, info.description, info.count]
+	var string: String = "[b]%s[/b]\n\n[color=green]Collected: %d[/color]\n\n%s" % [info.name, info.count, info.description]
 	textLabel.bbcode_enabled = true
 
 	if info.count <= 0:

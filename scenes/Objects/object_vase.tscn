@@ -5,7 +5,13 @@
 
 [node name="ObjectRoot3" instance=ExtResource("1_4ivw0")]
 objectName = "Vase"
-objectDescription = "NO DESCRIPTION YES"
+objectDescription = "This amphora was found in 2555 by archeologist and tomb raider Sir Francis of Gloucestershire IV, and was initially exposed by the British Museum. 
+
+Greece has been demanding its repatriation, as well as the repatriation of Athen's Parthenon frieze, for more than 2 millenia. 
+
+In 3008, the amphora was transfered from the British Museum to our exposition for undetermined time. This is to avoid attempts of repatriation, the Greek Front of Unity being banned from travel to the British Consortium's cultural planets. 
+
+The design of the amphora is most curious, as its meaning has been lost to time. It is theorized to be a symbol of grief and loss, meant to ward loved ones from the evil eye. "
 INDEX = 2
 texture = ExtResource("2_hr1ts")
 
