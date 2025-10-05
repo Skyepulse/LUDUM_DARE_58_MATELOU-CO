@@ -179,7 +179,7 @@ func get_average_speed() -> float:
 func _process(delta: float) -> void:
 	retracting = !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 	
-	if input_enabled:
+	if input_enabled && Signals.game_state == Signals.INGAME:
 		if retracting:
 			retract(delta)
 		else:

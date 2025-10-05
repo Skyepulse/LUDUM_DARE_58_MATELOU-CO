@@ -9,7 +9,6 @@ var screenSize:Vector2
 
 @onready var parallax_2d: Parallax2D = $Parallax2D
 
-
 func _ready() -> void:
 	get_viewport().size_changed.connect(resize)
 	resize()
@@ -31,7 +30,6 @@ func move(delta: float) -> void:
 	if MainCamera2D.position.x >= (1+GameManager.level_index)*screenSize.x:
 		Signals.is_moving = false
 		GameManager.level_index += 1
-		print(GameManager.level_index)
 		Signals.emit_signal("start_level")
 		Signals.emit_signal("set_input", true)
 		
@@ -39,5 +37,6 @@ func setIsMoving() -> void:
 	Signals.is_moving = true
 	
 func _process(delta: float) -> void:
-	if Signals.is_moving:
-		move(delta)
+	if Signals.game_state == Signals.INGAME:
+		if Signals.is_moving:
+			move(delta)
