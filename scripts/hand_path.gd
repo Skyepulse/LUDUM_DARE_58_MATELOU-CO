@@ -100,7 +100,6 @@ func retract(delta: float) -> void:
 	
 	var index_last = count - 1
 	var last_point: Vector2
-	var last_dir: Vector2
 	while index_last > 2:
 		var p1 = arm_curve.get_point_position(index_last)
 		var p2 = arm_curve.get_point_position(index_last - 1)
@@ -109,8 +108,6 @@ func retract(delta: float) -> void:
 		
 		var dir = p1 - p2
 		var length = dir.length()
-		
-		last_dir = dir / length
 		
 		if length >= cut_length:
 			arm_curve.set_point_position(index_last, p1 - dir * (cut_length / length))
@@ -139,15 +136,7 @@ func unset_grabbed_object(object: GrabbableObject) -> void:
 	
 func _ready() -> void:
 	GameManager.Player = self
-	
-	var count = arm_curve.point_count
-	var point_0 = arm_curve.get_point_position(0)
-	var point_1 = arm_curve.get_point_position(1)
-	hand.position = point_1
-	last_hand_pos = hand.global_position
-	hand.look_at(point_1 + (point_1 - point_0) * 10)
-	
-	Signals.connect("reset", reset_arm)
+	orient_hand()
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Grabbable"):
