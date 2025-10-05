@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmj4hei3bbrk8"]
+[gd_scene load_steps=5 format=3 uid="uid://bxd5kknrofkns"]
 
 [ext_resource type="PackedScene" uid="uid://ytnv83oppny8" path="res://scenes/background.tscn" id="1_d383n"]
 [ext_resource type="Script" uid="uid://cv3c2rmgjcigy" path="res://scripts/main_game_scene.gd" id="1_oa6bs"]
@@ -9,6 +9,7 @@
 script = ExtResource("1_oa6bs")
 
 [node name="Background" parent="." instance=ExtResource("1_d383n")]
+z_index = -10
 
 [node name="Guide" parent="." instance=ExtResource("2_oa6bs")]
 z_index = 10

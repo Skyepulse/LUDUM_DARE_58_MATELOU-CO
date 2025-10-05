@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed:float = 100.0
+var speed:float = 300.0
 
 var guide_offset:Vector2
 var player_offset:Vector2
