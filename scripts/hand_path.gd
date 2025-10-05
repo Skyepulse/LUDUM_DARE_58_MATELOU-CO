@@ -39,11 +39,6 @@ func update_line():
 		points.append(arm_curve.get_point_position(i))
 	line_2d.points = points
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.is_pressed:
-		if event.keycode == KEY_SPACE:
-			reset_arm()
-
 func orient_hand() -> void:
 	var count = arm_curve.point_count
 	if count < 2:
@@ -119,6 +114,7 @@ func retract(delta: float) -> void:
 		
 		if length >= cut_length:
 			arm_curve.set_point_position(index_last, p1 - dir * (cut_length / length))
+			orient_hand()
 			break
 		else:
 			arm_curve.remove_point(index_last)
@@ -150,6 +146,8 @@ func _ready() -> void:
 	hand.position = point_1
 	last_hand_pos = hand.global_position
 	hand.look_at(point_1 + (point_1 - point_0) * 10)
+	
+	Signals.connect("reset", reset_arm)
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Grabbable"):
