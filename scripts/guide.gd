@@ -58,9 +58,10 @@ func _ready() -> void:
 	print("Looking animation duration: %f" % looking_animation_frame_duration)
 	
 func _process(delta: float) -> void:
-	var suspicion_increase_value = does_guide_get_suspicious()
-	if suspicion_increase_value > 0.0:
-		GameManager.increaseSuspicion(suspicion_increase_value * delta)
+	if Signals.game_state == Signals.INGAME:
+		var suspicion_increase_value = does_guide_get_suspicious()
+		if suspicion_increase_value > 0.0:
+			GameManager.increaseSuspicion(suspicion_increase_value * delta)
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
