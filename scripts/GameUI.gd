@@ -7,6 +7,8 @@ extends Control
 @onready var quit_button: Button = $Menu/QuitButton
 
 @onready var collection_panel: Panel = $Collection/CollectionPanel
+@onready var suspicion_bar: CenterContainer = $SuspicionBar
+@onready var progress_bar: ProgressBar = $SuspicionBar/ProgressBar
 
 var screenSize:Vector2
 
@@ -14,6 +16,12 @@ const PLAY_TEXT: String = "PLAY"
 const COLLECTION_TEXT: String = "COLLECTION"
 const CREDIT_TEXT: String = "CREDIT"
 const QUIT_TEXT: String = "QUIT"
+
+var currentVal: float = 0.0
+
+func setSuspicion(value: float):
+	currentVal = clamp(value, suspicion_bar.minVal, suspicion_bar.maxVal)
+	progress_bar.value = currentVal
 
 func _ready() -> void:
 	screenSize = get_viewport().get_visible_rect().size
@@ -32,6 +40,7 @@ func _ready() -> void:
 	quit_button.position.y = 7.5*quit_button.size.y
 	
 	collection_panel.hide_collection()
+	suspicion_bar.hideSuspicionBar()
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
@@ -41,6 +50,7 @@ func _input(event: InputEvent) -> void:
 func escape_is_pressed() -> void:
 	if Signals.game_state == Signals.INGAME:
 		Signals.game_state = Signals.PAUSED
+		suspicion_bar.hideSuspicionBar()
 		menu.visible = true
 	elif Signals.game_state == Signals.COLLECTION:
 		Signals.game_state = Signals.PAUSED
@@ -53,6 +63,7 @@ func escape_is_pressed() -> void:
 func play_button_is_pressed() -> void:
 	Signals.game_state = Signals.INGAME
 	menu.visible = false
+	suspicion_bar.showSuspicionBar()
 	
 func collection_button_is_pressed() -> void:
 	Signals.game_state = Signals.COLLECTION
