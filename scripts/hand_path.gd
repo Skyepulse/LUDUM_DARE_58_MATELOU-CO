@@ -127,9 +127,13 @@ func retract(delta: float) -> void:
 	orient_hand()
 	
 	if holding_object:
-		grabbed_object.set_position(last_point * thief.scale + thief.position)
-		if index_last <= 2:
-			collect_object()
+		if grabbed_object.INDEX == 0:
+			Signals.emit_signal("move_scene")
+			Signals.emit_signal("set_input", false);
+		else:
+			grabbed_object.set_position(last_point * thief.scale + thief.position)
+			if index_last <= 2:
+				collect_object()
 
 func set_grabbed_object(object: GrabbableObject) -> void:
 	grabbed_object = object
@@ -158,8 +162,9 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 func collect_object():
 	if grabbed_object != null:
-		GameManager.collect_object(grabbed_object.INDEX)
-		grabbed_object.queue_free()
+		if grabbed_object.INDEX != 0:
+			GameManager.collect_object(grabbed_object.INDEX)
+			grabbed_object.queue_free()
 
 func is_on_object() -> bool:
 	return grabbed_object != null
