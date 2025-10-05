@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bb61mtkwyk82p"]
 
 [ext_resource type="PackedScene" uid="uid://de8xq0cmgi1er" path="res://scenes/thief.tscn" id="1_wnvxq"]
-[ext_resource type="PackedScene" path="res://scenes/Objects/object_vase.tscn" id="2_85uif"]
+[ext_resource type="PackedScene" uid="uid://cw0fhvhlua8vd" path="res://scenes/Objects/object_vase.tscn" id="2_85uif"]
 [ext_resource type="PackedScene" uid="uid://cpt378r0tx734" path="res://scenes/Objects/obj_joconde.tscn" id="3_cllg8"]
 
 [node name="SceneTestsTELO" type="Node2D"]
