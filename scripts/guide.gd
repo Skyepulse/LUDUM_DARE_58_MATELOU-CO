@@ -1,10 +1,7 @@
 extends Sprite2D
 
-var cam_offset:Vector2
-
 var is_looking_thief: bool = false
 var is_talking: bool = false
-var is_moving: bool = false
 
 @onready var timer: Timer = $Timer
 @onready var animation_timer: Timer = $AnimationTimer
@@ -33,21 +30,19 @@ var current_looking_sprite_index: int = 0
 @export var talking_sprites: Array[Texture2D] = []
 @export var looking_sprites: Array[Texture2D] = []
 
-signal move 
-
 func _ready() -> void:
-	cam_offset = MainCamera2D.position - position
 	GameManager.Guide = self
 
 	timer.timeout.connect(_on_timer_timeout)
 	animation_timer.timeout.connect(update_sprite)
+	
+	Signals.connect("start_level", stop_moving)
 
 	print("Walking animation duration: %f" % walking_animation_frame_duration)
 	print("Talking animation duration: %f" % talking_animation_frame_duration)
 	print("Looking animation duration: %f" % looking_animation_frame_duration)
 	
 func _process(delta: float) -> void:
-	position.x = MainCamera2D.position.x - cam_offset.x
 	var suspicion_increase_value = does_guide_get_suspicious()
 	if suspicion_increase_value > 0.0:
 		GameManager.increaseSuspicion(suspicion_increase_value * delta)
@@ -58,17 +53,18 @@ func _input(event: InputEvent) -> void:
 			start_moving()
 
 func start_moving() -> void:
-	move.emit()
+	Signals.emit_signal("move_scene")
+	Signals.emit_signal("set_input", false)
 	timer.stop()
 
-	is_moving = true
+	Signals.is_moving = true
 	is_looking_thief = false
 	is_talking = false
 
 	set_initial_sprite()
 
 func stop_moving() -> void:
-	is_moving = false
+	Signals.is_moving = false
 	start_talking()
 
 func start_talking() -> void:
@@ -94,7 +90,7 @@ func start_timer(time: float) -> void:
 	timer.start()
 
 func _on_timer_timeout() -> void:
-	if is_moving:
+	if Signals.is_moving:
 		return
 
 	animation_timer.stop()
@@ -106,7 +102,7 @@ func _on_timer_timeout() -> void:
 		start_looking_thief()
 
 func does_guide_get_suspicious() -> float:
-	if is_moving or is_talking:
+	if Signals.is_moving or is_talking:
 		return false
 
 	var susp: float = 0.0
@@ -122,7 +118,7 @@ func does_guide_get_suspicious() -> float:
 	return susp
 
 func set_initial_sprite() -> void:
-	if is_moving:
+	if Signals.is_moving:
 		if walking_sprites.size() > 0:
 			self.texture = walking_sprites[0]
 			animation_timer.wait_time = walking_animation_frame_duration
@@ -144,7 +140,7 @@ func set_initial_sprite() -> void:
 	animation_timer.start()
 
 func update_sprite() -> void:
-	if is_moving:
+	if Signals.is_moving:
 		if walking_sprites.size() == 0:
 			return
 		current_walking_sprite_index = (current_walking_sprite_index + 1) % walking_sprites.size()

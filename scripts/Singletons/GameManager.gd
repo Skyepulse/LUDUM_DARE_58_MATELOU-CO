@@ -27,6 +27,8 @@ var CollectedDictionary: Dictionary = {}
 var infoDictionary: Dictionary = {}
 var all_indices: Array = []
 
+var level_index:int = 0
+
 func _ready():
 
 	CollectedDictionary.clear()

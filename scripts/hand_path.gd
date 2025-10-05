@@ -23,7 +23,13 @@ var grabbed_object: GrabbableObject = null
 
 var input_enabled: bool = true
 
-func set_input_enabled(en: bool) -> void:
+func enable_input() -> void:
+	input_enabled = true
+	
+func disable_input() -> void:
+	input_enabled = false
+	
+func set_input(en: bool) -> void:
 	input_enabled = en
 
 func reset_arm() -> void:
@@ -137,6 +143,8 @@ func unset_grabbed_object(object: GrabbableObject) -> void:
 func _ready() -> void:
 	GameManager.Player = self
 	orient_hand()
+	Signals.connect("move_scene", reset_arm)
+	Signals.connect("set_input", set_input)
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Grabbable"):
