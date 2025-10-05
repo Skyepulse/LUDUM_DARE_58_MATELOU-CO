@@ -4,11 +4,17 @@ extends Node2D
 
 const OBJ_JOCONDE = preload("uid://cpt378r0tx734")
 
+var rng = RandomNumberGenerator.new()
 
 func instantiate_objects():
+	var count = GameManager.all_indices.size()
+	var index = GameManager.all_indices[rng.randi() % count]
+	
+	print(count, ", ", index)
+	
 	var screen_size = get_viewport().get_visible_rect().size
 	var offset = Vector2(GameManager.level_index + 1.5, 0.4) * screen_size;
-	var obj = OBJ_JOCONDE.instantiate()
+	var obj = GameManager.infoDictionary[index].scene.instantiate()
 	add_child(obj)
 	
 	obj.scale = Vector2(0.2, 0.2)
