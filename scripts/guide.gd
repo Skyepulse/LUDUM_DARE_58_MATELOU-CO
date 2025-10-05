@@ -43,8 +43,6 @@ var speechString: String = ""
 var labeltext: String = ""
 const MAX_LABEL_LENGTH: int = 100
 
-signal move 
-
 func _ready() -> void:
 	GameManager.Guide = self
 	speech_bubble.visible = false

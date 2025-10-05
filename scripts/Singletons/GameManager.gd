@@ -82,7 +82,7 @@ func _process(delta: float):
 
 func increaseSuspicion(amount: float):
 	currentSuspicion = clamp(currentSuspicion + amount, 0, maxSuspicion)
-	MainCamera2D.MainUI.setSuspicion(currentSuspicion)
+	#MainCamera2D.MainUI.setSuspicion(currentSuspicion)
 
 	suspicionDecayTimer.stop()
 	suspicionDecayTimer.wait_time = decreaseTimer
@@ -91,7 +91,7 @@ func increaseSuspicion(amount: float):
 
 func decreaseSuspicion(amount: float):
 	currentSuspicion = clamp(currentSuspicion - amount, 0, maxSuspicion)
-	MainCamera2D.MainUI.setSuspicion(currentSuspicion)
+	#MainCamera2D.MainUI.setSuspicion(currentSuspicion)
 
 func _on_decrease_suspicion_timer_timeout():
 	canDecrease = true
