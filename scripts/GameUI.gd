@@ -39,10 +39,7 @@ func _input(event: InputEvent) -> void:
 			escape_is_pressed()
 
 func escape_is_pressed() -> void:
-	if Signals.game_state == Signals.PAUSED:
-		Signals.game_state = Signals.INGAME
-		menu.visible = false 
-	elif Signals.game_state == Signals.INGAME:
+	if Signals.game_state == Signals.INGAME:
 		Signals.game_state = Signals.PAUSED
 		menu.visible = true
 	elif Signals.game_state == Signals.COLLECTION:
