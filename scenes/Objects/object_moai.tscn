@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckbiqrktc354i"]
+
+[ext_resource type="PackedScene" uid="uid://ds6qifjw0rlpu" path="res://scenes/grabbable_object.tscn" id="1_panl8"]
+[ext_resource type="Texture2D" uid="uid://bt1ai0luik3gt" path="res://img/moai.png" id="2_p6q4c"]
+
+[node name="ObjectRoot" instance=ExtResource("1_panl8")]
+objectName = "Moai"
+objectDescription = "No DESCRIPTION YET"
+INDEX = 4
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_p6q4c")
+offset = Vector2(68.59, -90.09)
+
+[node name="GrabPoint_1" parent="GrabPoints" index="0"]
+position = Vector2(171, -890)
+
+[node name="Area2D" parent="GrabPoints/GrabPoint_1" index="0"]
+scale = Vector2(7, 7)
+
+[node name="GrabPoint_2" parent="GrabPoints" index="1"]
+position = Vector2(182, 66)
+
+[node name="Area2D" parent="GrabPoints/GrabPoint_2" index="0"]
+scale = Vector2(7, 7)
+
+[node name="GrabPoint_3" parent="GrabPoints" index="2"]
+position = Vector2(-231, 27)
+
+[node name="Area2D" parent="GrabPoints/GrabPoint_3" index="0"]
+scale = Vector2(7, 7)
+
+[node name="GrabPoint_4" parent="GrabPoints" index="3"]
+position = Vector2(-96, 808)
+
+[node name="Area2D" parent="GrabPoints/GrabPoint_4" index="0"]
+scale = Vector2(7, 7)
+
+[node name="CollisionShape2D" parent="ObjectHitbox" index="0"]
+rotation = 0.14835298
+scale = Vector2(3.965, 14.125)
