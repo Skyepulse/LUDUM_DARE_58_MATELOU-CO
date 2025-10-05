@@ -53,8 +53,10 @@ func _input(event: InputEvent) -> void:
 			start_moving()
 
 func start_moving() -> void:
-	Signals.emit_signal("move_scene")
-	Signals.emit_signal("set_input", false)
+	if not Signals.is_moving:
+		Signals.emit_signal("move_scene")
+		Signals.emit_signal("set_input", false)
+		
 	timer.stop()
 
 	Signals.is_moving = true
