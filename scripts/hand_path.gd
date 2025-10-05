@@ -118,6 +118,12 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 		print("Hand off object: %s" % area.get_parent().name)
 		unset_grabbed_object(area.get_parent())
 
+func is_on_object() -> bool:
+	return grabbed_object != null
+
+func get_grabbed_object() -> GrabbableObject:
+	return grabbed_object
+
 func _process(delta: float) -> void:
 	retracting = !Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
 	if retracting:
