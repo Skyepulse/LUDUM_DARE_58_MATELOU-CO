@@ -104,6 +104,10 @@ func get_collected_count() -> int:
 func collect_object(index: int) -> void:
 	if CollectedDictionary.has(index):
 		CollectedDictionary[index] += 1
+		if infoDictionary.has(index):
+			infoDictionary[index].count += 1
+		else:
+			push_error("GameManager: Collected object with index %d has no info entry!" % index)
 	else:
 		push_error("GameManager: Attempted to collect object with invalid index: %s" % str(index))
 
