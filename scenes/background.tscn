@@ -20,28 +20,21 @@ gradient = SubResource("Gradient_y0upk")
 [node name="Background" type="Node2D"]
 script = ExtResource("1_y0upk")
 
-[node name="mur" type="Parallax2D" parent="."]
+[node name="Parallax2D" type="Parallax2D" parent="."]
 repeat_times = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="mur"]
+[node name="mur" type="Sprite2D" parent="Parallax2D"]
 position = Vector2(575.5, 225.375)
 scale = Vector2(18.015625, 6.9570313)
 texture = SubResource("GradientTexture2D_y0upk")
 
-[node name="colonne" type="Parallax2D" parent="."]
-scale = Vector2(0.998357, 1.0030161)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="colonne"]
+[node name="colonne" type="Sprite2D" parent="Parallax2D"]
 z_index = 1
-position = Vector2(-2.4651903e-32, 231.30235)
-scale = Vector2(0.20172964, 0.22462411)
+position = Vector2(-2.46114e-32, 231.99998)
+scale = Vector2(0.2013982, 0.22530161)
 texture = ExtResource("1_bkp1e")
 
-[node name="sol" type="Parallax2D" parent="."]
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="sol"]
+[node name="sol" type="Sprite2D" parent="Parallax2D"]
 position = Vector2(576, 548)
 scale = Vector2(18, 3.1250005)
 texture = SubResource("GradientTexture2D_jougr")
