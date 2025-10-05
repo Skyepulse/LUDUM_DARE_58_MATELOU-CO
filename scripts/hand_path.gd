@@ -133,7 +133,6 @@ func update_average_speed(delta: float) -> void:
 	var speed = (hand_pos - last_hand_pos).length() / delta
 	average_speed = lerp(average_speed, speed, 0.1)
 	last_hand_pos = hand_pos
-	print("Hand average speed: %f" % average_speed)
 	
 func get_average_speed() -> float:
 	return average_speed

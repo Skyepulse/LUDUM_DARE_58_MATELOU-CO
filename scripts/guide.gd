@@ -41,6 +41,10 @@ func _ready() -> void:
 
 	timer.timeout.connect(_on_timer_timeout)
 	animation_timer.timeout.connect(update_sprite)
+
+	print("Walking animation duration: %f" % walking_animation_frame_duration)
+	print("Talking animation duration: %f" % talking_animation_frame_duration)
+	print("Looking animation duration: %f" % looking_animation_frame_duration)
 	
 func _process(delta: float) -> void:
 	position.x = MainCamera2D.position.x - cam_offset.x
