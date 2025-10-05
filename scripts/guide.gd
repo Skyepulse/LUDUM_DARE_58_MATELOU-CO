@@ -8,6 +8,9 @@ var is_moving: bool = false
 
 @onready var timer: Timer = $Timer
 @onready var animation_timer: Timer = $AnimationTimer
+@onready var speech_timer: Timer = $SpeechTimer
+@onready var speech_bubble: NinePatchRect = $SpeechBubble
+@onready var speech_label: RichTextLabel = $SpeechBubble/Text
 
 @export var suspicion_increase_on_object_interaction: float = 10.0
 @export var suspicion_min_increase_on_hand_movement: float = 2.0
@@ -25,6 +28,12 @@ var is_moving: bool = false
 @export var talking_animation_frame_duration: float = 1.0
 @export var looking_animation_frame_duration: float = 2.0
 
+@export var speech_speed: float = 15.0 # Characters per second
+var guide_original_texts: Array[String] = [
+	"Welcome to the Worldwide Contributions aisle of the British Consortium's Museum!\
+	We are very proud to announce that the citizen from the Dastardly French Alliance, the Greek Front of Unity, and the Independant Ireland are not welcomed in our establishment. If you are from one of these, please turn yourself in at your earliest convenience."
+]
+
 var current_walking_sprite_index: int = 0
 var current_talking_sprite_index: int = 0
 var current_looking_sprite_index: int = 0
@@ -33,18 +42,20 @@ var current_looking_sprite_index: int = 0
 @export var talking_sprites: Array[Texture2D] = []
 @export var looking_sprites: Array[Texture2D] = []
 
+var speechString: String = ""
+var labeltext: String = ""
+const MAX_LABEL_LENGTH: int = 100
+
 signal move 
 
 func _ready() -> void:
 	cam_offset = MainCamera2D.position - position
 	GameManager.Guide = self
+	speech_bubble.visible = false
 
 	timer.timeout.connect(_on_timer_timeout)
 	animation_timer.timeout.connect(update_sprite)
-
-	print("Walking animation duration: %f" % walking_animation_frame_duration)
-	print("Talking animation duration: %f" % talking_animation_frame_duration)
-	print("Looking animation duration: %f" % looking_animation_frame_duration)
+	speech_timer.timeout.connect(_on_speech_timer_timeout)
 	
 func _process(delta: float) -> void:
 	position.x = MainCamera2D.position.x - cam_offset.x
@@ -67,9 +78,13 @@ func start_moving() -> void:
 
 	set_initial_sprite()
 
+	pause_speaking()
+
 func stop_moving() -> void:
 	is_moving = false
 	start_talking()
+	start_bubble_speak(guide_original_texts[randi() % guide_original_texts.size()])
+
 
 func start_talking() -> void:
 	is_talking = true
@@ -80,6 +95,8 @@ func start_talking() -> void:
 
 	set_initial_sprite()
 
+	resume_speaking()
+
 func start_looking_thief() -> void:
 	is_looking_thief = true
 	is_talking = false
@@ -88,6 +105,8 @@ func start_looking_thief() -> void:
 	start_timer(look_time)
 
 	set_initial_sprite()
+
+	pause_speaking()
 
 func start_timer(time: float) -> void:
 	timer.wait_time = time
@@ -164,3 +183,48 @@ func update_sprite() -> void:
 		animation_timer.wait_time = looking_animation_frame_duration
 
 	animation_timer.start()
+
+func start_bubble_speak(text: String) -> void:
+	speechString = text
+	labeltext = ""
+	speech_label.text = ""
+	speech_timer.wait_time = 1.0 / speech_speed
+	speech_timer.start()
+	speech_bubble.visible = true
+
+func pause_speaking() -> void:
+	speech_timer.stop()
+	speech_bubble.visible = false
+
+func resume_speaking() -> void:
+	speech_timer.start()
+	speech_bubble.visible = true
+
+func _on_speech_timer_timeout() -> void:
+
+	if speech_bubble.custom_minimum_size.y < speech_label.size.y + 50:
+		speech_bubble.custom_minimum_size.y = speech_label.size.y + 50
+
+	if speechString.length() > 0:
+		var char_to_add = speechString[0]
+		labeltext += char_to_add
+		if labeltext.length() > MAX_LABEL_LENGTH and char_to_add == " ":
+			labeltext = ""
+			speech_timer.wait_time = 3.0
+			speech_timer.start()
+			return
+
+		speech_label.text = labeltext
+		speechString = speechString.substr(1, speechString.length() - 1)
+		speech_timer.wait_time = 1.0 / speech_speed
+		speech_timer.start()
+
+	elif labeltext.length() > 0:
+		speech_timer.wait_time = 2.0
+		speech_timer.start()
+		labeltext = ""
+
+	else:
+		speech_bubble.visible = false
+		speech_timer.stop()
+		labeltext = ""
