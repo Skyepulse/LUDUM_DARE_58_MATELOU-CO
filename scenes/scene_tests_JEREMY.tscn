@@ -1,12 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://x5q2tcjc7qht"]
+[gd_scene load_steps=6 format=3 uid="uid://x5q2tcjc7qht"]
 
 [ext_resource type="PackedScene" uid="uid://ytnv83oppny8" path="res://scenes/background.tscn" id="1_q545c"]
-[ext_resource type="PackedScene" uid="uid://kg7csa53v2ce" path="res://scenes/guide.tscn" id="2_13lya"]
+[ext_resource type="PackedScene" uid="uid://c8vk05rdo648t" path="res://scenes/guide.tscn" id="2_13lya"]
+[ext_resource type="PackedScene" uid="uid://cwweperphcvw1" path="res://scenes/Obstacles/obs_camera.tscn" id="3_vxqdk"]
+[ext_resource type="PackedScene" uid="uid://de8xq0cmgi1er" path="res://scenes/thief.tscn" id="4_7f0m2"]
+[ext_resource type="PackedScene" uid="uid://cpt378r0tx734" path="res://scenes/Objects/obj_joconde.tscn" id="5_ta1jf"]
 
-[node name="scene_tests_JEREMY" type="Node2D"]
+[node name="SceneTestsJeremy" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_q545c")]
 
 [node name="Guide" parent="." instance=ExtResource("2_13lya")]
 z_index = 10
 position = Vector2(979, 438)
+
+[node name="CameraObstacle" parent="." instance=ExtResource("3_vxqdk")]
+position = Vector2(669, 151)
+rayLength = 150.0
+rayWidth = 200.0
+initRotation = 160.0
+
+[node name="Thief" parent="." instance=ExtResource("4_7f0m2")]
+position = Vector2(287, 269)
+
+[node name="ObjectRoot2" parent="." instance=ExtResource("5_ta1jf")]
+position = Vector2(980, 292)
+scale = Vector2(0.15, 0.15)
