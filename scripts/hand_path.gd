@@ -92,6 +92,8 @@ func retract(delta: float) -> void:
 	
 	if holding_object:
 		grabbed_object.set_position(last_point * thief.scale + thief.position)
+		if index_last <= 1:
+			collect_object()
 
 func set_grabbed_object(object: GrabbableObject) -> void:
 	grabbed_object = object
@@ -121,6 +123,11 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Grabbable"):
 		print("Hand off object: %s" % area.get_parent().name)
 		unset_grabbed_object(area.get_parent())
+
+func collect_object():
+	if grabbed_object != null:
+		GameManager.collect_object(grabbed_object.INDEX)
+		grabbed_object.queue_free()
 
 func is_on_object() -> bool:
 	return grabbed_object != null

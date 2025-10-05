@@ -5,6 +5,7 @@ class CollectedObjectInfo:
 	var name: String
 	var description: String
 	var count: int
+	var scene: PackedScene
 
 # Suspicion meter
 @export var maxSuspicion: float = 100.0
@@ -52,6 +53,7 @@ func _ready():
 				infoDictionary[index].description = inst.get("objectDescription")
 				infoDictionary[index].index = index
 				infoDictionary[index].count = 0
+				infoDictionary[index].scene = obj
 
 		inst.queue_free()        
 
