@@ -1,5 +1,11 @@
 extends Node
 
+class CollectedObjectInfo:
+	var index: int
+	var name: String
+	var description: String
+	var count: int
+
 # Suspicion meter
 @export var maxSuspicion: float = 100.0
 @export var suspicionDecayRate: float = 0.5 # Per Second
@@ -16,8 +22,7 @@ var currentSuspicion: float = 0.0
 var canDecrease: bool = true
 
 var CollectedDictionary: Dictionary = {}
-var nameDictionary: Dictionary = {}
-var descriptionDictionary: Dictionary = {}
+var infoDictionary: Dictionary = {}
 var all_indices: Array = []
 
 func _ready():
@@ -41,9 +46,12 @@ func _ready():
 				push_error("GameManager: Duplicate INDEX value in all_possible_objects: %s" % str(index))
 			else:
 				all_indices.append(index)
-				CollectedDictionary[index] = false
-				nameDictionary[index] = inst.get("objectName")
-				descriptionDictionary[index] = inst.get("objectDescription")
+				CollectedDictionary[index] = 0
+				infoDictionary[index] = CollectedObjectInfo.new()
+				infoDictionary[index].name = inst.get("objectName")
+				infoDictionary[index].description = inst.get("objectDescription")
+				infoDictionary[index].index = index
+				infoDictionary[index].count = 0
 
 		inst.queue_free()        
 
@@ -85,12 +93,26 @@ func _on_decrease_suspicion_timer_timeout():
 func get_collected_count() -> int:
 	var count = 0
 	for key in CollectedDictionary.keys():
-		if CollectedDictionary[key]:
+		if CollectedDictionary[key] > 0:
 			count += 1
 	return count
 
 func collect_object(index: int) -> void:
 	if CollectedDictionary.has(index):
-		CollectedDictionary[index] = true
+		CollectedDictionary[index] += 1
 	else:
 		push_error("GameManager: Attempted to collect object with invalid index: %s" % str(index))
+
+func is_object_collected(index: int) -> bool:
+	if CollectedDictionary.has(index):
+		return CollectedDictionary[index] > 0
+	else:
+		push_error("GameManager: Attempted to check collected status of object with invalid index: %s" % str(index))
+		return false
+
+func get_object_info(index: int) -> CollectedObjectInfo:
+	if infoDictionary.has(index):
+		return infoDictionary[index]
+	else:
+		push_error("GameManager: Attempted to get info of object with invalid index: %s" % str(index))
+		return null
