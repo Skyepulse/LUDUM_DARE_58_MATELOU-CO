@@ -6,6 +6,7 @@
 [node name="ObjectRoot" instance=ExtResource("1_4ivw0")]
 objectName = "Vase"
 objectDescription = "NO DESCRIPTION YES"
+INDEX = 2
 
 [node name="Sprite2D" parent="." index="0"]
 z_as_relative = false

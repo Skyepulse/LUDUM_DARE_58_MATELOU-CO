@@ -11,6 +11,7 @@ class_name GrabbableObject
 
 @onready var object_root: GrabbableObject = $"."
 
+@export var INDEX: int = 0
 
 var grabPoints: Array[Node2D] = []
 var numGrabPoints: int = 0
