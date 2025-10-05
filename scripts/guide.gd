@@ -85,6 +85,9 @@ func start_moving() -> void:
 func stop_moving() -> void:
 	Signals.is_moving = false
 	start_talking()
+	
+	var text = GameManager.infoDictionary[GameManager.object_index].description
+	
 	start_bubble_speak(guide_original_texts[randi() % guide_original_texts.size()])
 
 

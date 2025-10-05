@@ -9,6 +9,8 @@ func instantiate_objects():
 	var count = GameManager.all_indices.size()
 	var index = GameManager.all_indices[rng.randi() % count]
 	
+	GameManager.object_index = index
+	
 	print(count, ", ", index)
 	
 	var screen_size = get_viewport().get_visible_rect().size
