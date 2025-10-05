@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://dah3y6cnwuvhb"]
+
+[ext_resource type="PackedScene" uid="uid://ds6qifjw0rlpu" path="res://scenes/grabbable_object.tscn" id="1_pqw8k"]
+[ext_resource type="Texture2D" uid="uid://b25rs4ptpunou" path="res://img/girl_with_a_punk_earring.png" id="2_5fr5o"]
+
+[node name="ObjectRoot" instance=ExtResource("1_pqw8k")]
+objectName = "Girl With a Punk Earring"
+objectDescription = "NO DESCRIPTION YET"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_5fr5o")
+
+[node name="GrabPoint_1" parent="GrabPoints" index="0"]
+position = Vector2(0, -642)
+
+[node name="Area2D" parent="GrabPoints/GrabPoint_1" index="0"]
+scale = Vector2(7, 7)
+
+[node name="GrabPoint_2" parent="GrabPoints" index="1"]
+position = Vector2(0, 642)
+
+[node name="Area2D" parent="GrabPoints/GrabPoint_2" index="0"]
+scale = Vector2(7, 7)
+
+[node name="GrabPoint_3" parent="GrabPoints" index="2"]
+position = Vector2(512, 0)
+
+[node name="Area2D" parent="GrabPoints/GrabPoint_3" index="0"]
+scale = Vector2(7, 7)
+
+[node name="GrabPoint_4" parent="GrabPoints" index="3"]
+position = Vector2(-512, 0)
+
+[node name="Area2D" parent="GrabPoints/GrabPoint_4" index="0"]
+scale = Vector2(7, 7)
+
+[node name="CollisionShape2D" parent="ObjectHitbox" index="0"]
+scale = Vector2(8.595, 10.74)
