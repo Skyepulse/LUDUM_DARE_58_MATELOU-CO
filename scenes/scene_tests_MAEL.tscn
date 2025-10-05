@@ -13,7 +13,6 @@
 [node name="Guide" parent="." instance=ExtResource("5_nclmj")]
 z_index = 10
 position = Vector2(979, 438)
-walking_animation_frame_duration = 1.0
 
 [node name="CameraObstacle" parent="." instance=ExtResource("1_swdrb")]
 position = Vector2(669, 151)
@@ -27,3 +26,4 @@ position = Vector2(287, 269)
 [node name="ObjectRoot" parent="." instance=ExtResource("3_vs8ss")]
 position = Vector2(977, 353)
 scale = Vector2(0.205, 0.205)
+INDEX = 0
