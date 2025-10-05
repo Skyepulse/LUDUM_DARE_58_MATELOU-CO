@@ -28,6 +28,7 @@ var infoDictionary: Dictionary = {}
 var all_indices: Array = []
 
 var level_index:int = 0
+var object_index: int = 0
 
 func _ready():
 
