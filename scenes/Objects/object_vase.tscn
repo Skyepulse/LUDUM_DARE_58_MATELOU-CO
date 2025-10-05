@@ -3,10 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://ds6qifjw0rlpu" path="res://scenes/grabbable_object.tscn" id="1_4ivw0"]
 [ext_resource type="Texture2D" uid="uid://bdffu62h2ssen" path="res://img/loss.png" id="2_hr1ts"]
 
-[node name="ObjectRoot" instance=ExtResource("1_4ivw0")]
+[node name="ObjectRoot3" instance=ExtResource("1_4ivw0")]
 objectName = "Vase"
 objectDescription = "NO DESCRIPTION YES"
 INDEX = 2
+texture = ExtResource("2_hr1ts")
 
 [node name="Sprite2D" parent="." index="0"]
 z_as_relative = false

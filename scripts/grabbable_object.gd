@@ -12,6 +12,7 @@ class_name GrabbableObject
 @onready var object_root: GrabbableObject = $"."
 
 @export var INDEX: int = 0
+@export var texture: Texture2D
 
 var grabPoints: Array[Node2D] = []
 var numGrabPoints: int = 0

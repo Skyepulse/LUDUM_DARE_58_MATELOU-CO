@@ -6,6 +6,7 @@ class CollectedObjectInfo:
 	var description: String
 	var count: int
 	var scene: PackedScene
+	var texture: Texture2D
 
 # Suspicion meter
 @export var maxSuspicion: float = 100.0
@@ -54,8 +55,9 @@ func _ready():
 				infoDictionary[index].index = index
 				infoDictionary[index].count = 0
 				infoDictionary[index].scene = obj
+				infoDictionary[index].texture = inst.get("texture")
 
-		inst.queue_free()        
+		inst.queue_free()      
 
 	suspicionDecayTimer.wait_time = decreaseTimer
 	suspicionDecayTimer.stop()

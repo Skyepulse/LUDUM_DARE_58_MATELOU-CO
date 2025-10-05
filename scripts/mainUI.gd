@@ -2,6 +2,9 @@ extends Node
 
 @onready var suspicionBar: ProgressBar = $Suspicion/ProgressBar
 @export var maxVal: float = 100.0
+
+@onready var collection_ui: Control = $Collection/CollectionPanel
+
 var minVal: float = 0.0
 var currentVal: float = 0.0
 
@@ -19,3 +22,9 @@ func hideSuspicionBar():
 
 func showSuspicionBar():
 	suspicionBar.visible = true
+
+func initialize_collection_ui() -> void:
+	if collection_ui == null:
+		push_error("MainUI: Collection UI not found!")
+		return
+	collection_ui.call_deferred("initialize_collection_ui")

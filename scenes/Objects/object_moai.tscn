@@ -7,6 +7,7 @@
 objectName = "Moai"
 objectDescription = "No DESCRIPTION YET"
 INDEX = 4
+texture = ExtResource("2_p6q4c")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_p6q4c")

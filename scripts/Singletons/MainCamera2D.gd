@@ -11,3 +11,4 @@ func resize() -> void:
 func _ready() -> void:
 	get_viewport().size_changed.connect(resize)
 	resize()
+	MainUI.initialize_collection_ui()

@@ -23,7 +23,6 @@ initRotation = 160.0
 [node name="Thief" parent="." instance=ExtResource("2_2pelo")]
 position = Vector2(287, 269)
 
-[node name="ObjectRoot" parent="." instance=ExtResource("3_vs8ss")]
-position = Vector2(977, 353)
-scale = Vector2(0.205, 0.205)
-INDEX = 0
+[node name="ObjectRoot2" parent="." instance=ExtResource("3_vs8ss")]
+position = Vector2(980, 292)
+scale = Vector2(0.15, 0.15)

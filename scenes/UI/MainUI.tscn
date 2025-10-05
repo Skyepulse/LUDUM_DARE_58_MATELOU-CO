@@ -28,7 +28,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4gv2"]
-bg_color = Color(0.7254902, 0.43529412, 0.101960786, 0.70980394)
+bg_color = Color(0.7254902, 0.43529412, 0.101960786, 0.9019608)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -40,7 +40,7 @@ corner_radius_bottom_right = 40
 corner_radius_bottom_left = 40
 
 [node name="MainUi" type="Control"]
-z_index = 4096
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
