@@ -3,6 +3,7 @@ extends Node2D
 @onready var background: Node2D = $Background
 const OBJECT_BUTTON = preload("uid://bdfxsfkj33qq8")
 
+
 var rng = RandomNumberGenerator.new()
 
 func instantiate_objects():
