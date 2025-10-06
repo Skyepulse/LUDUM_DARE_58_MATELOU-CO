@@ -10,8 +10,7 @@ signal main_menu
 
 signal game_started
 signal game_paused
-signal guide_is_looking
-
+signal game_unpaused
 
 enum {START, INGAME, PAUSED, COLLECTION, CREDIT}
 

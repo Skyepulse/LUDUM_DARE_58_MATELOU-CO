@@ -10,6 +10,7 @@ script = ExtResource("1_jgnpi")
 
 [node name="vol" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_orf8r")
+parameters/looping = false
 
 [node name="fuite" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ugpcd")
