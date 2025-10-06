@@ -5,7 +5,7 @@
 
 [node name="ObjectRoot" instance=ExtResource("1_equ5j")]
 objectName = "THE SHOUT"
-objectDescription = "Quoicoubeh"
+objectDescription = "You can hear it shout \"QUOICOUBEH\" in the distance..."
 INDEX = 7
 texture = ExtResource("2_2v2nd")
 

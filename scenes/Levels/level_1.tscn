@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dbebkjarp70yc"]
+[gd_scene load_steps=16 format=3 uid="uid://dbebkjarp70yc"]
 
 [ext_resource type="Script" uid="uid://du8yultimxo88" path="res://scripts/level.gd" id="1_ptgt0"]
 [ext_resource type="PackedScene" uid="uid://ckbiqrktc354i" path="res://scenes/Objects/object_moai.tscn" id="2_ac15f"]
@@ -9,6 +9,21 @@
 [ext_resource type="PackedScene" uid="uid://h5uxb3jinakg" path="res://scenes/Objects/object_madame.tscn" id="7_l5ivm"]
 [ext_resource type="PackedScene" uid="uid://cwweperphcvw1" path="res://scenes/Obstacles/obs_camera.tscn" id="7_y368g"]
 [ext_resource type="PackedScene" uid="uid://bgo422q8ldnc2" path="res://scenes/Objects/object_cri.tscn" id="8_xxpsm"]
+[ext_resource type="Texture2D" uid="uid://dgbjoa5rmtj8l" path="res://img/column.png" id="10_j85eu"]
+
+[sub_resource type="Gradient" id="Gradient_j85eu"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.7487182, 0.24516487, 0.34379515, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4p1o3"]
+gradient = SubResource("Gradient_j85eu")
+
+[sub_resource type="Gradient" id="Gradient_4p1o3"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.7162962, 0.7162962, 0.7162962, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_14nfc"]
+gradient = SubResource("Gradient_4p1o3")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyb7f"]
 size = Vector2(1000, 400)
@@ -16,6 +31,27 @@ size = Vector2(1000, 400)
 [node name="Level1" type="Node2D" node_paths=PackedStringArray("possible_objects")]
 script = ExtResource("1_ptgt0")
 possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5"), NodePath("Grabbable Objects/ObjectRoot"), NodePath("Grabbable Objects/ObjectRoot3"), NodePath("Grabbable Objects/ObjectRoot6"), NodePath("Grabbable Objects/ObjectRoot7")]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+visible = false
+scroll_offset = Vector2(-571, -233)
+repeat_times = 3
+
+[node name="mur" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(575.5, 225.375)
+scale = Vector2(18.015625, 6.9570313)
+texture = SubResource("GradientTexture2D_4p1o3")
+
+[node name="colonne" type="Sprite2D" parent="Parallax2D"]
+z_index = 1
+position = Vector2(-2.46114e-32, 231.99998)
+scale = Vector2(0.2013982, 0.22530161)
+texture = ExtResource("10_j85eu")
+
+[node name="sol" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(576, 548)
+scale = Vector2(18, 3.1250005)
+texture = SubResource("GradientTexture2D_14nfc")
 
 [node name="Zone d\'instanciation" type="Area2D" parent="."]
 collision_layer = 0
@@ -26,6 +62,7 @@ shape = SubResource("RectangleShape2D_yyb7f")
 debug_color = Color(0.8352941, 0.36078432, 0.3882353, 0.05882353)
 
 [node name="Grabbable Objects" type="Node2D" parent="."]
+position = Vector2(37, -7)
 
 [node name="ObjectRoot2" parent="Grabbable Objects" instance=ExtResource("4_vtxvj")]
 position = Vector2(290, 0)
@@ -56,24 +93,25 @@ position = Vector2(276, 4)
 scale = Vector2(0.095, 0.095)
 
 [node name="Obstacles" type="Node2D" parent="."]
+position = Vector2(37, -7)
 
 [node name="CameraObstacle" parent="Obstacles" instance=ExtResource("7_y368g")]
-position = Vector2(-275, -130)
+position = Vector2(-274, -162.00002)
+rotation = 0.8883726
 scale = Vector2(0.74, 0.74)
 rayLength = 200.0
 rayWidth = 100.0
-initRotation = 90.0
 
 [node name="CameraObstacle2" parent="Obstacles" instance=ExtResource("7_y368g")]
-position = Vector2(-106, 125)
+position = Vector2(-105, 160)
+rotation = 3.6617007
 scale = Vector2(0.74, 0.74)
 rayLength = 200.0
 rayWidth = 100.0
-initRotation = -90.0
 
 [node name="CameraObstacle3" parent="Obstacles" instance=ExtResource("7_y368g")]
-position = Vector2(62.000008, -130)
+position = Vector2(74, -26)
+rotation = -4.764749
 scale = Vector2(0.74, 0.74)
 rayLength = 200.0
 rayWidth = 100.0
-initRotation = 90.0

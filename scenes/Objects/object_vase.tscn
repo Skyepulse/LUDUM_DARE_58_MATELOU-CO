@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bdffu62h2ssen" path="res://img/loss.png" id="2_hr1ts"]
 
 [node name="ObjectRoot3" instance=ExtResource("1_4ivw0")]
-objectName = "Vase"
+objectName = "Amphora"
 objectDescription = "This amphora was found in 2555 by archeologist and tomb raider Sir Francis of Gloucestershire IV, and was initially exposed by the British Museum. 
 
 Greece has been demanding its repatriation, as well as the repatriation of Athen's Parthenon frieze, for more than 2 millenia. 

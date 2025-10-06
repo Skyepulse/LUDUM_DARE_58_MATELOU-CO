@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c25nh4nheoqn5" path="res://img/camera.png" id="2_khuef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8270b"]
-size = Vector2(120, 50)
+size = Vector2(140.275, 53.32)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_8270b"]
 points = PackedVector2Array(0, -10, 100, -30, 100, 30, 0, 10)
@@ -16,13 +16,14 @@ suspicionIncreaseRate = 10.0
 [node name="Visual" type="Sprite2D" parent="."]
 z_index = 10
 z_as_relative = false
-position = Vector2(11.000001, -18)
-rotation = -0.23561946
-scale = Vector2(0.265, 0.108)
+position = Vector2(-5, -40)
+rotation = -0.47996554
+scale = Vector2(0.265, 0.265)
 texture = ExtResource("2_khuef")
 offset = Vector2(40, 697.395)
 
 [node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_8270b")
@@ -41,5 +42,7 @@ z_as_relative = false
 color = Color(0.8235294, 0.1254902, 0.18431373, 1)
 vertex_colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0.99215686, 0, 0, 1)
 
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_exited" from="HitBox" to="." method="_on_hit_box_area_exited"]
 [connection signal="area_entered" from="RayBox" to="." method="_on_ray_box_area_entered"]
 [connection signal="area_exited" from="RayBox" to="." method="_on_ray_box_area_exited"]
