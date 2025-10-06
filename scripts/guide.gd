@@ -146,9 +146,6 @@ func does_guide_get_suspicious() -> float:
 
 	var susp: float = 0.0
 
-	if GameManager.Player.is_on_object():
-		susp += suspicion_increase_on_object_interaction
-
 	if GameManager.Player.get_average_speed() > min_hand_movement_speed_cutoff:
 		var speed_ratio = clamp((GameManager.Player.get_average_speed() - min_hand_movement_speed_cutoff) / (max_hand_movement_speed_cutoff - min_hand_movement_speed_cutoff), 0.0, 1.0)
 		var speed_based_suspicion = lerp(suspicion_min_increase_on_hand_movement, suspicion_max_increase_on_hand_movement, speed_ratio)

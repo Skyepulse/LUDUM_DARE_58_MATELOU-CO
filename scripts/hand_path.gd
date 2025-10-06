@@ -199,6 +199,7 @@ func _process(delta: float) -> void:
 		else:
 			mouse_input(delta)
 		update_average_speed(delta)
+		print("Hand average speed: %f" % average_speed)
 	
 	update_line()
 
