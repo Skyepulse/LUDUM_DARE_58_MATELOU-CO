@@ -4,6 +4,9 @@ signal move_scene
 signal activate_vignette_effect
 signal start_level
 signal set_input(state: bool)
+signal game_over
+signal restart_game
+signal main_menu
 
 signal game_started
 signal game_paused

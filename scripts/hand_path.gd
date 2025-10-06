@@ -9,6 +9,8 @@ extends Path2D
 
 @export var retracting: bool = true;
 
+var initial_position
+
 var cur_length = 0
 var max_length = 20
 var min_length = 2
@@ -151,6 +153,8 @@ func _ready() -> void:
 	orient_hand()
 	Signals.connect("move_scene", reset_arm)
 	Signals.connect("set_input", set_input)
+
+	initial_position = get_parent().position
 	
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Grabbable"):
