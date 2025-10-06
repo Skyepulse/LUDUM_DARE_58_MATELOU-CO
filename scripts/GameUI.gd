@@ -61,7 +61,9 @@ func _input(event: InputEvent) -> void:
 			escape_is_pressed()
 
 func escape_is_pressed() -> void:
-	if Signals.game_state == Signals.INGAME:
+	if Signals.game_state == Signals.PAUSED:
+		play_button_is_pressed()
+	elif Signals.game_state == Signals.INGAME:
 		Signals.game_state = Signals.PAUSED
 		suspicion_bar.hideSuspicionBar()
 		menu.visible = true
