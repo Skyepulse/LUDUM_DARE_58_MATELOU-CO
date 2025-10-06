@@ -25,3 +25,11 @@ position = Vector2(187, 419)
 scale = Vector2(0.4, 0.4)
 
 [node name="Soundtrack" parent="." instance=ExtResource("7_snln7")]
+
+[node name="NextLevel" type="Label" parent="."]
+offset_left = -1.0
+offset_top = 115.0
+offset_right = 1149.0
+offset_bottom = 138.0
+text = "The guide has finished explaining, press space to go on to the next piece"
+horizontal_alignment = 1

@@ -12,6 +12,8 @@ signal game_started
 signal game_paused
 signal game_unpaused
 
+signal guide_finished
+
 enum {START, INGAME, PAUSED, COLLECTION, CREDIT}
 
 var is_moving: bool = false
