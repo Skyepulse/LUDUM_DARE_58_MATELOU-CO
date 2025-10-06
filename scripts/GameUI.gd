@@ -13,6 +13,7 @@ extends Control
 @onready var vignette: TextureRect = $Effects/Vignette
 @onready var timer: Timer = $Timer
 @onready var gameOverScreen: Control = $GameOverScreen
+@onready var main_menu: Control = $MainMenu
 
 @export var vignette_animation_time: float = 1.0
 @export var vignette_max_radius: float = 1.0
@@ -59,6 +60,8 @@ func _ready() -> void:
 	gameOverScreen.visible = false
 	Signals.connect("game_over", show_game_over_screen)
 	Signals.connect("restart_game", hide_game_over_screen)
+
+	main_menu.visible = true
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
@@ -132,3 +135,24 @@ func hide_game_over_screen() -> void:
 func _on_restart_button_pressed() -> void:
 	suspicion_bar.showSuspicionBar()
 	GameManager.startGame()
+
+func _on_see_collection_button_pressed() -> void:
+	collection_button_is_pressed()
+
+func _on_start_game_button_pressed() -> void:
+	main_menu.visible = false
+	play_button_is_pressed()
+	GameManager.startGame()
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+
+func show_main_menu() -> void:
+	main_menu.visible = true
+	menu.visible = false
+	collection_panel.hide_collection()
+	suspicion_bar.hideSuspicionBar()
+	gameOverScreen.visible = false
+
+func _on_menu_button_pressed() -> void:
+	show_main_menu()

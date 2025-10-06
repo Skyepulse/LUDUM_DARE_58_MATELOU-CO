@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bl372pp24j6jb"]
+[gd_scene load_steps=24 format=3 uid="uid://bl372pp24j6jb"]
 
 [ext_resource type="Script" uid="uid://dnxq7xae7ucl0" path="res://scripts/GameUI.gd" id="1_sjnlv"]
 [ext_resource type="Script" uid="uid://crwbsu7ltt0xd" path="res://scripts/collection_ui.gd" id="2_5ji2y"]
@@ -6,21 +6,11 @@
 [ext_resource type="Script" uid="uid://dwgt6m1335bch" path="res://scripts/suspicion_bar.gd" id="4_5dnvl"]
 [ext_resource type="Texture2D" uid="uid://cgve7etk6qcbx" path="res://img/white.png" id="5_ftf0b"]
 [ext_resource type="Shader" uid="uid://ca1j7vchmivik" path="res://Shaders/vignette.gdshader" id="5_lvkef"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftf0b"]
-bg_color = Color(0.7254902, 0.43529412, 0.101960786, 0.9019608)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvkef"]
-bg_color = Color(0.15294118, 0.15294118, 0.15294118, 0.9411765)
+[ext_resource type="FontFile" uid="uid://cxdov33m7t1uy" path="res://Fonts/POCO/Poco.ttf" id="7_ru575"]
+[ext_resource type="Texture2D" uid="uid://c61eqnlrwdx0w" path="res://img/guide.png" id="8_qhru3"]
+[ext_resource type="Texture2D" uid="uid://y65edu6ee4n" path="res://img/thief.png" id="9_pnkpl"]
+[ext_resource type="Texture2D" uid="uid://c57mtl1o4ymnc" path="res://img/thief_arm.png" id="10_jyeja"]
+[ext_resource type="Texture2D" uid="uid://dbctwyoo6pe0j" path="res://img/thief_hand.png" id="11_tmyld"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ji2y"]
 bg_color = Color(0.3403393, 0.34033936, 0.34033918, 1)
@@ -81,6 +71,56 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jyeja"]
+bg_color = Color(0.8012077, 0.86706156, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.3583447, 0.26992592, 0.07091104, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmyld"]
+bg_color = Color(0.34413445, 0, 0.03972001, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o84x0"]
+bg_color = Color(0.595908, 0.2431983, 0.07387424, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.019607844, 0.14901961, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftf0b"]
+bg_color = Color(0.7254902, 0.43529412, 0.101960786, 0.9019608)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvkef"]
+bg_color = Color(0.15294118, 0.15294118, 0.15294118, 0.9411765)
+
 [node name="GameUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -91,6 +131,7 @@ grow_vertical = 2
 script = ExtResource("1_sjnlv")
 
 [node name="DebugAnchors" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -194,56 +235,6 @@ offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Collection" type="HSplitContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -400.0
-offset_top = -250.0
-offset_right = 400.0
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CollectionPanel" type="Panel" parent="Collection"]
-custom_minimum_size = Vector2(800, 500)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ftf0b")
-script = ExtResource("2_5ji2y")
-missingTexture = ExtResource("3_5dnvl")
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Collection/CollectionPanel"]
-layout_mode = 1
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 775.0
-offset_bottom = 475.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Collection/CollectionPanel/ScrollContainer"]
-custom_minimum_size = Vector2(750, 0)
-layout_mode = 2
-
-[node name="ExplanationPanel" type="Panel" parent="Collection"]
-custom_minimum_size = Vector2(283.155, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_lvkef")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Collection/ExplanationPanel"]
-custom_minimum_size = Vector2(266.03, 0)
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -0.5
-offset_right = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "Hover an object to check if you have collected it, and read it's description!"
-
 [node name="SuspicionBar" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
@@ -272,6 +263,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Effects" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -293,6 +285,7 @@ texture = ExtResource("5_ftf0b")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="GameOverScreen" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -367,6 +360,210 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_pnkpl")
 text = "GO TO MENU
 "
 
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.57505184, 0.41426957, 0.11636502, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -184.0
+offset_bottom = -63.999756
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("7_ru575")
+theme_override_font_sizes/normal_font_size = 100
+theme_override_font_sizes/bold_font_size = 100
+theme_override_font_sizes/bold_italics_font_size = 100
+theme_override_font_sizes/italics_font_size = 100
+theme_override_font_sizes/mono_font_size = 100
+bbcode_enabled = true
+text = "A [color=cyan]VERY[/color] [color=yellow]SNEAKY[/color] [color=magenta]THIEF[/color]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Decor" type="Control" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu/Decor"]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 314.0
+offset_right = 2135.0
+offset_bottom = 2362.0
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("8_qhru3")
+
+[node name="TextureRect2" type="TextureRect" parent="MainMenu/Decor"]
+layout_mode = 0
+offset_left = 837.0
+offset_top = 300.0
+offset_right = 2885.0
+offset_bottom = 2348.0
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("9_pnkpl")
+
+[node name="TextureRect2" type="TextureRect" parent="MainMenu/Decor/TextureRect2"]
+z_index = -1
+layout_mode = 0
+offset_left = 1272.0
+offset_top = 776.0
+offset_right = 3320.0
+offset_bottom = 2824.0
+rotation = -0.62831855
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("10_jyeja")
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="MainMenu/Decor/TextureRect2"]
+z_index = -1
+layout_mode = 0
+offset_left = 1384.0
+offset_top = 648.0
+offset_right = 3432.0
+offset_bottom = 2696.0
+rotation = 0.8848819
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("11_tmyld")
+stretch_mode = 4
+
+[node name="Start Game Button" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(400, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -300.0
+offset_right = 200.0
+offset_bottom = -234.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(2.382472e-06, 0.5257194, 0.36019382, 1)
+theme_override_fonts/font = ExtResource("7_ru575")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_jyeja")
+text = "START COLLECTING!"
+
+[node name="See Collection Button" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(400, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -199.0
+offset_right = 200.0
+offset_bottom = -133.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9125613, 0.669957, 0.9539698, 1)
+theme_override_fonts/font = ExtResource("7_ru575")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_tmyld")
+text = "SEE COLLECTION"
+
+[node name="Quit" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(500, 65)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9999866, 0.78865725, 0.7724575, 1)
+theme_override_fonts/font = ExtResource("7_ru575")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_o84x0")
+text = "GIVE UP THEFT... (QUIT)"
+
+[node name="Collection" type="HSplitContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -547.5
+offset_top = -250.0
+offset_right = 547.5
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollectionPanel" type="Panel" parent="Collection"]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ftf0b")
+script = ExtResource("2_5ji2y")
+missingTexture = ExtResource("3_5dnvl")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Collection/CollectionPanel"]
+layout_mode = 1
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 775.0
+offset_bottom = 475.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Collection/CollectionPanel/ScrollContainer"]
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+
+[node name="ExplanationPanel" type="Panel" parent="Collection"]
+custom_minimum_size = Vector2(283.155, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lvkef")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Collection/ExplanationPanel"]
+custom_minimum_size = Vector2(266.03, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_right = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hover an object to check if you have collected it, and read it's description!"
+
 [connection signal="pressed" from="Menu/PlayButton" to="." method="play_button_is_pressed"]
 [connection signal="pressed" from="Menu/CollectionButton" to="." method="collection_button_is_pressed"]
 [connection signal="pressed" from="GameOverScreen/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOverScreen/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="MainMenu/Start Game Button" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="MainMenu/See Collection Button" to="." method="_on_see_collection_button_pressed"]
+[connection signal="pressed" from="MainMenu/Quit" to="." method="_on_quit_pressed"]

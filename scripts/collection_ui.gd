@@ -29,6 +29,7 @@ func show_collection():
 	initialize_collection_ui()
 	self.get_parent().visible = true
 	visibility = true
+	print("WATCHING COLLECTION")
 
 func hide_collection():
 	self.get_parent().visible = false

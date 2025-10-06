@@ -211,6 +211,7 @@ func start_bubble_speak(text: String) -> void:
 	speech_bubble.visible = true
 
 func pause_speaking() -> void:
+	print("Pausing speaking")
 	speech_timer.stop()
 	speech_bubble.visible = false
 
