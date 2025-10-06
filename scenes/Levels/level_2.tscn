@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dejmu37xlc4nq"]
+[gd_scene load_steps=8 format=3 uid="uid://dejmu37xlc4nq"]
 
 [ext_resource type="Script" uid="uid://du8yultimxo88" path="res://scripts/level.gd" id="1_3s172"]
 [ext_resource type="PackedScene" uid="uid://dah3y6cnwuvhb" path="res://scenes/Objects/object_punk_earring.tscn" id="2_yye74"]
 [ext_resource type="PackedScene" uid="uid://d31la7lbgqeod" path="res://scenes/Objects/object_wave.tscn" id="3_v740s"]
 [ext_resource type="PackedScene" uid="uid://cpt378r0tx734" path="res://scenes/Objects/obj_joconde.tscn" id="4_048ga"]
 [ext_resource type="PackedScene" uid="uid://cwweperphcvw1" path="res://scenes/Obstacles/obs_camera.tscn" id="5_2fma4"]
+[ext_resource type="PackedScene" uid="uid://dtabtai4f6crm" path="res://scenes/Obstacles/obs_alarm_button.tscn" id="6_yye74"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyb7f"]
 size = Vector2(1000, 400)
@@ -46,7 +47,10 @@ initRotation = -45.0
 
 [node name="CameraObstacle3" parent="Obstacles" instance=ExtResource("5_2fma4")]
 position = Vector2(243.99994, -1)
-scale = Vector2(0.54760003, 0.54760003)
+scale = Vector2(0.74, 0.74)
 rayLength = 150.0
 rayWidth = 100.0
 initRotation = 180.0
+
+[node name="obs_alarm_button" parent="Obstacles" instance=ExtResource("6_yye74")]
+position = Vector2(250, -110)
