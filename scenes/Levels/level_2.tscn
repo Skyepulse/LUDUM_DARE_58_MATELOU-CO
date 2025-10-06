@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dejmu37xlc4nq"]
+[gd_scene load_steps=10 format=3 uid="uid://dejmu37xlc4nq"]
 
 [ext_resource type="Script" uid="uid://du8yultimxo88" path="res://scripts/level.gd" id="1_3s172"]
 [ext_resource type="PackedScene" uid="uid://dah3y6cnwuvhb" path="res://scenes/Objects/object_punk_earring.tscn" id="2_yye74"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cpt378r0tx734" path="res://scenes/Objects/obj_joconde.tscn" id="4_048ga"]
 [ext_resource type="PackedScene" uid="uid://cwweperphcvw1" path="res://scenes/Obstacles/obs_camera.tscn" id="5_2fma4"]
 [ext_resource type="PackedScene" uid="uid://h5uxb3jinakg" path="res://scenes/Objects/object_madame.tscn" id="5_v740s"]
+[ext_resource type="PackedScene" uid="uid://bgo422q8ldnc2" path="res://scenes/Objects/object_cri.tscn" id="6_048ga"]
 [ext_resource type="PackedScene" uid="uid://dtabtai4f6crm" path="res://scenes/Obstacles/obs_alarm_button.tscn" id="6_yye74"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyb7f"]
@@ -13,7 +14,7 @@ size = Vector2(1000, 400)
 
 [node name="Level2" type="Node2D" node_paths=PackedStringArray("possible_objects")]
 script = ExtResource("1_3s172")
-possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5"), NodePath("Grabbable Objects/ObjectRoot")]
+possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5"), NodePath("Grabbable Objects/ObjectRoot"), NodePath("Grabbable Objects/ObjectRoot7")]
 
 [node name="Zone d\'instanciation" type="Area2D" parent="."]
 collision_layer = 0
@@ -36,6 +37,10 @@ scale = Vector2(0.11, 0.11)
 
 [node name="ObjectRoot" parent="Grabbable Objects" instance=ExtResource("5_v740s")]
 scale = Vector2(0.06, 0.06)
+
+[node name="ObjectRoot7" parent="Grabbable Objects" instance=ExtResource("6_048ga")]
+position = Vector2(-1, 5)
+scale = Vector2(0.095, 0.095)
 
 [node name="Obstacles" type="Node2D" parent="."]
 

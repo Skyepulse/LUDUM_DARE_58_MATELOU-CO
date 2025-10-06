@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgo422q8ldnc2"]
+
+[ext_resource type="PackedScene" uid="uid://ds6qifjw0rlpu" path="res://scenes/grabbable_object.tscn" id="1_equ5j"]
+[ext_resource type="Texture2D" uid="uid://pmdxmsodgg8y" path="res://img/cri.png" id="2_2v2nd"]
+
+[node name="ObjectRoot" instance=ExtResource("1_equ5j")]
+objectName = "THE SHOUT"
+objectDescription = "Quoicoubeh"
+INDEX = 7
+texture = ExtResource("2_2v2nd")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_2v2nd")
+
+[node name="CollisionShape2D" parent="ObjectHitbox" index="0"]
+scale = Vector2(11.945, 15.485)
