@@ -65,6 +65,7 @@ func escape_is_pressed() -> void:
 		play_button_is_pressed()
 	elif Signals.game_state == Signals.INGAME:
 		Signals.game_state = Signals.PAUSED
+		Signals.emit_signal("game_paused")
 		suspicion_bar.hideSuspicionBar()
 		menu.visible = true
 	elif Signals.game_state == Signals.COLLECTION:
@@ -76,6 +77,10 @@ func escape_is_pressed() -> void:
 		menu.visible = true
 		
 func play_button_is_pressed() -> void:
+	if Signals.game_state == Signals.START:
+		Signals.emit_signal("game_started")
+	elif Signals.game_state == Signals.PAUSED:
+		Signals.emit_signal("game_unpaused")
 	Signals.game_state = Signals.INGAME
 	menu.visible = false
 	suspicion_bar.showSuspicionBar()
