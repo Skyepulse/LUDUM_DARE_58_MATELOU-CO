@@ -89,6 +89,7 @@ func gameOver():
 	game_over_flag = true
 	suspicionDecayTimer.stop()
 	canDecrease = false
+	print("GAMEMANAGER: GAME OVER")
 
 func isHandRetracting() -> bool:
 	if Player:
@@ -102,6 +103,9 @@ func _process(delta: float):
 		decreaseSuspicion(suspicionDecayRate * delta)
 
 func increaseSuspicion(amount: float):
+	if game_over_flag:
+		return
+		
 	if currentSuspicion + amount > maxSuspicion:
 		gameOver()
 		return
@@ -133,6 +137,7 @@ func collect_object(index: int) -> void:
 		CollectedDictionary[index] += 1
 		if infoDictionary.has(index):
 			infoDictionary[index].count += 1
+			Signals.emit_signal("move_scene")
 		else:
 			push_error("GameManager: Collected object with index %d has no info entry!" % index)
 	else:

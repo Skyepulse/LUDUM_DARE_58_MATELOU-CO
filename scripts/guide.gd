@@ -72,11 +72,6 @@ func _process(delta: float) -> void:
 		var suspicion_increase_value = does_guide_get_suspicious()
 		if suspicion_increase_value > 0.0:
 			GameManager.increaseSuspicion(suspicion_increase_value * delta)
-	
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.is_pressed():
-		if event.keycode == KEY_SPACE:
-			Signals.emit_signal("move_scene")
 
 func start_moving() -> void:
 	if not Signals.is_moving:
