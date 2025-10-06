@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://de8xq0cmgi1er" path="res://scenes/thief.tscn" id="3_emqn2"]
 [ext_resource type="PackedScene" uid="uid://dejmu37xlc4nq" path="res://scenes/Levels/level_2.tscn" id="3_ilxj7"]
 [ext_resource type="PackedScene" uid="uid://cd1orhs5wsqdi" path="res://scenes/Levels/level_3.tscn" id="4_4a4v8"]
-[ext_resource type="PackedScene" uid="uid://c6o0m3gmruvu4" path="res://scenes/soundtrack.tscn" id="7_snln7"]
+[ext_resource type="PackedScene" path="res://scenes/soundtrack.tscn" id="7_snln7"]
 
 [node name="MainGameScene" type="Node2D"]
 script = ExtResource("1_oa6bs")
@@ -26,3 +26,11 @@ position = Vector2(187, 363)
 scale = Vector2(0.4, 0.4)
 
 [node name="Soundtrack" parent="." instance=ExtResource("7_snln7")]
+
+[node name="NextLevel" type="Label" parent="."]
+offset_left = -1.0
+offset_top = 115.0
+offset_right = 1149.0
+offset_bottom = 138.0
+text = "The guide has finished explaining, press space to go on to the next piece"
+horizontal_alignment = 1

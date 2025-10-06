@@ -265,3 +265,7 @@ func _on_speech_timer_timeout() -> void:
 		speech_bubble.visible = false
 		speech_timer.stop()
 		labeltext = ""
+		
+		Signals.emit_signal("guide_finished")
+		
+		print("guide finished")
