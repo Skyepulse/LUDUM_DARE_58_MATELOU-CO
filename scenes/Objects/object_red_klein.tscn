@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://xk7c07ru3ouu"]
+
+[ext_resource type="PackedScene" uid="uid://ds6qifjw0rlpu" path="res://scenes/grabbable_object.tscn" id="1_sivex"]
+[ext_resource type="Texture2D" uid="uid://bviy7oau7andx" path="res://img/rougeKlein.png" id="2_lrtdw"]
+
+[node name="ObjectRoot" instance=ExtResource("1_sivex")]
+objectName = "Red By Calvin Klein"
+objectDescription = "I thought it was an underwear company ...?
+
+"
+INDEX = 8
+texture = ExtResource("2_lrtdw")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_lrtdw")
+
+[node name="CollisionShape2D" parent="ObjectHitbox" index="0"]
+scale = Vector2(15.8, 15.8)

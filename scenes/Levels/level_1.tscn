@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dbebkjarp70yc"]
+[gd_scene load_steps=17 format=3 uid="uid://dbebkjarp70yc"]
 
 [ext_resource type="Script" uid="uid://du8yultimxo88" path="res://scripts/level.gd" id="1_ptgt0"]
 [ext_resource type="PackedScene" uid="uid://ckbiqrktc354i" path="res://scenes/Objects/object_moai.tscn" id="2_ac15f"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://h5uxb3jinakg" path="res://scenes/Objects/object_madame.tscn" id="7_l5ivm"]
 [ext_resource type="PackedScene" uid="uid://cwweperphcvw1" path="res://scenes/Obstacles/obs_camera.tscn" id="7_y368g"]
 [ext_resource type="PackedScene" uid="uid://bgo422q8ldnc2" path="res://scenes/Objects/object_cri.tscn" id="8_xxpsm"]
+[ext_resource type="PackedScene" uid="uid://xk7c07ru3ouu" path="res://scenes/Objects/object_red_klein.tscn" id="10_4p1o3"]
 [ext_resource type="Texture2D" uid="uid://dgbjoa5rmtj8l" path="res://img/column.png" id="10_j85eu"]
 
 [sub_resource type="Gradient" id="Gradient_j85eu"]
@@ -28,9 +29,9 @@ gradient = SubResource("Gradient_4p1o3")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyb7f"]
 size = Vector2(1000, 400)
 
-[node name="Level1" type="Node2D" node_paths=PackedStringArray("possible_objects")]
+[node name="Level2" type="Node2D" node_paths=PackedStringArray("possible_objects")]
 script = ExtResource("1_ptgt0")
-possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5"), NodePath("Grabbable Objects/ObjectRoot"), NodePath("Grabbable Objects/ObjectRoot3"), NodePath("Grabbable Objects/ObjectRoot6"), NodePath("Grabbable Objects/ObjectRoot7")]
+possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5"), NodePath("Grabbable Objects/ObjectRoot"), NodePath("Grabbable Objects/ObjectRoot3"), NodePath("Grabbable Objects/ObjectRoot6"), NodePath("Grabbable Objects/ObjectRoot7"), NodePath("Grabbable Objects/ObjectRoot8")]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 visible = false
@@ -91,6 +92,10 @@ scale = Vector2(0.05, 0.05)
 [node name="ObjectRoot7" parent="Grabbable Objects" instance=ExtResource("8_xxpsm")]
 position = Vector2(276, 4)
 scale = Vector2(0.095, 0.095)
+
+[node name="ObjectRoot8" parent="Grabbable Objects" instance=ExtResource("10_4p1o3")]
+position = Vector2(283, 3)
+scale = Vector2(0.075, 0.075)
 
 [node name="Obstacles" type="Node2D" parent="."]
 position = Vector2(37, -7)

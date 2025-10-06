@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ci8fttas4hqo"]
+[gd_scene load_steps=10 format=3 uid="uid://ci8fttas4hqo"]
 
 [ext_resource type="Script" uid="uid://wtar0lle4jp2" path="res://scripts/Singletons/GameManager.gd" id="1_hwd4i"]
 [ext_resource type="PackedScene" uid="uid://cpt378r0tx734" path="res://scenes/Objects/obj_joconde.tscn" id="2_oo155"]
@@ -8,9 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://d31la7lbgqeod" path="res://scenes/Objects/object_wave.tscn" id="6_ternb"]
 [ext_resource type="PackedScene" uid="uid://h5uxb3jinakg" path="res://scenes/Objects/object_madame.tscn" id="7_q8mjp"]
 [ext_resource type="PackedScene" uid="uid://bgo422q8ldnc2" path="res://scenes/Objects/object_cri.tscn" id="8_jdad8"]
+[ext_resource type="PackedScene" uid="uid://xk7c07ru3ouu" path="res://scenes/Objects/object_red_klein.tscn" id="9_k4jhu"]
 
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_hwd4i")
-all_possible_objects = Array[PackedScene]([ExtResource("2_oo155"), ExtResource("3_eaq8r"), ExtResource("4_ternb"), ExtResource("5_eaq8r"), ExtResource("6_ternb"), ExtResource("7_q8mjp"), ExtResource("8_jdad8")])
+all_possible_objects = Array[PackedScene]([ExtResource("2_oo155"), ExtResource("3_eaq8r"), ExtResource("4_ternb"), ExtResource("5_eaq8r"), ExtResource("6_ternb"), ExtResource("7_q8mjp"), ExtResource("8_jdad8"), ExtResource("9_k4jhu")])
 
 [node name="DecreaseSuspicionTimer" type="Timer" parent="."]

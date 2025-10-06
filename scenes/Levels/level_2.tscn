@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dejmu37xlc4nq"]
+[gd_scene load_steps=16 format=3 uid="uid://dejmu37xlc4nq"]
 
 [ext_resource type="Script" uid="uid://du8yultimxo88" path="res://scripts/level.gd" id="1_3s172"]
 [ext_resource type="PackedScene" uid="uid://dah3y6cnwuvhb" path="res://scenes/Objects/object_punk_earring.tscn" id="2_yye74"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://h5uxb3jinakg" path="res://scenes/Objects/object_madame.tscn" id="5_v740s"]
 [ext_resource type="PackedScene" uid="uid://bgo422q8ldnc2" path="res://scenes/Objects/object_cri.tscn" id="6_048ga"]
 [ext_resource type="PackedScene" uid="uid://dtabtai4f6crm" path="res://scenes/Obstacles/obs_alarm_button.tscn" id="6_yye74"]
+[ext_resource type="PackedScene" uid="uid://xk7c07ru3ouu" path="res://scenes/Objects/object_red_klein.tscn" id="8_a0dj8"]
 [ext_resource type="Texture2D" uid="uid://dgbjoa5rmtj8l" path="res://img/column.png" id="9_2fma4"]
 
 [sub_resource type="Gradient" id="Gradient_bkp1e"]
@@ -29,7 +30,7 @@ size = Vector2(1000, 400)
 
 [node name="Level2" type="Node2D" node_paths=PackedStringArray("possible_objects")]
 script = ExtResource("1_3s172")
-possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5"), NodePath("Grabbable Objects/ObjectRoot"), NodePath("Grabbable Objects/ObjectRoot7")]
+possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5"), NodePath("Grabbable Objects/ObjectRoot"), NodePath("Grabbable Objects/ObjectRoot7"), NodePath("Grabbable Objects/ObjectRoot3")]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
 visible = false
@@ -76,6 +77,9 @@ scale = Vector2(0.06, 0.06)
 
 [node name="ObjectRoot7" parent="Grabbable Objects" instance=ExtResource("6_048ga")]
 position = Vector2(-1, 5)
+scale = Vector2(0.095, 0.095)
+
+[node name="ObjectRoot3" parent="Grabbable Objects" instance=ExtResource("8_a0dj8")]
 scale = Vector2(0.095, 0.095)
 
 [node name="Obstacles" type="Node2D" parent="."]
