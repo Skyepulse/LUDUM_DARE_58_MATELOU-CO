@@ -118,8 +118,8 @@ func _process(delta: float):
 		decreaseSuspicion(suspicionDecayRate * delta)
 
 	if ready_for_next_level:
-		# If pressed space, continue to next level
-		if Input.is_key_pressed(KEY_SPACE):
+		# If pressed space, continue to next level or click on screen
+		if Input.is_key_pressed(KEY_SPACE) or Input.mouse_button_is_pressed(MOUSE_BUTTON_LEFT):
 			ready_for_next_level = false
 			Guide.on_game_unpaused()
 			Signals.emit_signal("move_scene")
