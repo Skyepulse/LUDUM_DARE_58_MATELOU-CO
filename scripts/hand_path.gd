@@ -152,6 +152,7 @@ func _ready() -> void:
 	GameManager.Player = self
 	orient_hand()
 	Signals.connect("move_scene", reset_arm)
+	Signals.connect("start_level", reset_arm)
 	Signals.connect("set_input", set_input)
 
 	initial_position = get_parent().position

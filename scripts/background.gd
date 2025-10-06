@@ -51,4 +51,4 @@ func restart_from_beginning() -> void:
 	GameManager.Guide.position = GameManager.Guide.initial_position
 	GameManager.Player.get_parent().position = GameManager.Player.initial_position
 
-	#Signals.emit_signal("start_level")
+	Signals.emit_signal("start_level")
