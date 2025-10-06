@@ -26,3 +26,6 @@ position = Vector2(187, 363)
 scale = Vector2(0.4, 0.4)
 
 [node name="Soundtrack" parent="." instance=ExtResource("7_snln7")]
+
+[node name="GroundLimit" type="Node2D" parent="."]
+position = Vector2(539, 448)
