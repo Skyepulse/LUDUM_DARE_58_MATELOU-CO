@@ -1,6 +1,7 @@
 extends Node
 
 signal move_scene
+signal activate_vignette_effect
 signal start_level
 signal set_input(state: bool)
 

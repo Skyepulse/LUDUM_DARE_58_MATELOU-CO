@@ -9,6 +9,13 @@ extends Control
 @onready var collection_panel: Panel = $Collection/CollectionPanel
 @onready var suspicion_bar: CenterContainer = $SuspicionBar
 @onready var progress_bar: ProgressBar = $SuspicionBar/ProgressBar
+@onready var effects: Control = $Effects
+@onready var vignette: TextureRect = $Effects/Vignette
+@onready var timer: Timer = $Timer
+
+@export var vignette_animation_time: float = 1.0
+@export var vignette_max_radius: float = 1.0
+@export var vignette_min_radius: float = 0.6
 
 var screenSize:Vector2
 
@@ -41,6 +48,12 @@ func _ready() -> void:
 	
 	collection_panel.hide_collection()
 	suspicion_bar.hideSuspicionBar()
+
+	timer.timeout.connect(_on_Timer_timeout)
+	vignette.visible = false
+	vignette.material.set_shader_parameter("inner_radius", vignette_max_radius)
+
+	Signals.connect("activate_vignette_effect", play_vignette_animation)
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
@@ -70,3 +83,27 @@ func collection_button_is_pressed() -> void:
 	menu.visible = false
 	collection_panel.show_collection()
 	
+func play_vignette_animation():
+	vignette.visible = true
+	timer.wait_time = vignette_animation_time
+	timer.start()
+
+func _process(_delta: float) -> void:
+
+	if timer.time_left == 0.0:
+		return
+
+	var time_left = timer.time_left
+	var half_time = vignette_animation_time / 2.0
+	if time_left > half_time:
+		var t = (vignette_animation_time - time_left) / half_time
+		var radius = lerp(vignette_max_radius, vignette_min_radius, t)
+		vignette.material.set_shader_parameter("inner_radius", radius)
+	else:
+		var t = (half_time - time_left) / half_time
+		var radius = lerp(vignette_min_radius, vignette_max_radius, t)
+		vignette.material.set_shader_parameter("inner_radius", radius)
+
+func _on_Timer_timeout() -> void:
+	vignette.visible = false
+	timer.stop()

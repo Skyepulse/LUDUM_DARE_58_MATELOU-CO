@@ -51,12 +51,14 @@ scale = Vector2(0.15, 0.15)
 position = Vector2(-275, -130)
 scale = Vector2(0.74, 0.74)
 rayLength = 200.0
+rayWidth = 100.0
 initRotation = 90.0
 
 [node name="CameraObstacle2" parent="Obstacles" instance=ExtResource("7_y368g")]
 position = Vector2(-106, 125)
 scale = Vector2(0.74, 0.74)
 rayLength = 200.0
+rayWidth = 100.0
 initRotation = -90.0
 
 [node name="CameraObstacle3" parent="Obstacles" instance=ExtResource("7_y368g")]

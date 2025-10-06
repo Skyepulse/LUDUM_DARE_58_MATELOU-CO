@@ -21,6 +21,10 @@ GameManager="*res://scenes/game_manager.tscn"
 MainCamera2D="*res://scenes/main_camera_2d.tscn"
 Signals="*res://scripts/Singletons/Signals.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 Player=""
