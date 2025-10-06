@@ -133,6 +133,7 @@ func collect_object(index: int) -> void:
 		CollectedDictionary[index] += 1
 		if infoDictionary.has(index):
 			infoDictionary[index].count += 1
+			Signals.emit_signal("move_scene")
 		else:
 			push_error("GameManager: Collected object with index %d has no info entry!" % index)
 	else:

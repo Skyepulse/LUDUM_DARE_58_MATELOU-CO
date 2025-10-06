@@ -8,6 +8,7 @@ func _ready() -> void:
 	Signals.connect("restart_game", start_main_music)
 	Signals.connect("game_paused", paused_main_music)
 	Signals.connect("game_unpaused", unpaused_main_music)
+	Signals.connect("game_over", paused_main_music)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
