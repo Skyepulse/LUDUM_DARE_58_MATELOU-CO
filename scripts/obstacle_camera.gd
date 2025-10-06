@@ -47,6 +47,9 @@ func _on_ray_box_area_entered(area: Area2D) -> void:
 
     if area.is_in_group("Player"):
 
+        if not flag:
+            Signals.emit_signal("activate_vignette_effect")
+            
         enteredTimes += 1
         print("Player detected! Entered times: %d" % enteredTimes)
 
