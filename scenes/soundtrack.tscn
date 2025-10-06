@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6o0m3gmruvu4"]
+
+[ext_resource type="Script" uid="uid://c1rl47acg5hcc" path="res://scripts/soundtrack.gd" id="1_jgnpi"]
+[ext_resource type="AudioStream" uid="uid://be5g8crnu581i" path="res://soundtracks/vol.mp3" id="2_orf8r"]
+[ext_resource type="AudioStream" uid="uid://crfs3285mix2" path="res://soundtracks/fuite.mp3" id="3_ugpcd"]
+[ext_resource type="AudioStream" uid="uid://blynlbetg77ub" path="res://soundtracks/speech.mp3" id="4_i5wvw"]
+
+[node name="Soundtrack" type="Node"]
+script = ExtResource("1_jgnpi")
+
+[node name="vol" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_orf8r")
+
+[node name="fuite" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ugpcd")
+
+[node name="speech" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_i5wvw")

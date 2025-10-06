@@ -13,6 +13,7 @@ func _ready() -> void:
 	get_viewport().size_changed.connect(resize)
 	resize()
 	Signals.connect("move_scene", setIsMoving)
+	Signals.connect("restart_game", restart_from_beginning)
 	
 func init() -> void:
 	guide_offset = MainCamera2D.position - GameManager.Guide.position
@@ -40,3 +41,14 @@ func _process(delta: float) -> void:
 	if Signals.game_state == Signals.INGAME:
 		if Signals.is_moving:
 			move(delta)
+
+func restart_from_beginning() -> void:
+	MainCamera2D.position = Vector2.ZERO
+	GameManager.level_index = 0
+	GameManager.object_index = 0
+	Signals.is_moving = false
+
+	GameManager.Guide.position = GameManager.Guide.initial_position
+	GameManager.Player.get_parent().position = GameManager.Player.initial_position
+
+	#Signals.emit_signal("start_level")
