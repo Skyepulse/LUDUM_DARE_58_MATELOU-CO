@@ -5,23 +5,11 @@
 
 [node name="ObjectRoot" instance=ExtResource("1_equ5j")]
 objectName = "THE SHOUT"
-objectDescription = "You can hear it shout \"QUOICOUBEH\" in the distance...
+objectDescription = "Eduardo Mungão was born in Brazil, Belem in 2142. The original name of this piece \"O grito da mulher\". Mungão recalled that he had been out for a walk when he stumbled on an old graffiti in an alley, etched by the women of the \"Daughters of the Jordan\", women who had fled a genocide in Extended Europe, commemorating their lost family members. He sensed an \"infinite scream shattering through the red painted concrete\". 
 
-You can hear it shout \"QUOICOUBEH\" in the distance...
+The scene is along the imagined banks of the Mediterranean Sea, with a ship sailing away to burned grounds, a recurring theme in Mungão's paintings, most probably an homage to his native Amazon.
 
-You can hear it shout \"QUOICOUBEH\" in the distance...
-
-You can hear it shout \"QUOICOUBEH\" in the distance...
-
-You can hear it shout \"QUOICOUBEH\" in the distance...
-
-You can hear it shout \"QUOICOUBEH\" in the distance...
-
-You can hear it shout \"QUOICOUBEH\" in the distance...
-
-You can hear it shout \"QUOICOUBEH\" in the distance...
-
-You can hear it shout \"QUOICOUBEH\" in the distance..."
+This painting was executed in 2176, and given to the \"Daughters of the Jordan\", probably as a tax write-off. It has since then been stolen twice, but always recovered in various private collections. Time passed and it was forgotten, before our museum saved it and displayed it to the public."
 INDEX = 7
 texture = ExtResource("2_2v2nd")
 
