@@ -126,7 +126,7 @@ func _process(delta: float):
 			MainCamera2D.GameUI.hide_next_level_text()
 
 func increaseSuspicion(amount: float):
-	if game_over_flag:
+	if game_over_flag or ready_for_next_level:
 		return
 		
 	if currentSuspicion + amount > maxSuspicion:

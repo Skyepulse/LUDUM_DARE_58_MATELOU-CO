@@ -118,7 +118,7 @@ position = Vector2(-159, 7)
 position = Vector2(-79, -74)
 
 [node name="obs_alarm_button" parent="Obstacles/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button" instance=ExtResource("11_3bqyq")]
-position = Vector2(-19, -106)
+position = Vector2(-18, -106)
 
 [node name="obs_alarm_button" parent="Obstacles/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button" instance=ExtResource("11_3bqyq")]
 position = Vector2(22, -121)
@@ -133,7 +133,7 @@ position = Vector2(137, 21)
 position = Vector2(51, 150)
 
 [node name="obs_alarm_button" parent="Obstacles/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button" instance=ExtResource("11_3bqyq")]
-position = Vector2(6, 113)
+position = Vector2(-27, 193)
 
 [node name="obs_alarm_button" parent="Obstacles/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button" instance=ExtResource("11_3bqyq")]
 position = Vector2(-479, -247)
@@ -143,3 +143,9 @@ position = Vector2(15, 90)
 
 [node name="obs_alarm_button" parent="Obstacles/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button/obs_alarm_button" instance=ExtResource("11_3bqyq")]
 position = Vector2(530, -125)
+
+[node name="obs_alarm_button2" parent="Obstacles" instance=ExtResource("11_3bqyq")]
+position = Vector2(-289, 215)
+
+[node name="obs_alarm_button3" parent="Obstacles" instance=ExtResource("11_3bqyq")]
+position = Vector2(-135, -204)
