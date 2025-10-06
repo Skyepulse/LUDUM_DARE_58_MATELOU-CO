@@ -5,12 +5,13 @@
 
 [node name="ObjectRoot" instance=ExtResource("1_panl8")]
 objectName = "Moai"
-objectDescription = "Girl with a punk earring is a 25th century rendition of an older painting, Girl with a pearl earring. It was painted in 2498 by Kevin Vermeer, the actual descendant of Johannes Vermeer, painter of the Girl with a pearl earring.Due to acidification of the oceans of Mother Earth, the mollusk responsible for the production of pearls, called an oyster, disappeared. The young artist decided to replicate his ancestor's masterpiece to emphasize the importance of nature in art, and our dependance on the environment as humans.The original painting was stolen from the Mauritshuis in the Extended European Union and never found again. An excellent replica can be admired in the British Museum. We swear it is a replica.
-Due to acidification of the oceans of Mother Earth, the mollusk responsible for the production of pearls, called an oyster, disappeared. The young artist decided to replicate his ancestor's masterpiece to emphasize the importance of nature in art, and our dependance on the environment as humans.
+objectDescription = "Moai or moʻai are monolithic human figures carved by the Rapa Nui people on Rapa Nui (Easter Island) in eastern Polynesia between the years 1250 and 1500.
 
-The original painting was stolen from the Mauritshuis in the Extended European Union and never found again. An excellent replica can be admired in the British Museum. 
+Nearly half are still on Rapa Nui, but multiple have been transported to terraformed planets around the human world.
 
-We swear it is a replica."
+Almost all moai have overly large heads, which account for three-eighths of the size of the whole statue. They also have no legs. The moai are chiefly the living faces (aringa ora) of deified ancestors (aringa ora ata tepuna).
+
+This statue was acquired fair and square, despite what the government of the Unified Southern Americas may say."
 INDEX = 4
 texture = ExtResource("2_p6q4c")
 

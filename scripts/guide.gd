@@ -26,10 +26,10 @@ var is_talking: bool = false
 @export var looking_animation_frame_duration: float = 2.0
 
 @export var speech_speed: float = 15.0 # Characters per second
-#var guide_original_texts: Array[String] = [
-#	"Welcome to the Worldwide Contributions aisle of the British Consortium's Museum!\
-#	We are very proud to announce that the citizen from the Dastardly French Alliance, the Greek Front of Unity, and the Independant Ireland are not welcomed in our establishment. If you are from one of these, please turn yourself in at your earliest convenience."
-#]
+var guide_welcome: Array[String] = [
+	"Welcome to the Worldwide Contributions aisle of the British Consortium's Museum!\
+	We are very proud to announce that the citizen from the Dastardly French Alliance, the Greek Front of Unity, and the Independant Ireland are not welcomed in our establishment. If you are from one of these, please turn yourself in at your earliest convenience."
+]
 
 var current_walking_sprite_index: int = 0
 var current_talking_sprite_index: int = 0
@@ -42,6 +42,8 @@ var current_looking_sprite_index: int = 0
 var speechString: String = ""
 var labeltext: String = ""
 const MAX_LABEL_LENGTH: int = 100
+
+var initial_position: Vector2
 
 func _ready() -> void:
 	GameManager.Guide = self
@@ -56,6 +58,10 @@ func _ready() -> void:
 	print("Walking animation duration: %f" % walking_animation_frame_duration)
 	print("Talking animation duration: %f" % talking_animation_frame_duration)
 	print("Looking animation duration: %f" % looking_animation_frame_duration)
+
+	initial_position = position
+	
+	stop_moving()
 	
 func _process(delta: float) -> void:
 	if Signals.game_state == Signals.INGAME:
@@ -87,7 +93,11 @@ func stop_moving() -> void:
 	Signals.is_moving = false
 	start_talking()
 	
-	var text = GameManager.infoDictionary[GameManager.object_index].description
+	var text: String
+	if GameManager.level_index == 0:
+		text = guide_welcome[0]
+	else:
+		text = GameManager.infoDictionary[GameManager.object_index].description
 	
 	start_bubble_speak(text)
 
@@ -131,6 +141,8 @@ func _on_timer_timeout() -> void:
 		start_looking_thief()
 
 func does_guide_get_suspicious() -> float:
+	if GameManager.level_index == 0:
+		return false
 	if Signals.is_moving or is_talking:
 		return false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bl372pp24j6jb"]
+[gd_scene load_steps=16 format=3 uid="uid://bl372pp24j6jb"]
 
 [ext_resource type="Script" uid="uid://dnxq7xae7ucl0" path="res://scripts/GameUI.gd" id="1_sjnlv"]
 [ext_resource type="Script" uid="uid://crwbsu7ltt0xd" path="res://scripts/collection_ui.gd" id="2_5ji2y"]
@@ -51,6 +51,35 @@ shader = ExtResource("5_lvkef")
 shader_parameter/inner_radius = 1.0
 shader_parameter/outer_radius = 2.0
 shader_parameter/vignette_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ru575"]
+bg_color = Color(0.16862746, 0.16862746, 0.16862746, 0.78431374)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lvkef"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhru3"]
+bg_color = Color(0.3104416, 0.47983503, 0.17399943, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.1675863, 0.23493522, 0.05586396, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pnkpl"]
+bg_color = Color(0.5977893, 0.36142427, 0.20096636, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.24421382, 0.15556678, 0.04080821, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -263,5 +292,81 @@ texture = ExtResource("5_ftf0b")
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="GameOverScreen" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="GameOverScreen"]
+custom_minimum_size = Vector2(1000, 450)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ru575")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOverScreen/Panel"]
+material = SubResource("CanvasItemMaterial_lvkef")
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 414.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 50
+theme_override_font_sizes/bold_italics_font_size = 50
+theme_override_font_sizes/italics_font_size = 50
+theme_override_font_sizes/mono_font_size = 50
+bbcode_enabled = true
+text = "[color=red]YOU HAVE BEEN CAUGHT[/color]
+
+The Guide's suspicions were confirmed, your theft in this museum ends here...
+
+...but is it really over?"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="Button" parent="GameOverScreen"]
+custom_minimum_size = Vector2(400, 70)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -170.845
+offset_right = 200.0
+offset_bottom = -100.84479
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_qhru3")
+text = "GO STEAL NEXT MUSEUM ?"
+
+[node name="MenuButton" type="Button" parent="GameOverScreen"]
+custom_minimum_size = Vector2(400, 70)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -76.875
+offset_right = 200.0
+offset_bottom = -6.875
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_pnkpl")
+text = "GO TO MENU
+"
+
 [connection signal="pressed" from="Menu/PlayButton" to="." method="play_button_is_pressed"]
 [connection signal="pressed" from="Menu/CollectionButton" to="." method="collection_button_is_pressed"]
+[connection signal="pressed" from="GameOverScreen/RestartButton" to="." method="_on_restart_button_pressed"]

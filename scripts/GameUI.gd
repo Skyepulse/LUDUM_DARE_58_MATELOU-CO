@@ -12,6 +12,7 @@ extends Control
 @onready var effects: Control = $Effects
 @onready var vignette: TextureRect = $Effects/Vignette
 @onready var timer: Timer = $Timer
+@onready var gameOverScreen: Control = $GameOverScreen
 
 @export var vignette_animation_time: float = 1.0
 @export var vignette_max_radius: float = 1.0
@@ -54,6 +55,10 @@ func _ready() -> void:
 	vignette.material.set_shader_parameter("inner_radius", vignette_max_radius)
 
 	Signals.connect("activate_vignette_effect", play_vignette_animation)
+
+	gameOverScreen.visible = false
+	Signals.connect("game_over", show_game_over_screen)
+	Signals.connect("restart_game", hide_game_over_screen)
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
@@ -114,3 +119,16 @@ func _process(_delta: float) -> void:
 func _on_Timer_timeout() -> void:
 	vignette.visible = false
 	timer.stop()
+
+func show_game_over_screen() -> void:
+	gameOverScreen.visible = true
+	suspicion_bar.hideSuspicionBar()
+	menu.visible = false
+	collection_panel.hide_collection()
+
+func hide_game_over_screen() -> void:
+	gameOverScreen.visible = false
+
+func _on_restart_button_pressed() -> void:
+	suspicion_bar.showSuspicionBar()
+	GameManager.startGame()
