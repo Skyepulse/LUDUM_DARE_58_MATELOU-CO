@@ -125,4 +125,5 @@ func hide_game_over_screen() -> void:
 	gameOverScreen.visible = false
 
 func _on_restart_button_pressed() -> void:
+	suspicion_bar.showSuspicionBar()
 	GameManager.startGame()
