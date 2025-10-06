@@ -9,7 +9,6 @@ var rng = RandomNumberGenerator.new()
 var last_object_index: int = -1
 var current_instantiated_levels: Array[Node2D] = []
 
-@onready var next_level: Label = $NextLevel
 
 func instantiate_objects():
 	var screen_size = get_viewport().get_visible_rect().size
@@ -36,30 +35,6 @@ func _ready() -> void:
 	instantiate_begin_button()
 	Signals.connect("move_scene", instantiate_objects)
 	Signals.connect("restart_game", restart_game)
-	# Signals.emit_signal("move_scene")
-	# Signals.emit_signal("set_input", false)
-	
-	Signals.connect("guide_finished", on_guide_finished)
-	next_level.hide()
-	
-		
-var waiting_for_continue: bool = false
-
-func on_guide_finished() -> void:
-	next_level.show()
-	waiting_for_continue = true
-
-func _input(event: InputEvent) -> void:
-	if false:
-		if event is InputEventKey and event.is_pressed():
-			if event.keycode == KEY_SPACE:
-				space_pressed()
-
-func space_pressed() -> void:
-	waiting_for_continue = false
-	next_level.hide()
-	
-	Signals.emit_signal("move_scene")
 	
 func restart_game():
 	for level in current_instantiated_levels:
