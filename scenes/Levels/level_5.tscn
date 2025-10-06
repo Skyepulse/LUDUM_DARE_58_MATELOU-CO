@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://cnm45kl8jp1k8"]
+
+[ext_resource type="Script" uid="uid://du8yultimxo88" path="res://scripts/level.gd" id="1_p2sfw"]
+[ext_resource type="Texture2D" uid="uid://dgbjoa5rmtj8l" path="res://img/column.png" id="2_4jya7"]
+[ext_resource type="PackedScene" uid="uid://cw0fhvhlua8vd" path="res://scenes/Objects/object_vase.tscn" id="3_6jqwr"]
+[ext_resource type="PackedScene" uid="uid://ckbiqrktc354i" path="res://scenes/Objects/object_moai.tscn" id="4_lk5u8"]
+[ext_resource type="PackedScene" uid="uid://cwweperphcvw1" path="res://scenes/Obstacles/obs_camera.tscn" id="5_lqawa"]
+[ext_resource type="PackedScene" uid="uid://dtabtai4f6crm" path="res://scenes/Obstacles/obs_alarm_button.tscn" id="6_6651f"]
+
+[sub_resource type="Gradient" id="Gradient_j85eu"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.7487182, 0.24516487, 0.34379515, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wqrpq"]
+gradient = SubResource("Gradient_j85eu")
+
+[sub_resource type="Gradient" id="Gradient_4p1o3"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.7162962, 0.7162962, 0.7162962, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r15cd"]
+gradient = SubResource("Gradient_4p1o3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yyb7f"]
+size = Vector2(1000, 400)
+
+[node name="Level1" type="Node2D" node_paths=PackedStringArray("possible_objects")]
+script = ExtResource("1_p2sfw")
+possible_objects = [NodePath("Grabbable Objects/ObjectRoot"), NodePath("Grabbable Objects/ObjectRoot3")]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+visible = false
+scroll_offset = Vector2(-571, -233)
+repeat_times = 3
+
+[node name="mur" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(575.5, 225.375)
+scale = Vector2(18.015625, 6.9570313)
+texture = SubResource("GradientTexture2D_wqrpq")
+
+[node name="colonne" type="Sprite2D" parent="Parallax2D"]
+z_index = 1
+position = Vector2(-2.46114e-32, 231.99998)
+scale = Vector2(0.2013982, 0.22530161)
+texture = ExtResource("2_4jya7")
+
+[node name="sol" type="Sprite2D" parent="Parallax2D"]
+position = Vector2(576, 548)
+scale = Vector2(18, 3.1250005)
+texture = SubResource("GradientTexture2D_r15cd")
+
+[node name="Zone d\'instanciation" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone d\'instanciation"]
+shape = SubResource("RectangleShape2D_yyb7f")
+debug_color = Color(0.8352941, 0.36078432, 0.3882353, 0.05882353)
+
+[node name="Grabbable Objects" type="Node2D" parent="."]
+
+[node name="ObjectRoot3" parent="Grabbable Objects" instance=ExtResource("3_6jqwr")]
+position = Vector2(265, 149)
+scale = Vector2(0.125, 0.125)
+
+[node name="ObjectRoot" parent="Grabbable Objects" instance=ExtResource("4_lk5u8")]
+position = Vector2(277, 98)
+scale = Vector2(0.15, 0.15)
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="CameraObstacle" parent="Obstacles" instance=ExtResource("5_lqawa")]
+position = Vector2(-159, 68)
+rotation = 3.1415927
+scale = Vector2(0.74, 0.74)
+rayWidth = 50.0
+
+[node name="CameraObstacle2" parent="Obstacles" instance=ExtResource("5_lqawa")]
+position = Vector2(-158.99997, 138)
+rotation = 3.1415927
+scale = Vector2(0.74, 0.74)
+rayWidth = 50.0
+
+[node name="CameraObstacle3" parent="Obstacles" instance=ExtResource("5_lqawa")]
+position = Vector2(-158.99997, 210)
+rotation = 3.1415927
+scale = Vector2(0.74, 0.74)
+rayWidth = 50.0
+
+[node name="CameraObstacle4" parent="Obstacles" instance=ExtResource("5_lqawa")]
+position = Vector2(-159, -3)
+rotation = 3.1415927
+scale = Vector2(0.74, 0.74)
+rayWidth = 50.0
+
+[node name="CameraObstacle5" parent="Obstacles" instance=ExtResource("5_lqawa")]
+position = Vector2(142, -145)
+rotation = 3.1415927
+scale = Vector2(0.74, 0.74)
+rayWidth = 50.0
+
+[node name="CameraObstacle6" parent="Obstacles" instance=ExtResource("5_lqawa")]
+position = Vector2(142.00003, -75)
+rotation = 3.1415927
+scale = Vector2(0.74, 0.74)
+rayWidth = 50.0
+
+[node name="CameraObstacle7" parent="Obstacles" instance=ExtResource("5_lqawa")]
+position = Vector2(142.00003, -3)
+rotation = 3.1415927
+scale = Vector2(0.74, 0.74)
+rayWidth = 50.0
+
+[node name="CameraObstacle8" parent="Obstacles" instance=ExtResource("5_lqawa")]
+position = Vector2(142, -216)
+rotation = 3.1415927
+scale = Vector2(0.74, 0.74)
+rayWidth = 50.0
+
+[node name="obs_alarm_button" parent="." instance=ExtResource("6_6651f")]
+position = Vector2(56, 104)
