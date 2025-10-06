@@ -39,6 +39,7 @@ func reset_arm() -> void:
 		arm_curve.remove_point(arm_curve.point_count - 1)
 	
 	orient_hand()
+	grabbed_object = null
 	
 
 func update_line():
@@ -131,7 +132,6 @@ func retract(delta: float) -> void:
 	if holding_object:
 		if grabbed_object.INDEX == 0:
 			grabbed_object = null
-			print(" ungrabbed player ")
 			Signals.emit_signal("move_scene")
 			Signals.emit_signal("set_input", false);
 		else:
@@ -172,9 +172,10 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 func collect_object():
 	if grabbed_object != null:
 		if grabbed_object.INDEX != 0:
+			grabbed_object = null
 			GameManager.collect_object(grabbed_object.INDEX)
 			grabbed_object.queue_free()
-
+			
 func is_on_object() -> bool:
 	return grabbed_object != null
 
