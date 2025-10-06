@@ -18,5 +18,6 @@ func startup_scene(no_index: int):
         if obj == null or obj.get("INDEX") != random_object.get("INDEX"):
             obj.visible = false
             obj.queue_free()
+            print("Freed an unselected object")
 
     return random_object.get("INDEX")
