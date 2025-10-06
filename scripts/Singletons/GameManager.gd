@@ -30,6 +30,8 @@ var all_indices: Array = []
 var level_index:int = 0
 var object_index: int = 0
 
+var game_over_flag: bool = false
+
 func _ready():
 
 	CollectedDictionary.clear()
@@ -70,6 +72,23 @@ func _ready():
 	if maxSuspicion <= 0:
 		maxSuspicion = 100.0
 
+func startGame():
+	currentSuspicion = 0.0
+	canDecrease = true
+	game_over_flag = false
+	Signals.emit_signal("restart_game")
+	Signals.emit_signal("set_input", true)
+	Signals.game_state = Signals.INGAME
+	print("GameManager: Game Started Again")
+
+func gameOver():
+	Signals.emit_signal("game_over")
+	Signals.emit_signal("set_input", false)
+	Signals.game_state = Signals.PAUSED
+	game_over_flag = true
+	suspicionDecayTimer.stop()
+	canDecrease = false
+
 func isHandRetracting() -> bool:
 	if Player:
 		return Player.retracting
@@ -82,6 +101,10 @@ func _process(delta: float):
 		decreaseSuspicion(suspicionDecayRate * delta)
 
 func increaseSuspicion(amount: float):
+	if currentSuspicion + amount > maxSuspicion:
+		gameOver()
+		return
+
 	currentSuspicion = clamp(currentSuspicion + amount, 0, maxSuspicion)
 	MainCamera2D.GameUI.setSuspicion(currentSuspicion)
 

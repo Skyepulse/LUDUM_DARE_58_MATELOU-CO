@@ -43,6 +43,8 @@ var speechString: String = ""
 var labeltext: String = ""
 const MAX_LABEL_LENGTH: int = 100
 
+var initial_position: Vector2
+
 func _ready() -> void:
 	GameManager.Guide = self
 	speech_bubble.visible = false
@@ -56,6 +58,8 @@ func _ready() -> void:
 	print("Walking animation duration: %f" % walking_animation_frame_duration)
 	print("Talking animation duration: %f" % talking_animation_frame_duration)
 	print("Looking animation duration: %f" % looking_animation_frame_duration)
+
+	initial_position = position
 	
 func _process(delta: float) -> void:
 	if Signals.game_state == Signals.INGAME:
