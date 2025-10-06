@@ -133,7 +133,7 @@ func retract(delta: float) -> void:
 			Signals.emit_signal("move_scene")
 			Signals.emit_signal("set_input", false);
 		else:
-			grabbed_object.set_position(last_point * thief.scale + thief.position)
+			grabbed_object.global_position = last_point * thief.scale + thief.position
 			if index_last <= 2:
 				collect_object()
 
