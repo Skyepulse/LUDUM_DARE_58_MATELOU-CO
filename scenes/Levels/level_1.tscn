@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbebkjarp70yc"]
+[gd_scene load_steps=9 format=3 uid="uid://dbebkjarp70yc"]
 
 [ext_resource type="Script" uid="uid://du8yultimxo88" path="res://scripts/level.gd" id="1_ptgt0"]
+[ext_resource type="PackedScene" uid="uid://ckbiqrktc354i" path="res://scenes/Objects/object_moai.tscn" id="2_ac15f"]
+[ext_resource type="PackedScene" uid="uid://cw0fhvhlua8vd" path="res://scenes/Objects/object_vase.tscn" id="3_3ydyl"]
 [ext_resource type="PackedScene" uid="uid://dah3y6cnwuvhb" path="res://scenes/Objects/object_punk_earring.tscn" id="4_vtxvj"]
 [ext_resource type="PackedScene" uid="uid://d31la7lbgqeod" path="res://scenes/Objects/object_wave.tscn" id="5_fkdrv"]
 [ext_resource type="PackedScene" uid="uid://cpt378r0tx734" path="res://scenes/Objects/obj_joconde.tscn" id="6_o21ul"]
@@ -11,7 +13,7 @@ size = Vector2(1000, 400)
 
 [node name="Level1" type="Node2D" node_paths=PackedStringArray("possible_objects")]
 script = ExtResource("1_ptgt0")
-possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5")]
+possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5"), NodePath("Grabbable Objects/ObjectRoot"), NodePath("Grabbable Objects/ObjectRoot3")]
 
 [node name="Zone d\'instanciation" type="Area2D" parent="."]
 collision_layer = 0
@@ -24,29 +26,42 @@ debug_color = Color(0.8352941, 0.36078432, 0.3882353, 0.05882353)
 [node name="Grabbable Objects" type="Node2D" parent="."]
 
 [node name="ObjectRoot2" parent="Grabbable Objects" instance=ExtResource("4_vtxvj")]
+position = Vector2(290, 0)
 scale = Vector2(0.105, 0.105)
 
 [node name="ObjectRoot4" parent="Grabbable Objects" instance=ExtResource("5_fkdrv")]
+position = Vector2(290.00003, 0)
 scale = Vector2(0.095, 0.095)
 
 [node name="ObjectRoot5" parent="Grabbable Objects" instance=ExtResource("6_o21ul")]
+position = Vector2(290.00003, 0)
 scale = Vector2(0.11, 0.11)
+
+[node name="ObjectRoot3" parent="Grabbable Objects" instance=ExtResource("3_3ydyl")]
+position = Vector2(265, 149)
+scale = Vector2(0.125, 0.125)
+
+[node name="ObjectRoot" parent="Grabbable Objects" instance=ExtResource("2_ac15f")]
+position = Vector2(277, 98)
+scale = Vector2(0.15, 0.15)
 
 [node name="Obstacles" type="Node2D" parent="."]
 
 [node name="CameraObstacle" parent="Obstacles" instance=ExtResource("7_y368g")]
-position = Vector2(-275.00003, -131)
+position = Vector2(-275, -130)
 scale = Vector2(0.74, 0.74)
-initRotation = 45.0
+rayLength = 200.0
+initRotation = 90.0
 
 [node name="CameraObstacle2" parent="Obstacles" instance=ExtResource("7_y368g")]
-position = Vector2(-272, 160)
+position = Vector2(-106, 125)
 scale = Vector2(0.74, 0.74)
-initRotation = -45.0
+rayLength = 200.0
+initRotation = -90.0
 
 [node name="CameraObstacle3" parent="Obstacles" instance=ExtResource("7_y368g")]
-position = Vector2(243.99994, -1)
-scale = Vector2(0.54760003, 0.54760003)
-rayLength = 150.0
+position = Vector2(62.000008, -130)
+scale = Vector2(0.74, 0.74)
+rayLength = 200.0
 rayWidth = 100.0
-initRotation = 180.0
+initRotation = 90.0
