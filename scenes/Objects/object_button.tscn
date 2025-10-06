@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdfxsfkj33qq8"]
+[gd_scene load_steps=3 format=3 uid="uid://bdfxsfkj33qq8"]
 
 [ext_resource type="PackedScene" uid="uid://ds6qifjw0rlpu" path="res://scenes/grabbable_object.tscn" id="1_uc0x1"]
 [ext_resource type="Texture2D" uid="uid://bh7n52y1ack3a" path="res://img/button.png" id="2_uc0x1"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_uc0x1"]
-font_size = 19
 
 [node name="ObjectRoot" instance=ExtResource("1_uc0x1")]
 objectName = "Button"
@@ -12,9 +9,13 @@ INDEX = 0
 texture = ExtResource("2_uc0x1")
 
 [node name="Sprite2D" parent="." index="0"]
+position = Vector2(-2.3400269, 91)
 scale = Vector2(0.39, 0.39)
 texture = ExtResource("2_uc0x1")
 offset = Vector2(30, 741.815)
+
+[node name="GrabPoints" parent="." index="1"]
+position = Vector2(-2.3400269, 91)
 
 [node name="GrabPoint_1" parent="GrabPoints" index="0"]
 position = Vector2(-1, -65)
@@ -28,12 +29,19 @@ position = Vector2(-63, 0)
 [node name="GrabPoint_4" parent="GrabPoints" index="3"]
 position = Vector2(1, 65)
 
-[node name="Label" type="Label" parent="." index="3"]
-offset_left = -213.0
-offset_top = -175.0
-offset_right = 218.0
-offset_bottom = -118.0
-text = "Welcome to the British Consortium's Museum! 
-Press the button to start the visit"
-label_settings = SubResource("LabelSettings_uc0x1")
+[node name="ObjectHitbox" parent="." index="2"]
+position = Vector2(-2.3400269, 91)
+
+[node name="Label" type="RichTextLabel" parent="." index="3"]
+offset_left = -206.0
+offset_top = -194.0
+offset_right = 225.0
+offset_bottom = 36.0
+bbcode_enabled = true
+text = "[color=green]Try to Steal as many art pieces as you can[/color], but be careful, [color=red]if the guide is watching you STOP MOVING YOUR HAND[/color] or she will get suspicous...
+
+[color=yellow]YOUR HAND WILL FOLLOW WHERE YOU HOLD PRESS, RELEASE WHEN ON AN ART PIECE TO STEAL IT![/color]
+
+[color=cyan]Press the button to start the visit![/color]"
+fit_content = true
 horizontal_alignment = 1

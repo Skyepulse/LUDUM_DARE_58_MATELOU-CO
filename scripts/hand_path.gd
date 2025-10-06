@@ -16,7 +16,7 @@ var max_length = 20
 var min_length = 2
 
 var retract_speed = 500
-var retract_speed_fast = 1000
+var retract_speed_fast = 2500
 
 var average_speed: float = 0.0
 var last_hand_pos: Vector2 = Vector2.ZERO
@@ -152,6 +152,8 @@ func _ready() -> void:
 	GameManager.Player = self
 	orient_hand()
 	Signals.connect("move_scene", reset_arm)
+	Signals.connect("move_scene", disallow_inputs)
+	Signals.connect("start_level", allow_inputs)
 	Signals.connect("start_level", reset_arm)
 	Signals.connect("set_input", set_input)
 
@@ -199,3 +201,9 @@ func _process(delta: float) -> void:
 		update_average_speed(delta)
 	
 	update_line()
+
+func allow_inputs() -> void:
+	Signals.emit_signal("set_input", true)
+
+func disallow_inputs() -> void:
+	Signals.emit_signal("set_input", false)
