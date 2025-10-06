@@ -133,3 +133,7 @@ func _on_return_to_menu_from_credits_pressed() -> void:
 func _on_credits_pressed() -> void:
 	credits.visible = true
 	main_menu.visible = false
+
+func _on_return_to_menu_pressed() -> void:
+	GameManager.Guide.on_game_paused()
+	show_main_menu()

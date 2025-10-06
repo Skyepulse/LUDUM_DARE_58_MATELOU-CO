@@ -39,6 +39,18 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dj5vy"]
+bg_color = Color(0.35474226, 0.35453007, 0.117252104, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ru575"]
 shader = ExtResource("5_lvkef")
 shader_parameter/inner_radius = 1.0
@@ -108,18 +120,6 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dj5vy"]
-bg_color = Color(0.35474226, 0.35453007, 0.117252104, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 40
-corner_radius_top_right = 40
-corner_radius_bottom_right = 40
-corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftf0b"]
 bg_color = Color(0.7254902, 0.43529412, 0.101960786, 0.9019608)
@@ -222,6 +222,17 @@ text = "GUIDE SUSPICION"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="returnToMenu" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 65)
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("7_ru575")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_dj5vy")
+text = "Return to menu (see Collection)"
+
 [node name="Effects" type="Control" parent="."]
 visible = false
 layout_mode = 1
@@ -321,6 +332,7 @@ text = "GO TO MENU
 "
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -682,6 +694,7 @@ theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxFlat_o84x0")
 text = "Return To Menu"
 
+[connection signal="pressed" from="returnToMenu" to="." method="_on_return_to_menu_pressed"]
 [connection signal="pressed" from="GameOverScreen/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOverScreen/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="MainMenu/Start Game Button" to="." method="_on_start_game_button_pressed"]
