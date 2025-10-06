@@ -9,6 +9,8 @@ extends Control
 @onready var timer: Timer = $Timer
 @onready var gameOverScreen: Control = $GameOverScreen
 @onready var main_menu: Control = $MainMenu
+@onready var next_level_text = $NextLevelInfo/RichTextLabel
+@onready var next_level_root = $NextLevelInfo
 
 @export var vignette_animation_time: float = 1.0
 @export var vignette_max_radius: float = 1.0
@@ -41,6 +43,7 @@ func _ready() -> void:
 	Signals.connect("restart_game", hide_game_over_screen)
 
 	main_menu.visible = true
+	next_level_root.visible = false
 	
 func collection_button_is_pressed() -> void:
 	collection_root.visible = true
@@ -112,3 +115,10 @@ func _on_menu_button_pressed() -> void:
 func _on_hide_collection_pressed() -> void:
 	collection_root.visible = false
 	collection_panel.hide_collection()
+
+func set_next_level_text(text: String) -> void:
+	next_level_text.bbcode_text = text
+	next_level_root.visible = true
+
+func hide_next_level_text() -> void:
+	next_level_root.visible = false
