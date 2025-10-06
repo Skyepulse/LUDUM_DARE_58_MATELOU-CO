@@ -50,10 +50,10 @@ func on_guide_finished() -> void:
 	waiting_for_continue = true
 
 func _input(event: InputEvent) -> void:
-	
-	if event is InputEventKey and event.is_pressed():
-		if event.keycode == KEY_SPACE:
-			space_pressed()
+	if false:
+		if event is InputEventKey and event.is_pressed():
+			if event.keycode == KEY_SPACE:
+				space_pressed()
 
 func space_pressed() -> void:
 	waiting_for_continue = false
