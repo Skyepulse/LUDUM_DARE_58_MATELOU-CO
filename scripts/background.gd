@@ -1,11 +1,11 @@
 extends Node2D
 
-var speed:float = 300.0
+var speed: float = 300.0
 
-var guide_offset:Vector2
-var player_offset:Vector2
+var guide_offset: Vector2
+var player_offset: Vector2
 
-var screenSize:Vector2
+var screenSize: Vector2
 
 @onready var parallax_2d: Parallax2D = $Parallax2D
 
@@ -24,11 +24,11 @@ func resize() -> void:
 	parallax_2d.repeat_size.x = screenSize.x
 	
 func move(delta: float) -> void:
-	MainCamera2D.position.x += speed*delta
+	MainCamera2D.position.x += speed * delta
 	GameManager.Guide.position.x = MainCamera2D.position.x - guide_offset.x
 	GameManager.Player.get_parent().position.x = MainCamera2D.position.x - player_offset.x
 	
-	if MainCamera2D.position.x >= (1+GameManager.level_index)*screenSize.x:
+	if MainCamera2D.position.x >= (1 + GameManager.level_index) * screenSize.x:
 		Signals.is_moving = false
 		GameManager.level_index += 1
 		Signals.emit_signal("start_level")
