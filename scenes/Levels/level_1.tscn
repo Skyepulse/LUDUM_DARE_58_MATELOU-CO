@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbebkjarp70yc"]
+[gd_scene load_steps=10 format=3 uid="uid://dbebkjarp70yc"]
 
 [ext_resource type="Script" uid="uid://du8yultimxo88" path="res://scripts/level.gd" id="1_ptgt0"]
 [ext_resource type="PackedScene" uid="uid://ckbiqrktc354i" path="res://scenes/Objects/object_moai.tscn" id="2_ac15f"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dah3y6cnwuvhb" path="res://scenes/Objects/object_punk_earring.tscn" id="4_vtxvj"]
 [ext_resource type="PackedScene" uid="uid://d31la7lbgqeod" path="res://scenes/Objects/object_wave.tscn" id="5_fkdrv"]
 [ext_resource type="PackedScene" uid="uid://cpt378r0tx734" path="res://scenes/Objects/obj_joconde.tscn" id="6_o21ul"]
+[ext_resource type="PackedScene" uid="uid://h5uxb3jinakg" path="res://scenes/Objects/object_madame.tscn" id="7_l5ivm"]
 [ext_resource type="PackedScene" uid="uid://cwweperphcvw1" path="res://scenes/Obstacles/obs_camera.tscn" id="7_y368g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yyb7f"]
@@ -13,7 +14,7 @@ size = Vector2(1000, 400)
 
 [node name="Level1" type="Node2D" node_paths=PackedStringArray("possible_objects")]
 script = ExtResource("1_ptgt0")
-possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5"), NodePath("Grabbable Objects/ObjectRoot"), NodePath("Grabbable Objects/ObjectRoot3")]
+possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5"), NodePath("Grabbable Objects/ObjectRoot"), NodePath("Grabbable Objects/ObjectRoot3"), NodePath("Grabbable Objects/ObjectRoot6")]
 
 [node name="Zone d\'instanciation" type="Area2D" parent="."]
 collision_layer = 0
@@ -44,6 +45,10 @@ scale = Vector2(0.125, 0.125)
 [node name="ObjectRoot" parent="Grabbable Objects" instance=ExtResource("2_ac15f")]
 position = Vector2(277, 98)
 scale = Vector2(0.15, 0.15)
+
+[node name="ObjectRoot6" parent="Grabbable Objects" instance=ExtResource("7_l5ivm")]
+position = Vector2(287.99997, -1.9999999)
+scale = Vector2(0.05, 0.05)
 
 [node name="Obstacles" type="Node2D" parent="."]
 

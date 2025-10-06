@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://h5uxb3jinakg"]
+
+[ext_resource type="PackedScene" uid="uid://ds6qifjw0rlpu" path="res://scenes/grabbable_object.tscn" id="1_41ef2"]
+[ext_resource type="Texture2D" uid="uid://dfm7a5ln7iism" path="res://img/madam.png" id="2_dtrva"]
+
+[node name="ObjectRoot" instance=ExtResource("1_41ef2")]
+objectName = "Madame"
+objectDescription = "Michael Angelo Parker, a US American artist of Mexican descent, painted The Creation of Madam during his incarceration in Alligator Alcatraz in 2034. 
+
+Parker lived in troubled times, following the revelation that the President of the USA was actually a lizard from outer space bent on destroying human's coordinated efforts to reach the stars. 
+
+After his liberation in 2040, Parker devoted his life to fairness and human rights. His death in 2040 came as a shock to no one, certainly not himself, and his art pieces were forgotten for a long time.
+
+This piece, depicting the Creator giving Their blessing to a transgender woman, represents the hope of the artist for an acceptance of all people, no matter our differences.  "
+INDEX = 6
+texture = ExtResource("2_dtrva")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_dtrva")
+
+[node name="GrabPoint_1" parent="GrabPoints" index="0"]
+position = Vector2(20, -1478)
+
+[node name="GrabPoint_2" parent="GrabPoints" index="1"]
+position = Vector2(2287, -23)
+
+[node name="GrabPoint_3" parent="GrabPoints" index="2"]
+position = Vector2(18, 1413)
+
+[node name="GrabPoint_4" parent="GrabPoints" index="3"]
+position = Vector2(-2345, -20)
+
+[node name="CollisionShape2D" parent="ObjectHitbox" index="0"]
+scale = Vector2(36.88, 23.66)
