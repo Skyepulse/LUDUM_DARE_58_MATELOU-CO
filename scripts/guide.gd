@@ -55,6 +55,9 @@ func _ready() -> void:
 	
 	Signals.connect("start_level", stop_moving)
 	Signals.connect("move_scene", start_moving)
+	
+	Signals.connect("game_paused", on_game_paused)
+	Signals.connect("game_unpaused", on_game_unpaused)
 
 	print("Walking animation duration: %f" % walking_animation_frame_duration)
 	print("Talking animation duration: %f" % talking_animation_frame_duration)
@@ -62,7 +65,7 @@ func _ready() -> void:
 
 	initial_position = position
 	
-	stop_moving()
+	Signals.connect("game_started", stop_moving)
 	
 func _process(delta: float) -> void:
 	if Signals.game_state == Signals.INGAME:
@@ -181,26 +184,28 @@ func set_initial_sprite() -> void:
 	animation_timer.start()
 
 func update_sprite() -> void:
-	if Signals.is_moving:
-		if walking_sprites.size() == 0:
-			return
-		current_walking_sprite_index = (current_walking_sprite_index + 1) % walking_sprites.size()
-		self.texture = walking_sprites[current_walking_sprite_index]
-		animation_timer.wait_time = walking_animation_frame_duration
-	elif is_talking:
-		if talking_sprites.size() == 0:
-			return
-		current_talking_sprite_index = (current_talking_sprite_index + 1) % talking_sprites.size()
-		self.texture = talking_sprites[current_talking_sprite_index]
-		animation_timer.wait_time = talking_animation_frame_duration
-	elif is_looking_thief:
-		if looking_sprites.size() == 0:
-			return
-		current_looking_sprite_index = (current_looking_sprite_index + 1) % looking_sprites.size()
-		self.texture = looking_sprites[current_looking_sprite_index]
-		animation_timer.wait_time = looking_animation_frame_duration
+	if Signals.game_state == Signals.INGAME:
+		if Signals.is_moving:
+			if walking_sprites.size() == 0:
+				return
+			current_walking_sprite_index = (current_walking_sprite_index + 1) % walking_sprites.size()
+			self.texture = walking_sprites[current_walking_sprite_index]
+			animation_timer.wait_time = walking_animation_frame_duration
+		elif is_talking:
+			if talking_sprites.size() == 0:
+				return
+			current_talking_sprite_index = (current_talking_sprite_index + 1) % talking_sprites.size()
+			self.texture = talking_sprites[current_talking_sprite_index]
+			animation_timer.wait_time = talking_animation_frame_duration
+		elif is_looking_thief:
+			if looking_sprites.size() == 0:
+				return
+			current_looking_sprite_index = (current_looking_sprite_index + 1) % looking_sprites.size()
+			self.texture = looking_sprites[current_looking_sprite_index]
+			animation_timer.wait_time = looking_animation_frame_duration
+		
 
-	animation_timer.start()
+		animation_timer.start()
 
 func start_bubble_speak(text: String) -> void:
 	speechString = text
@@ -209,6 +214,24 @@ func start_bubble_speak(text: String) -> void:
 	speech_timer.wait_time = 1.0 / speech_speed
 	speech_timer.start()
 	speech_bubble.visible = true
+
+var timer_stopped: bool = false
+var timer_anim_stopped: bool = false
+var timer_speech_stopped: bool = false
+
+func on_game_paused() -> void:
+	timer_stopped = timer.paused
+	timer_anim_stopped = animation_timer.paused
+	timer_speech_stopped = speech_timer.paused
+	
+	timer.paused = true
+	animation_timer.paused = true
+	speech_timer.paused = true
+	
+func on_game_unpaused() -> void:
+	timer.paused = timer_stopped
+	animation_timer.paused = timer_anim_stopped
+	speech_timer.paused = timer_speech_stopped
 
 func pause_speaking() -> void:
 	speech_timer.stop()
