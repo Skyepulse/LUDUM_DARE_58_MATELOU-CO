@@ -234,6 +234,7 @@ func on_game_unpaused() -> void:
 	speech_timer.paused = timer_speech_stopped
 
 func pause_speaking() -> void:
+	print("Pausing speaking")
 	speech_timer.stop()
 	speech_bubble.visible = false
 
