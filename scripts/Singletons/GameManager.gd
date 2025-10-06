@@ -177,3 +177,7 @@ func get_object_info(index: int) -> CollectedObjectInfo:
 	else:
 		push_error("GameManager: Attempted to get info of object with invalid index: %s" % str(index))
 		return null
+		
+
+func on_guide_finished() -> void:
+	pass

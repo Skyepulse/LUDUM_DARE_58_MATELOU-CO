@@ -5,6 +5,8 @@ extends Path2D
 @onready var hand: Sprite2D = $"../Hand"
 @onready var thief: Node2D = $".."
 
+@onready var ground_limit: Node2D = $"../../GroundLimit"
+
 @onready var arm_curve = path_2d.curve
 
 @export var retracting: bool = true;
@@ -79,6 +81,8 @@ func mouse_input(delta: float) -> void:
 	var direction = mouse_pos - last_point
 	last_point += direction * delta * 4.0
 	
+	last_point.y = min(last_point.y, (ground_limit.position.y - thief.position.y) / thief.scale.y)
+	
 	arm_curve.set_point_position(count - 1, last_point)
 	
 	var last_last_point: Vector2 = arm_curve.get_point_position(count - 2)
@@ -89,6 +93,7 @@ func mouse_input(delta: float) -> void:
 		arm_curve.add_point(last_point)
 		last_last_point = last_last_point + (last_point - last_last_point) / cur_length * max_length
 		arm_curve.set_point_position(count - 1, last_last_point)
+	
 	
 	orient_hand()
 
@@ -152,9 +157,9 @@ func _ready() -> void:
 	GameManager.Player = self
 	orient_hand()
 	Signals.connect("move_scene", reset_arm)
+	Signals.connect("start_level", reset_arm)
 	Signals.connect("move_scene", disallow_inputs)
 	Signals.connect("start_level", allow_inputs)
-	Signals.connect("start_level", reset_arm)
 	Signals.connect("set_input", set_input)
 
 	initial_position = get_parent().position
@@ -172,8 +177,9 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 func collect_object():
 	if grabbed_object != null:
 		if grabbed_object.INDEX != 0:
-			GameManager.collect_object(grabbed_object.INDEX)
+			var index = grabbed_object.INDEX
 			grabbed_object.queue_free()
+			GameManager.collect_object(index)
 			
 func is_on_object() -> bool:
 	return grabbed_object != null
