@@ -33,6 +33,7 @@ script = ExtResource("1_3s172")
 possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5"), NodePath("Grabbable Objects/ObjectRoot"), NodePath("Grabbable Objects/ObjectRoot7"), NodePath("Grabbable Objects/ObjectRoot3")]
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+visible = false
 scroll_offset = Vector2(-571, -233)
 repeat_times = 3
 

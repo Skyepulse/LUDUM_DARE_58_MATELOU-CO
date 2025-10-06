@@ -21,6 +21,7 @@ point_count = 2
 radius = 83.333336
 
 [node name="Thief" type="Node2D"]
+z_index = 20
 
 [node name="Thief" type="Sprite2D" parent="." groups=["Player"]]
 position = Vector2(-92, 75)
