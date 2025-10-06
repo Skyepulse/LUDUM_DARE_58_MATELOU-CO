@@ -79,6 +79,7 @@ func startGame():
 	Signals.emit_signal("restart_game")
 	Signals.emit_signal("set_input", true)
 	Signals.game_state = Signals.INGAME
+	MainCamera2D.GameUI.suspicion_bar.showSuspicionBar()
 	print("GameManager: Game Started Again")
 
 func gameOver():

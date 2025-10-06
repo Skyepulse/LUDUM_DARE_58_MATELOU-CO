@@ -174,67 +174,6 @@ offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Menu" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PlayButton" type="Button" parent="Menu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CollectionButton" type="Button" parent="Menu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="CreditButton" type="Button" parent="Menu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="QuitButton" type="Button" parent="Menu"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="SuspicionBar" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
@@ -509,45 +448,50 @@ theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxFlat_o84x0")
 text = "GIVE UP THEFT... (QUIT)"
 
-[node name="Collection" type="HSplitContainer" parent="."]
+[node name="Collection" type="Panel" parent="."]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -547.5
-offset_top = -250.0
-offset_right = 547.5
-offset_bottom = 250.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CollectionPanel" type="Panel" parent="Collection"]
+[node name="Collection" type="HSplitContainer" parent="Collection"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -314.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollectionPanel" type="Panel" parent="Collection/Collection"]
 custom_minimum_size = Vector2(800, 500)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_ftf0b")
 script = ExtResource("2_5ji2y")
 missingTexture = ExtResource("3_5dnvl")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Collection/CollectionPanel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Collection/Collection/CollectionPanel"]
 layout_mode = 1
 offset_left = 25.0
 offset_top = 25.0
 offset_right = 775.0
 offset_bottom = 475.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Collection/CollectionPanel/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Collection/Collection/CollectionPanel/ScrollContainer"]
 custom_minimum_size = Vector2(750, 0)
 layout_mode = 2
 
-[node name="ExplanationPanel" type="Panel" parent="Collection"]
+[node name="ExplanationPanel" type="Panel" parent="Collection/Collection"]
 custom_minimum_size = Vector2(283.155, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lvkef")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Collection/ExplanationPanel"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Collection/Collection/ExplanationPanel"]
 custom_minimum_size = Vector2(266.03, 0)
 layout_mode = 1
 anchors_preset = 13
@@ -560,10 +504,29 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Hover an object to check if you have collected it, and read it's description!"
 
-[connection signal="pressed" from="Menu/PlayButton" to="." method="play_button_is_pressed"]
-[connection signal="pressed" from="Menu/CollectionButton" to="." method="collection_button_is_pressed"]
+[node name="Hide Collection" type="Button" parent="Collection"]
+custom_minimum_size = Vector2(400, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -197.0
+offset_top = -102.0
+offset_right = 203.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9125613, 0.669957, 0.9539698, 1)
+theme_override_fonts/font = ExtResource("7_ru575")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_tmyld")
+text = "Hide Collection"
+
 [connection signal="pressed" from="GameOverScreen/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOverScreen/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="MainMenu/Start Game Button" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="MainMenu/See Collection Button" to="." method="_on_see_collection_button_pressed"]
 [connection signal="pressed" from="MainMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Collection/Hide Collection" to="." method="_on_hide_collection_pressed"]
