@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dnxq7xae7ucl0" path="res://scripts/GameUI.gd" id="1_sjnlv"]
 [ext_resource type="Script" uid="uid://crwbsu7ltt0xd" path="res://scripts/collection_ui.gd" id="2_5ji2y"]
-[ext_resource type="Texture2D" uid="uid://01a6s27mn85u" path="res://img/icon.svg" id="3_5dnvl"]
+[ext_resource type="Texture2D" uid="uid://b8ux52nch0v44" path="res://img/pt_interrogation.png" id="3_5dnvl"]
 [ext_resource type="Script" uid="uid://dwgt6m1335bch" path="res://scripts/suspicion_bar.gd" id="4_5dnvl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftf0b"]
