@@ -15,8 +15,8 @@ var cur_length = 0
 var max_length = 20
 var min_length = 2
 
-var retract_speed = 50
-var retract_speed_fast = 500
+var retract_speed = 500
+var retract_speed_fast = 1000
 
 var average_speed: float = 0.0
 var last_hand_pos: Vector2 = Vector2.ZERO
@@ -52,8 +52,8 @@ func orient_hand() -> void:
 	if count < 2:
 		return
 		
-	var last_point = arm_curve.get_point_position(count-1)
-	var last_last_point = arm_curve.get_point_position(count-2)
+	var last_point = arm_curve.get_point_position(count - 1)
+	var last_last_point = arm_curve.get_point_position(count - 2)
 	
 	var dir = last_point - last_last_point
 	var length = dir.length()
@@ -76,7 +76,7 @@ func mouse_input(delta: float) -> void:
 	
 	var last_point = arm_curve.get_point_position(count - 1)
 	var direction = mouse_pos - last_point
-	last_point += direction * delta * 2.0
+	last_point += direction * delta * 4.0
 	
 	arm_curve.set_point_position(count - 1, last_point)
 	
