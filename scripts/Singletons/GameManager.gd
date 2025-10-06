@@ -32,6 +32,19 @@ var object_index: int = 0
 
 var game_over_flag: bool = false
 
+var ready_for_next_level: bool = false
+const TEXT_GUIDE_NEXT_LEVEL: String = "
+Oh no, the guide finished talking! [color=green]No time to steal, let's go for the next art piece![/color]
+
+[color=yellow][b]PRESS SPACE TO CONTINUE[/b][/color]
+"
+
+const TEXT_STEAL_NEXT_LEVEL: String = "
+Perfect, one more for your collection! [color=green]The Guide is clueless, let's go for the next art piece![/color]
+
+[color=yellow][b]PRESS SPACE TO CONTINUE[/b][/color]
+"
+
 func _ready():
 
 	CollectedDictionary.clear()
@@ -102,6 +115,13 @@ func _process(delta: float):
 	if canDecrease:
 		decreaseSuspicion(suspicionDecayRate * delta)
 
+	if ready_for_next_level:
+		# If pressed space, continue to next level
+		if Input.is_key_pressed(KEY_SPACE):
+			ready_for_next_level = false
+			Signals.emit_signal("move_scene")
+			MainCamera2D.GameUI.hide_next_level_text()
+
 func increaseSuspicion(amount: float):
 	if game_over_flag:
 		return
@@ -137,7 +157,8 @@ func collect_object(index: int) -> void:
 		CollectedDictionary[index] += 1
 		if infoDictionary.has(index):
 			infoDictionary[index].count += 1
-			Signals.emit_signal("move_scene")
+			ready_for_next_level = true
+			MainCamera2D.GameUI.set_next_level_text(TEXT_STEAL_NEXT_LEVEL)
 		else:
 			push_error("GameManager: Collected object with index %d has no info entry!" % index)
 	else:

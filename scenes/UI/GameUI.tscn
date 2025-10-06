@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bl372pp24j6jb"]
+[gd_scene load_steps=25 format=3 uid="uid://bl372pp24j6jb"]
 
 [ext_resource type="Script" uid="uid://dnxq7xae7ucl0" path="res://scripts/GameUI.gd" id="1_sjnlv"]
 [ext_resource type="Script" uid="uid://crwbsu7ltt0xd" path="res://scripts/collection_ui.gd" id="2_5ji2y"]
@@ -120,6 +120,9 @@ corner_radius_bottom_left = 40
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lvkef"]
 bg_color = Color(0.15294118, 0.15294118, 0.15294118, 0.9411765)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhc8h"]
+bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.6392157)
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -523,6 +526,41 @@ theme_override_fonts/font = ExtResource("7_ru575")
 theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxFlat_tmyld")
 text = "Hide Collection"
+
+[node name="NextLevelInfo" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="NextLevelInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uhc8h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NextLevelInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("7_ru575")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+bbcode_enabled = true
+text = "TEXT PLACEHOLDER HERE"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="GameOverScreen/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOverScreen/MenuButton" to="." method="_on_menu_button_pressed"]
