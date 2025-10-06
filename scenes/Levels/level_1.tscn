@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://dbebkjarp70yc"]
+
+[ext_resource type="Script" uid="uid://du8yultimxo88" path="res://scripts/level.gd" id="1_ptgt0"]
+[ext_resource type="PackedScene" uid="uid://dah3y6cnwuvhb" path="res://scenes/Objects/object_punk_earring.tscn" id="4_vtxvj"]
+[ext_resource type="PackedScene" uid="uid://d31la7lbgqeod" path="res://scenes/Objects/object_wave.tscn" id="5_fkdrv"]
+[ext_resource type="PackedScene" uid="uid://cpt378r0tx734" path="res://scenes/Objects/obj_joconde.tscn" id="6_o21ul"]
+[ext_resource type="PackedScene" uid="uid://cwweperphcvw1" path="res://scenes/Obstacles/obs_camera.tscn" id="7_y368g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yyb7f"]
+size = Vector2(1000, 400)
+
+[node name="Level1" type="Node2D" node_paths=PackedStringArray("possible_objects")]
+script = ExtResource("1_ptgt0")
+possible_objects = [NodePath("Grabbable Objects/ObjectRoot2"), NodePath("Grabbable Objects/ObjectRoot4"), NodePath("Grabbable Objects/ObjectRoot5")]
+
+[node name="Zone d\'instanciation" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zone d\'instanciation"]
+shape = SubResource("RectangleShape2D_yyb7f")
+debug_color = Color(0.8352941, 0.36078432, 0.3882353, 0.05882353)
+
+[node name="Grabbable Objects" type="Node2D" parent="."]
+
+[node name="ObjectRoot2" parent="Grabbable Objects" instance=ExtResource("4_vtxvj")]
+position = Vector2(-1.5258789e-05, 1.0000005)
+scale = Vector2(0.105, 0.105)
+
+[node name="ObjectRoot4" parent="Grabbable Objects" instance=ExtResource("5_fkdrv")]
+position = Vector2(3, 0)
+scale = Vector2(0.095, 0.095)
+
+[node name="ObjectRoot5" parent="Grabbable Objects" instance=ExtResource("6_o21ul")]
+position = Vector2(1, 1)
+scale = Vector2(0.11, 0.11)
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="CameraObstacle" parent="Obstacles" instance=ExtResource("7_y368g")]
+position = Vector2(-275.00003, -131)
+scale = Vector2(0.74, 0.74)
+initRotation = 45.0
+
+[node name="CameraObstacle2" parent="Obstacles" instance=ExtResource("7_y368g")]
+position = Vector2(-272, 160)
+scale = Vector2(0.74, 0.74)
+initRotation = -45.0
+
+[node name="CameraObstacle3" parent="Obstacles" instance=ExtResource("7_y368g")]
+position = Vector2(243.99994, -1)
+scale = Vector2(0.54760003, 0.54760003)
+rayLength = 150.0
+rayWidth = 100.0
+initRotation = 180.0
