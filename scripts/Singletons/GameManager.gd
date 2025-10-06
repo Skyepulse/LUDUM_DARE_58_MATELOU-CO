@@ -89,6 +89,7 @@ func gameOver():
 	game_over_flag = true
 	suspicionDecayTimer.stop()
 	canDecrease = false
+	print("GAMEMANAGER: GAME OVER")
 
 func isHandRetracting() -> bool:
 	if Player:
@@ -102,6 +103,9 @@ func _process(delta: float):
 		decreaseSuspicion(suspicionDecayRate * delta)
 
 func increaseSuspicion(amount: float):
+	if game_over_flag:
+		return
+		
 	if currentSuspicion + amount > maxSuspicion:
 		gameOver()
 		return

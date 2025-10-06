@@ -97,6 +97,9 @@ func show_main_menu() -> void:
 	main_menu.visible = true
 	Signals.game_state = Signals.START
 
+	Signals.emit_signal("set_input", false)
+	Signals.emit_signal("main_menu")
+
 	collection_panel.hide_collection()
 	collection_root.visible = false
 	

@@ -6,25 +6,52 @@ extends Node
 
 func _ready() -> void:
 	Signals.connect("restart_game", start_main_music)
-	Signals.connect("game_paused", paused_main_music)
-	Signals.connect("game_unpaused", unpaused_main_music)
-	Signals.connect("game_over", paused_main_music)
+	Signals.connect("game_over", play_game_over_music)
+	Signals.connect("main_menu", play_menu_music)
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.is_pressed():
-		if event.keycode == KEY_S:
-			speech.playing = true
-		elif event.keycode == KEY_D:
-			speech.playing = false
+	play_menu_music()
 
 func start_main_music() -> void:
-	print("Starting main music")
-	speech.playing = true
+	if fuite.playing:
+		return
 
-func paused_main_music() -> void:
-	print("Pausing main music")
-	speech.stream_paused = true
-	
-func unpaused_main_music() -> void:
-	print("Unpausing main music")
-	speech.stream_paused = false
+	if speech.playing:
+		speech.playing = false
+		speech.stop()
+	if vol.playing:
+		vol.playing = false
+		vol.stop()
+	fuite.playing = true
+	fuite.play()
+
+	print("Playing main game music")
+
+func play_menu_music() -> void:
+	if speech.playing:
+		return
+
+	if vol.playing:
+		vol.playing = false
+		vol.stop()
+	if fuite.playing:
+		fuite.playing = false
+		fuite.stop()
+	speech.playing = true
+	speech.play()
+
+	print("Playing menu music")
+
+func play_game_over_music() -> void:
+	if vol.playing:
+		return
+
+	if fuite.playing:
+		fuite.playing = false
+		fuite.stop()
+	if speech.playing:
+		speech.playing = false
+		speech.stop()
+	vol.playing = true
+	vol.play()
+
+	print("Playing game over music")
