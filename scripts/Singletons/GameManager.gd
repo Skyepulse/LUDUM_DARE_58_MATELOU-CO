@@ -89,6 +89,7 @@ func startGame():
 	currentSuspicion = 0.0
 	canDecrease = true
 	game_over_flag = false
+	Guide.on_game_unpaused()
 	Signals.emit_signal("restart_game")
 	Signals.emit_signal("set_input", true)
 	Signals.game_state = Signals.INGAME
@@ -97,6 +98,7 @@ func startGame():
 
 func gameOver():
 	Signals.emit_signal("game_over")
+	Guide.on_game_paused()
 	Signals.emit_signal("set_input", false)
 	Signals.game_state = Signals.PAUSED
 	game_over_flag = true
@@ -119,6 +121,7 @@ func _process(delta: float):
 		# If pressed space, continue to next level
 		if Input.is_key_pressed(KEY_SPACE):
 			ready_for_next_level = false
+			Guide.on_game_unpaused()
 			Signals.emit_signal("move_scene")
 			MainCamera2D.GameUI.hide_next_level_text()
 
@@ -159,6 +162,8 @@ func collect_object(index: int) -> void:
 			infoDictionary[index].count += 1
 			ready_for_next_level = true
 			MainCamera2D.GameUI.set_next_level_text(TEXT_STEAL_NEXT_LEVEL)
+			Guide.on_game_paused()
+			Signals.emit_signal("set_input", false)
 		else:
 			push_error("GameManager: Collected object with index %d has no info entry!" % index)
 	else:
@@ -180,4 +185,7 @@ func get_object_info(index: int) -> CollectedObjectInfo:
 		
 
 func on_guide_finished() -> void:
-	pass
+	ready_for_next_level = true
+	MainCamera2D.GameUI.set_next_level_text(TEXT_GUIDE_NEXT_LEVEL)
+	Guide.on_game_paused()
+	Signals.emit_signal("set_input", false)

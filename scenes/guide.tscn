@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dn8pyyp8rf8gy" path="res://img/speechBubble.png" id="8_6dbe5"]
 
 [node name="Guide" type="Sprite2D"]
+z_index = 20
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_wxloj")
 script = ExtResource("2_rb1b7")
@@ -35,10 +36,10 @@ custom_minimum_size = Vector2(1600, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -110.000015
-offset_top = -1940.0
+offset_left = -110.0
+offset_top = -2630.0
 offset_right = -558.0
-offset_bottom = -3272.0
+offset_bottom = -3703.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_6dbe5")

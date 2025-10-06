@@ -90,7 +90,7 @@ rotation = -4.6827183
 scale = Vector2(0.74, 0.74)
 
 [node name="CameraObstacle2" parent="Obstacles" instance=ExtResource("5_2fma4")]
-position = Vector2(-272, 160)
+position = Vector2(-272, 172.00002)
 rotation = -1.600467
 scale = Vector2(0.74, 0.74)
 

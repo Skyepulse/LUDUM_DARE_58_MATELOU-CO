@@ -11,6 +11,7 @@ extends Control
 @onready var main_menu: Control = $MainMenu
 @onready var next_level_text = $NextLevelInfo/RichTextLabel
 @onready var next_level_root = $NextLevelInfo
+@onready var credits = $Credits
 
 @export var vignette_animation_time: float = 1.0
 @export var vignette_max_radius: float = 1.0
@@ -44,6 +45,7 @@ func _ready() -> void:
 
 	main_menu.visible = true
 	next_level_root.visible = false
+	credits.visible = false
 	
 func collection_button_is_pressed() -> void:
 	collection_root.visible = true
@@ -122,3 +124,12 @@ func set_next_level_text(text: String) -> void:
 
 func hide_next_level_text() -> void:
 	next_level_root.visible = false
+
+
+func _on_return_to_menu_from_credits_pressed() -> void:
+	credits.visible = false
+	main_menu.visible = true
+
+func _on_credits_pressed() -> void:
+	credits.visible = true
+	main_menu.visible = false

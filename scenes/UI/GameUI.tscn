@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bl372pp24j6jb"]
+[gd_scene load_steps=30 format=3 uid="uid://bl372pp24j6jb"]
 
 [ext_resource type="Script" uid="uid://dnxq7xae7ucl0" path="res://scripts/GameUI.gd" id="1_sjnlv"]
 [ext_resource type="Script" uid="uid://crwbsu7ltt0xd" path="res://scripts/collection_ui.gd" id="2_5ji2y"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://y65edu6ee4n" path="res://img/thief.png" id="9_pnkpl"]
 [ext_resource type="Texture2D" uid="uid://c57mtl1o4ymnc" path="res://img/thief_arm.png" id="10_jyeja"]
 [ext_resource type="Texture2D" uid="uid://dbctwyoo6pe0j" path="res://img/thief_hand.png" id="11_tmyld"]
+[ext_resource type="Texture2D" uid="uid://c65np0eews7kk" path="res://img/backpack.png" id="12_o84x0"]
+[ext_resource type="Texture2D" uid="uid://c5lwoqvmkycyq" path="res://img/button_alarm.png" id="13_uhc8h"]
+[ext_resource type="Texture2D" uid="uid://c25nh4nheoqn5" path="res://img/camera.png" id="14_ul0hx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ji2y"]
 bg_color = Color(0.3403393, 0.34033936, 0.34033918, 1)
@@ -106,6 +109,18 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dj5vy"]
+bg_color = Color(0.35474226, 0.35453007, 0.117252104, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftf0b"]
 bg_color = Color(0.7254902, 0.43529412, 0.101960786, 0.9019608)
 border_width_left = 5
@@ -123,6 +138,9 @@ bg_color = Color(0.15294118, 0.15294118, 0.15294118, 0.9411765)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhc8h"]
 bg_color = Color(0.015686275, 0.015686275, 0.015686275, 0.6392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ul0hx"]
+bg_color = Color(0.65544677, 0.3963725, 0.12468117, 1)
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -451,6 +469,26 @@ theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = SubResource("StyleBoxFlat_o84x0")
 text = "GIVE UP THEFT... (QUIT)"
 
+[node name="Credits" type="Button" parent="MainMenu"]
+custom_minimum_size = Vector2(200, 65)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -219.0
+offset_top = -77.0
+offset_right = -19.0
+offset_bottom = -11.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9999866, 0.78865725, 0.7724575, 1)
+theme_override_fonts/font = ExtResource("7_ru575")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_dj5vy")
+text = "CREDITS"
+
 [node name="Collection" type="Panel" parent="."]
 visible = false
 layout_mode = 1
@@ -528,6 +566,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_tmyld")
 text = "Hide Collection"
 
 [node name="NextLevelInfo" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -562,9 +601,92 @@ text = "TEXT PLACEHOLDER HERE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ul0hx")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("7_ru575")
+theme_override_fonts/bold_font = ExtResource("7_ru575")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+bbcode_enabled = true
+text = "These People Built the Game:
+
+[color=cyan]Telo - Game Programmer / Gameplay Design[/color]
+[color=green]Elmrys (Maël Rios) - Game Programmer / Gameplay Design[/color]
+[color=yellow]Pafnouti - Game Programmer / Gamepley Design[/color]
+[color=black]Loumon - Art[/color]
+Edali - Art / Dialogue
+[color=magenta]MatMatb - Dialogue / Game Design[/color]
+[color=gray]Bisma - Music[/color]
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Backpack" type="Sprite2D" parent="Credits"]
+position = Vector2(181, 177)
+scale = Vector2(0.26, 0.26)
+texture = ExtResource("12_o84x0")
+
+[node name="ButtonAlarm" type="Sprite2D" parent="Credits"]
+position = Vector2(1048, 363)
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("13_uhc8h")
+
+[node name="Camera" type="Sprite2D" parent="Credits"]
+position = Vector2(181, 728)
+scale = Vector2(0.38, 0.38)
+texture = ExtResource("14_ul0hx")
+
+[node name="ReturnToMenuFromCredits" type="Button" parent="Credits"]
+custom_minimum_size = Vector2(500, 65)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -250.0
+offset_top = -89.0
+offset_right = 250.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.9999866, 0.78865725, 0.7724575, 1)
+theme_override_fonts/font = ExtResource("7_ru575")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxFlat_o84x0")
+text = "Return To Menu"
+
 [connection signal="pressed" from="GameOverScreen/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOverScreen/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="MainMenu/Start Game Button" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="MainMenu/See Collection Button" to="." method="_on_see_collection_button_pressed"]
 [connection signal="pressed" from="MainMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MainMenu/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Collection/Hide Collection" to="." method="_on_hide_collection_pressed"]
+[connection signal="pressed" from="Credits/ReturnToMenuFromCredits" to="." method="_on_return_to_menu_from_credits_pressed"]

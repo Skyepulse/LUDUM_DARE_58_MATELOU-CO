@@ -41,9 +41,11 @@ var current_looking_sprite_index: int = 0
 
 var speechString: String = ""
 var labeltext: String = ""
-const MAX_LABEL_LENGTH: int = 100
+const MAX_LABEL_LENGTH: int = 160
 
 var initial_position: Vector2
+
+var is_paused: bool = false
 
 func _ready() -> void:
 	GameManager.Guide = self
@@ -176,6 +178,9 @@ func set_initial_sprite() -> void:
 	animation_timer.start()
 
 func update_sprite() -> void:
+	if is_paused:
+		return
+
 	if Signals.game_state == Signals.INGAME:
 		if Signals.is_moving:
 			if walking_sprites.size() == 0:
@@ -212,6 +217,10 @@ var timer_anim_stopped: bool = false
 var timer_speech_stopped: bool = false
 
 func on_game_paused() -> void:
+	is_paused = true
+
+	start_talking() # Stop looking if looking
+
 	timer_stopped = timer.paused
 	timer_anim_stopped = animation_timer.paused
 	timer_speech_stopped = speech_timer.paused
@@ -221,6 +230,8 @@ func on_game_paused() -> void:
 	speech_timer.paused = true
 	
 func on_game_unpaused() -> void:
+	is_paused = false
+
 	timer.paused = timer_stopped
 	animation_timer.paused = timer_anim_stopped
 	speech_timer.paused = timer_speech_stopped
@@ -244,7 +255,7 @@ func _on_speech_timer_timeout() -> void:
 		labeltext += char_to_add
 		if labeltext.length() > MAX_LABEL_LENGTH and char_to_add == " ":
 			labeltext = ""
-			speech_timer.wait_time = 3.0
+			speech_timer.wait_time = 1.2
 			speech_timer.start()
 			return
 
