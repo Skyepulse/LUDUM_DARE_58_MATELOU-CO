@@ -54,6 +54,7 @@ func _ready() -> void:
 	speech_timer.timeout.connect(_on_speech_timer_timeout)
 	
 	Signals.connect("start_level", stop_moving)
+	Signals.connect("move_scene", start_moving)
 
 	print("Walking animation duration: %f" % walking_animation_frame_duration)
 	print("Talking animation duration: %f" % talking_animation_frame_duration)
@@ -72,11 +73,10 @@ func _process(delta: float) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
 		if event.keycode == KEY_SPACE:
-			start_moving()
+			Signals.emit_signal("move_scene")
 
 func start_moving() -> void:
 	if not Signals.is_moving:
-		Signals.emit_signal("move_scene")
 		Signals.emit_signal("set_input", false)
 		
 	timer.stop()
