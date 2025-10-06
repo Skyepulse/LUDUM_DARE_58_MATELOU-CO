@@ -219,6 +219,8 @@ var timer_speech_stopped: bool = false
 func on_game_paused() -> void:
 	is_paused = true
 
+	start_talking() # Stop looking if looking
+
 	timer_stopped = timer.paused
 	timer_anim_stopped = animation_timer.paused
 	timer_speech_stopped = speech_timer.paused

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c25nh4nheoqn5" path="res://img/camera.png" id="2_khuef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8270b"]
-size = Vector2(140.275, 53.32)
+size = Vector2(150, 70)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_8270b"]
 points = PackedVector2Array(0, -10, 100, -30, 100, 30, 0, 10)
@@ -23,6 +23,7 @@ texture = ExtResource("2_khuef")
 offset = Vector2(40, 697.395)
 
 [node name="HitBox" type="Area2D" parent="."]
+position = Vector2(-12, -15)
 collision_layer = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]

@@ -89,6 +89,7 @@ func startGame():
 	currentSuspicion = 0.0
 	canDecrease = true
 	game_over_flag = false
+	Guide.on_game_unpaused()
 	Signals.emit_signal("restart_game")
 	Signals.emit_signal("set_input", true)
 	Signals.game_state = Signals.INGAME
@@ -97,6 +98,7 @@ func startGame():
 
 func gameOver():
 	Signals.emit_signal("game_over")
+	Guide.on_game_paused()
 	Signals.emit_signal("set_input", false)
 	Signals.game_state = Signals.PAUSED
 	game_over_flag = true
