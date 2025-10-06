@@ -128,10 +128,12 @@ func retract(delta: float) -> void:
 	
 	if holding_object:
 		if grabbed_object.INDEX == 0:
+			grabbed_object = null
+			print(" ungrabbed player ")
 			Signals.emit_signal("move_scene")
 			Signals.emit_signal("set_input", false);
 		else:
-			grabbed_object.set_position(last_point * thief.scale + thief.position)
+			grabbed_object.global_position = last_point * thief.scale + thief.position
 			if index_last <= 2:
 				collect_object()
 

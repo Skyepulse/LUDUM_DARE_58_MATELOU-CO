@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxd5kknrofkns"]
+[gd_scene load_steps=7 format=3 uid="uid://bxd5kknrofkns"]
 
 [ext_resource type="PackedScene" uid="uid://ytnv83oppny8" path="res://scenes/background.tscn" id="1_d383n"]
 [ext_resource type="Script" uid="uid://cv3c2rmgjcigy" path="res://scripts/main_game_scene.gd" id="1_oa6bs"]
+[ext_resource type="PackedScene" uid="uid://dbebkjarp70yc" path="res://scenes/Levels/level_1.tscn" id="2_emqn2"]
 [ext_resource type="PackedScene" uid="uid://c8vk05rdo648t" path="res://scenes/guide.tscn" id="2_oa6bs"]
 [ext_resource type="PackedScene" uid="uid://de8xq0cmgi1er" path="res://scenes/thief.tscn" id="3_emqn2"]
+[ext_resource type="PackedScene" uid="uid://dejmu37xlc4nq" path="res://scenes/Levels/level_2.tscn" id="3_ilxj7"]
 
 [node name="MainGameScene" type="Node2D"]
 script = ExtResource("1_oa6bs")
+possible_levels = Array[PackedScene]([ExtResource("2_emqn2"), ExtResource("3_ilxj7")])
 
 [node name="Background" parent="." instance=ExtResource("1_d383n")]
 z_index = -10

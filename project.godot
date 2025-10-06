@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LD_58_Matelou&Co"
-run/main_scene="uid://bk3slmpm5pir5"
+run/main_scene="uid://bxd5kknrofkns"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://img/icon.svg"
 
@@ -20,6 +20,10 @@ config/icon="res://img/icon.svg"
 GameManager="*res://scenes/game_manager.tscn"
 MainCamera2D="*res://scenes/main_camera_2d.tscn"
 Signals="*res://scripts/Singletons/Signals.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [global_group]
 

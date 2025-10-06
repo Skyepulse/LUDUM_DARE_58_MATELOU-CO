@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdfxsfkj33qq8"]
 
 [ext_resource type="PackedScene" uid="uid://ds6qifjw0rlpu" path="res://scenes/grabbable_object.tscn" id="1_uc0x1"]
-[ext_resource type="Texture2D" uid="uid://01a6s27mn85u" path="res://img/icon.svg" id="2_uc0x1"]
+[ext_resource type="Texture2D" uid="uid://bh7n52y1ack3a" path="res://img/button.png" id="2_uc0x1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_uc0x1"]
 font_size = 19
@@ -10,6 +10,11 @@ font_size = 19
 objectName = "Button"
 INDEX = 0
 texture = ExtResource("2_uc0x1")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.39, 0.39)
+texture = ExtResource("2_uc0x1")
+offset = Vector2(30, 741.815)
 
 [node name="GrabPoint_1" parent="GrabPoints" index="0"]
 position = Vector2(-1, -65)

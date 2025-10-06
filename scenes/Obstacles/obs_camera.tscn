@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwweperphcvw1"]
 
-[ext_resource type="Texture2D" uid="uid://01a6s27mn85u" path="res://img/icon.svg" id="1_8270b"]
 [ext_resource type="Script" uid="uid://d28gbi2iub73n" path="res://scripts/obstacle_camera.gd" id="1_khuef"]
+[ext_resource type="Texture2D" uid="uid://c25nh4nheoqn5" path="res://img/camera.png" id="2_khuef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8270b"]
 size = Vector2(120, 50)
@@ -16,8 +16,11 @@ suspicionIncreaseRate = 10.0
 [node name="Visual" type="Sprite2D" parent="."]
 z_index = 10
 z_as_relative = false
-scale = Vector2(1, 0.41)
-texture = ExtResource("1_8270b")
+position = Vector2(11.000001, -18)
+rotation = -0.23561946
+scale = Vector2(0.265, 0.108)
+texture = ExtResource("2_khuef")
+offset = Vector2(40, 697.395)
 
 [node name="HitBox" type="Area2D" parent="."]
 

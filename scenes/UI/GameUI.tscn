@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl372pp24j6jb"]
+[gd_scene load_steps=12 format=3 uid="uid://bl372pp24j6jb"]
 
 [ext_resource type="Script" uid="uid://dnxq7xae7ucl0" path="res://scripts/GameUI.gd" id="1_sjnlv"]
 [ext_resource type="Script" uid="uid://crwbsu7ltt0xd" path="res://scripts/collection_ui.gd" id="2_5ji2y"]
-[ext_resource type="Texture2D" uid="uid://01a6s27mn85u" path="res://img/icon.svg" id="3_5dnvl"]
+[ext_resource type="Texture2D" uid="uid://b8ux52nch0v44" path="res://img/pt_interrogation.png" id="3_5dnvl"]
 [ext_resource type="Script" uid="uid://dwgt6m1335bch" path="res://scripts/suspicion_bar.gd" id="4_5dnvl"]
+[ext_resource type="Texture2D" uid="uid://cgve7etk6qcbx" path="res://img/white.png" id="5_ftf0b"]
+[ext_resource type="Shader" uid="uid://ca1j7vchmivik" path="res://Shaders/vignette.gdshader" id="5_lvkef"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftf0b"]
 bg_color = Color(0.7254902, 0.43529412, 0.101960786, 0.9019608)
@@ -43,6 +45,12 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ru575"]
+shader = ExtResource("5_lvkef")
+shader_parameter/inner_radius = 1.0
+shader_parameter/outer_radius = 2.0
+shader_parameter/vignette_color = Color(1, 0, 0, 1)
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -233,6 +241,27 @@ grow_vertical = 2
 text = "GUIDE SUSPICION"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Effects" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Vignette" type="TextureRect" parent="Effects"]
+material = SubResource("ShaderMaterial_ru575")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_ftf0b")
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="pressed" from="Menu/PlayButton" to="." method="play_button_is_pressed"]
 [connection signal="pressed" from="Menu/CollectionButton" to="." method="collection_button_is_pressed"]

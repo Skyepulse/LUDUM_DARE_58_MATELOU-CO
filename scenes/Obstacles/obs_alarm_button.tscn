@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtabtai4f6crm"]
+
+[ext_resource type="Script" uid="uid://bbwpnsskeeqxk" path="res://scripts/obstacle_alarm_button.gd" id="1_vpxov"]
+[ext_resource type="Texture2D" uid="uid://c5lwoqvmkycyq" path="res://img/button_alarm.png" id="1_vwevt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vwevt"]
+radius = 35.0
+
+[node name="obs_alarm_button" type="Node2D"]
+script = ExtResource("1_vpxov")
+
+[node name="Visual" type="Sprite2D" parent="."]
+z_index = 10
+z_as_relative = false
+position = Vector2(-2.035, 6.635)
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("1_vwevt")
+offset = Vector2(40, 697.395)
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_vwevt")
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="area_exited" from="HitBox" to="." method="_on_hit_box_area_exited"]
