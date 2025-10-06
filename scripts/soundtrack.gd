@@ -5,7 +5,7 @@ extends Node
 @onready var speech: AudioStreamPlayer = $speech
 
 func _ready() -> void:
-	Signals.connect("game_started", start_main_music)
+	Signals.connect("restart_game", start_main_music)
 	Signals.connect("game_paused", paused_main_music)
 	Signals.connect("game_unpaused", unpaused_main_music)
 
@@ -17,10 +17,13 @@ func _input(event: InputEvent) -> void:
 			speech.playing = false
 
 func start_main_music() -> void:
+	print("Starting main music")
 	speech.playing = true
 
 func paused_main_music() -> void:
+	print("Pausing main music")
 	speech.stream_paused = true
 	
 func unpaused_main_music() -> void:
+	print("Unpausing main music")
 	speech.stream_paused = false

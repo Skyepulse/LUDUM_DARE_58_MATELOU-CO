@@ -23,16 +23,12 @@ func _ready() -> void:
 		return
 
 	textLabel.text = DEFAULT_TEXT
-	self.get_parent().visible = false
 
 func show_collection():
 	initialize_collection_ui()
-	self.get_parent().visible = true
 	visibility = true
-	print("WATCHING COLLECTION")
 
 func hide_collection():
-	self.get_parent().visible = false
 	visibility = false
 
 func initialize_collection_ui() -> void:
